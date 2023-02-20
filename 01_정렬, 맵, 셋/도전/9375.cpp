@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int calc(map<string, int> clothes) {
+void calc(map<string, int> clothes) {
     map<string, int>::iterator it;
 
     int sum = 1;
@@ -11,13 +11,13 @@ int calc(map<string, int> clothes) {
     for (it = clothes.begin(); it != clothes.end(); it++) {
         sum *= (it->second + 1);
     }
-    return sum - 1;
+
+    cout << sum -1 <<  "\n";
 }
 
 int main() {
     int n;
     cin >> n;
-    int *arr = new int[n];
 
     for (int i = 0; i < n; i++) {
         int m;
@@ -34,14 +34,7 @@ int main() {
                 clothes[type] = 1;
             }
         }
-        arr[i] = calc(clothes);
+        calc(clothes);
     }
-
-    // 출력
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << "\n";
-    }
-
-    delete[] arr;
-    return 0;
 }
+
