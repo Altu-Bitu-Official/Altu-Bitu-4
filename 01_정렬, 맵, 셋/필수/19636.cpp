@@ -22,8 +22,8 @@ void diet2(int weight, int energy_plus, int energy_base, int energy_act, int day
     int base = energy_base;
     for(int i=0; i<day; i++){
         weight = weightChange(weight, energy_plus, energy_base, energy_act);
-        if ((energy_plus - (energy_base + energy_act))<(-1)*energy_diff){
-            energy_base += (energy_plus - (energy_base + energy_act))/2 ; 
+        if (abs(energy_plus - (energy_base + energy_act))>energy_diff){
+            energy_base += floor((energy_plus - (energy_base + energy_act))/2.0) ; 
         }
         if ((weight<=0)||(energy_base<=0)){
             cout << "Danger Diet \n";
