@@ -67,5 +67,6 @@ int main(void)
         cout << serial[i] << endl;
     }
 
+
     return 0;
 }

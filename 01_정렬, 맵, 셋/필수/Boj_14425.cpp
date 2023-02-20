@@ -31,6 +31,7 @@ int main(void)
     //출력
     cout <<answer<< endl; 
    
+   
     return 0;
 }
 
