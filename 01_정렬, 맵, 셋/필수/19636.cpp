@@ -32,7 +32,7 @@ int main() {
         addedWeight=I-consume;
         w+=addedWeight;
         if(abs(addedWeight)>T){
-            BMR+=floor(addedWeight/2);
+            BMR+=floor(addedWeight/2.0);
         }
     }
     if(iBefore-(BMR+0)>0){

@@ -9,10 +9,10 @@ bool cmp(string& s1,string& s2){
         int sum1=0,sum2=0;
         for(int i=0;i<s1.length();i++) {
             if (isdigit(s1[i])) {
-                sum1 += s1[i];
+                sum1 += s1[i]-'0';
             }
             if (isdigit(s2[i])) {
-                sum2 += s2[i];
+                sum2 += s2[i]-'0';
             }
         }
         if(sum1==sum2){
