@@ -17,7 +17,7 @@ int calc(map<string, int> clothes) {
 int main() {
     int n;
     cin >> n;
-    int arr[n];
+    int *arr = new int[n];
 
     for (int i = 0; i < n; i++) {
         int m;
@@ -41,4 +41,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         cout << arr[i] << "\n";
     }
+
+    delete[] arr;
+    return 0;
 }
