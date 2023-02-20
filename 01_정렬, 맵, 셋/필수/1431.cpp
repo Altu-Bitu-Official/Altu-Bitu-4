@@ -6,15 +6,15 @@ using namespace std;
 
 struct guitar{
     string serial;
-    int num_add=0;
-}
+    int num_add;
+};
 
 bool cmp(const guitar& g1, const guitar& g2){
     if (g1.serial.length() != g2.serial.length()) {
-		return g1.serial < g2.serial;
+		return g1.serial.length() < g2.serial.length();
 	}
 	if (g1.num_add != g2.num_add) {
-		return g1.serial < g2.serial;
+		return g1.num_add < g2.num_add;
 	}
 	return g1.serial < g2.serial;
 }
@@ -28,9 +28,10 @@ int main(){
 
     for(int i=0; i<n; i++){
         cin >> g_list[i].serial;
+        g_list[i].num_add = 0;
         for (int j=0; j< g_list[i].serial.length(); j++){
-            if (isdigit(g_list[i].serial[j])){
-                g_list[i].num_add += g_list[i].serial[j];
+            if ((g_list[i].serial[j] - '0' <= 9) && (g_list[i].serial[j] - '0' >= 0)){
+                g_list[i].num_add += g_list[i].serial[j] - '0';
             }
         }
     }
