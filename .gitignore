@@ -1,0 +1,9 @@
+# Blacklist everything
+*
+# Whitelist all directories
+!*/
+# Whitelist the file you're interested in.
+!*.cpp
+!*.pdf
+!*.md
+!*파일업로드용
