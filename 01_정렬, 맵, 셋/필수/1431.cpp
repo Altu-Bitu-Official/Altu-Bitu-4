@@ -29,12 +29,19 @@ int compare(string a, string b) {
 			}
 		}
 
+		if (sumA == 0 && sumB == 0) {
+			return a < b;
+		}
+
+
 		if (sumA != sumB) {
 			return sumA < sumB;
+
+			if (sumA = sumB) {
+				return a < b;
+			}
 		}
 	}
-
-	return a < b;
 }
 
 int main(void) {
@@ -46,12 +53,12 @@ int main(void) {
 
 	cin >> n;
 
-	for (; j < n; j++) {
+	for (j = 0; j < n; j++) {
 		cin >> N[j];
 	}
 
 	sort(N, N + n, compare);
-	for (; j < n; j++) {
+	for (j = 0; j < n; j++) {
 		cout << N[j] << std::endl;
 	}
 
