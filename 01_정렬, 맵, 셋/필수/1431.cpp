@@ -21,23 +21,27 @@ int compare(string a, string b) {
 		for (; i < a.size(); i++) {
 
 			if (a[i] >= '0' && a[i] <= '9') {
-				sumA = sumA + a[i];
+				sumA = sumA + (a[i] - '0');
 			}
 
 			if (b[i] >= '0' && b[i] <= '9') {
-				sumB = sumB + b[i];
+				sumB = sumB + (b[i] - '0');
 			}
 		}
 
 		if (sumA != sumB) {
 			return sumA < sumB;
-
-			if (sumA = sumB) {
-				return a < b;
-			}
 		}
+
+		if (sumA = sumB) {
+			return a < b;
+		}
+		
 	}
 }
+	
+
+
 
 int main(void) {
 
