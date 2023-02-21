@@ -29,11 +29,6 @@ int compare(string a, string b) {
 			}
 		}
 
-		if (sumA == 0 && sumB == 0) {
-			return a < b;
-		}
-
-
 		if (sumA != sumB) {
 			return sumA < sumB;
 
