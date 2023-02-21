@@ -1,18 +1,20 @@
-import java.util.*
 import kotlin.collections.*
 
-fun main(args:Array<String>) = with(Scanner(System.`in`)){
-    val N = nextInt()
+fun main(args:Array<String>) = with(System.`in`.bufferedReader()){
+    val N = readLine().toInt()
     val serialArray = ArrayList<String>()
-    for(i in 0 until N){
-        serialArray.add(i, next())
+
+    repeat(N){
+        serialArray.add(readLine())
     }
+
     serialArray.sortWith(compareBy(
             {it.length},
-            {it.filter{s -> s.isDigit()}.sumOf{s->s.digitToInt()}},
+            {it.filter{s -> s.isDigit()}.sumOf{s->s.digitToInt()}}, // isDigit(): 문자가 숫자이면 true를 반환
             {it}
     ))
-    for(i in serialArray){
-        println(i)
+
+    serialArray.forEach{
+        println(it)
     }
 }
