@@ -33,15 +33,14 @@ int compare(string a, string b) {
 			return sumA < sumB;
 		}
 
-		if (sumA = sumB) {
-			return a < b;
+		if (sumA == sumB) {
+			if (a.compare(b) < 0)
+				return true;
+			return false;
 		}
 		
 	}
 }
-	
-
-
 
 int main(void) {
 
