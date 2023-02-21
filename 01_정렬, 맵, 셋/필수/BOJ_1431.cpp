@@ -6,13 +6,13 @@
 
 using namespace std;
 
-int extNum(const string& str) {
+int extNum(string str) {
 	int num = 0;
 	for (int i = 0; i < str.length(); i++) {
-		if (str[i] < 47 && str[i] < 58) num += atoi(str[i]);
+		if ('0'<=str[i] && str[i]<='9') num += str[i]-'0';
 	}
 	return  num;
-	
+
 }
 
 bool cmp(const string& s1, const string& s2) {
@@ -41,6 +41,6 @@ int main() {
 		cout << arr[i] << '\n';
 	}
 	return 0;
-	
+
 
 }
