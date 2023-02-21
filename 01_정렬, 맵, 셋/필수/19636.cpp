@@ -13,14 +13,14 @@ int main()
     int w1 = w0;
     int w2 = w0;
 
-    int basic2 = L0;
+    int L1 = L0;
 
     for (int i = 0; i < D; i++)
     {
         w1 += input - (L0 + output);
-        w2 += input - (basic2 + output);
-        if (abs(input - (basic2 + output)) > t)
-            basic2 += floor((input - (basic2 + output)) / 2.0);
+        w2 += input - (L1 + output);
+        if (abs(input - (L1 + output)) > t)
+            L1 += floor((input - (L1 + output)) / 2.0);
     }
 
     if (w1 <= 0)
@@ -28,12 +28,12 @@ int main()
     else
         cout << w1 << " " << D << "\n";
 
-    if (w2 <= 0 || basic2 <= 0)
+    if (w2 <= 0 || L1 <= 0)
         cout << "Danger Diet\n";
     else
     {
-        cout << w2 << " " << basic2 << " ";
-        if (D - basic2 > 0)
+        cout << w2 << " " << L1 << " ";
+        if (D - L1 > 0)
             cout << "YOYO";
         else
             cout << "NO";
