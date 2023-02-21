@@ -17,7 +17,7 @@ int compare(string a, string b) {
 		return lengthA < lengthB;
 	}
 
-	if (lengthA = lengthB) {
+	if (lengthA == lengthB) {
 		for (; i < a.size(); i++) {
 
 			if (a[i] >= '0' && a[i] <= '9') {
@@ -49,7 +49,6 @@ int main(void) {
 	for (; j < n; j++) {
 		cin >> N[j];
 	}
-
 
 	sort(N, N + n, compare);
 	for (; j < n; j++) {
