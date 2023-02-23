@@ -3,6 +3,19 @@
 #include <string>
 
 using namespace std;
+//문자열인 시리얼번호를 구성하는 숫자의 합을 구하는 함수
+int sumNum(string serial_num)
+{
+    int sum = 0;
+    for (int i=0;i<serial_num.size();i++)
+    {
+        if(isdigit(serial_num[i]))
+        {
+            sum+= serial_num[i] - '0';
+        }
+    }
+    return sum;
+}
 //비교함수
 bool cmp (const string& a,  const string&b)
 {
@@ -10,8 +23,7 @@ bool cmp (const string& a,  const string&b)
     if (a.size() != b.size()) 
         return a.size() < b.size(); //문자열 길이가 증가하는 순서
     //문자열 길이가 같을 경우 
-    else
-    {
+        /*
         int a_sum = 0 , b_sum = 0;
        
         for (int i=0 ; i< a.size();i++)  //문자열 a와 b는 서로 길이가 같음
@@ -22,15 +34,14 @@ bool cmp (const string& a,  const string&b)
                 b_sum += b[i] - '0';
 
         }
-        if(a_sum != b_sum) //(문자열 길이가 같을때) a합과 b합이 다르면
-            return a_sum < b_sum; //합이 증가하는 순서
-        
-        else   //(문자열 길이가 같을때) a합과 b합이 같으면
-            return a < b; //사전순으로 증가하는 순서
+        */
 
-           
-
+    if(sumNum(a) != sumNum(b)) //(문자열 길이가 같을때) a합과 b합이 다르면
+    {
+        return sumNum(a) < sumNum(b); //합이 증가하는 순서
     }
+    //(문자열 길이가 같을때) a합과 b합이 같으면
+    return a < b; //사전순으로 증가하는 순서    
 }
 
 int main()
@@ -38,14 +49,19 @@ int main()
     int n;
     cin >> n;
     string arr[50];
+    //vector <string> arr(n, "");
 
     for(int i=0; i< n;i++)
+    {
         cin >> arr[i];
-    
+    }
+    //sort(arr.begin(), guitar.end(),cmp);
     sort(arr,arr+n,cmp);
     
     for(int i=0; i< n;i++)
+    {
         cout << arr[i] << '\n';
+    }  
 
     return 0;
 }
