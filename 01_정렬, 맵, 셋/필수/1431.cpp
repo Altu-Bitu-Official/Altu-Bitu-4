@@ -5,13 +5,12 @@
 using namespace std;
 
 //길이가 같을 경우 숫자 합을 구하는 함수
-int sum(const string& a) {
+int sumNumber(const string& a) {
 	int sum = 0;
 	for (int i = 0; i < a.length(); i++) {
 		if (isdigit(a[i])) {
 			sum += (a[i] - '0');
 		}
-		continue;
 	}
 	return sum;
 }

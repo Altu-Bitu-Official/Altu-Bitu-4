@@ -6,9 +6,8 @@ using namespace std;
 
 int main()
 {
-	int w, i, t;
-	int d, w_d, i_d, a, i_d_b;
-	string result;
+	int w, i, t; //다이어트 전 체중, 일일 에너지 섭취량 및 일일 기초 대사량, 기초 대사랑 변화 역치
+	int d, w_d, i_d, a, i_d_b; //다이어트 기간, 다이어트 중 체중, 일일 에너지 섭취량, 일일 활동 대사량, 일일 기초 대사량 
 
 
 	//입력
@@ -20,10 +19,12 @@ int main()
 
 	//연산 (일일 기초 대사량의 변화를 고려하지 않았을 때)
 
-	for (int j = 0; j < d; j++) {
+	/*/for (int j = 0; j < d; j++) {
 
 		w += (i_d - (i + a));
-	}
+	}*/
+
+	w += d * (i_d - (i + a));
 	// 출력 (일일 기초 대사량의 변화를 고려하지 않았을 때)
 	if (w <= 0 || i <= 0) {
 		cout << "Danger Diet\n";
@@ -48,13 +49,13 @@ int main()
 		cout << "Danger Diet";
 	}
 	else {
+		cout << w_d << " " << i_d_b << " ";
 		if ((i - i_d_b) > 0) {
-			result = "YOYO";
+			cout << "YOYO";
 		}
 		else {
-			result = "NO";
+			cout << "NO";
 		}
-		cout << w_d << " " << i_d_b << " " << result;
 	}
 
 	return 0;
