@@ -4,19 +4,21 @@
 
 using namespace std;
 
+int sum_num(const string& s) {
+	int num = 0;
+	for (int i = 0; i < s.length(); i++) {
+		if (isdigit(s[i])) {
+			num += s[i] - '0';
+		}
+	}
+	return num;
+}
+
 bool cmp(const string& a, const string& b) {
 	if (a.length() != b.length()) {
 		return a.length() < b.length();
 	}
-	int a_num = 0, b_num = 0;
-	for (int i = 0; i < a.length(); i++) {
-		if (isdigit(a[i])) {
-			a_num += a[i] - '0';
-		}
-		if (isdigit(b[i])) {
-			b_num += b[i] - '0';
-		}
-	}
+	int a_num = sum_num(a), b_num = sum_num(b);
 	if (a_num != b_num) {
 		return a_num < b_num;
 	}
