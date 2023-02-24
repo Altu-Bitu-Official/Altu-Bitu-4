@@ -1,25 +1,16 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
-int select(const int& n) {
-	int score, rank;
-	vector<int> order(n);
-	vector<int> ranks(n);
-
-	for (int i = 0; i < n; i++) {
-		cin >> score >> rank;
-		order[score-1] = i;
-		ranks[i] = rank;
-	}
-
-	int max_rank = ranks[order[0]];
+int select(vector<pair<int, int>>& score) {
+	int max_rank = score[0].second;
 	int result = 1;
 
-	for (int i = 1; i < n; i++) {
-		if (ranks[order[i]] < max_rank) {
-			max_rank = ranks[order[i]];
+	for (int i = 1; i < score.size(); i++) {
+		if (score[i].second < max_rank) {
+			max_rank = score[i].second;
 			result += 1;
 		}
 	}
@@ -29,14 +20,22 @@ int select(const int& n) {
 
 int main() {
 	int t, n;
-	
-	//ÀÔ·Â
+
+	//ìž…ë ¥
 	cin >> t;
 	for (int i = 0; i < t; i++) {
 		cin >> n;
-		//¿¬»ê & Ãâ·Â
-		cout << select(n) << "\n";
+		vector<pair<int, int>> score(n);
+		for (int i = 0; i < n; i++) {
+			cin >> score[i].first >> score[i].second;
+		}
+		//ì—°ì‚°
+		sort(score.begin(), score.end());
+
+		//ì¶œë ¥
+		cout << select(score) << "\n";
 	}
+	
 
 	return 0;
 }

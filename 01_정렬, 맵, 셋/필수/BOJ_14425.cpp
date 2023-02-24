@@ -8,15 +8,15 @@ int main() {
 	string input;
 	set<string> s;
 	int result = 0;
-	
-	//ÀÔ·Â
+
+	//ì…ë ¥
 	cin >> n >> m;
 	for (int i = 0; i < n; i++) {
 		cin >> input;
 		s.insert(input);
 	}
 
-	//¿¬»ê
+	//ì—°ì‚°
 	for (int i = 0; i < m; i++) {
 		cin >> input;
 		if (s.find(input) != s.end()) {
@@ -24,7 +24,7 @@ int main() {
 		}
 	}
 
-	//¿¬»ê & Ãâ·Â
+	//ì¶œë ¥
 	cout << result;
 
 	return 0;

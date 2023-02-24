@@ -3,9 +3,8 @@
 
 using namespace std;
 
-void diet(const int& i, const int& d, const int& a, const int& t, int& k1, int& k2, int& w1, int& w2) {
-	for (int j = 0; j < d; j++) {
-		w1 += i - (k1 + a);
+void diet(const int& i, int& d, const int& a, const int& t, int& k2, int& w2) {
+	while (d--) {
 		w2 += i - (k2 + a);
 
 		if (abs(i - (k2 + a)) > t) {
@@ -17,40 +16,36 @@ void diet(const int& i, const int& d, const int& a, const int& t, int& k1, int& 
 int main() {
 	int w0, i0, t, d, i, a;
 
-	//ÀÔ·Â
+	//ì…ë ¥
 	cin >> w0 >> i0 >> t;
 	cin >> d >> i >> a;
 
 	int k1, k2, w1, w2;
-	k1 = i0; //º¯È­ÇÏÁö ¾Ê´Â ÀÏÀÏ ±âÃÊ ´ë»ç·®
-	k2 = i0; //º¯È­ÇÏ´Â ÀÏÀÏ ±âÃÊ ´ë»ç·®
+	k1 = i0; //ë³€í™”í•˜ì§€ ì•ŠëŠ” ì¼ì¼ ê¸°ì´ˆ ëŒ€ì‚¬ëŸ‰
+	k2 = i0; //ë³€í™”í•˜ëŠ” ì¼ì¼ ê¸°ì´ˆ ëŒ€ì‚¬ëŸ‰
 
-	w1 = w0; //ÀÏÀÏ ±âÃÊ´ë»ç·® º¯È­ X
-	w2 = w0; //ÀÏÀÏ ±âÃÊ´ë»ç·® º¯È­ O
+	w1 = w0; //ì¼ì¼ ê¸°ì´ˆëŒ€ì‚¬ëŸ‰ ë³€í™” X
+	w2 = w0; //ì¼ì¼ ê¸°ì´ˆëŒ€ì‚¬ëŸ‰ ë³€í™” O
 
-	//¿¬»ê
-	diet(i, d, a, t, k1, k2, w1, w2);
+	//ì—°ì‚°
+	w1 += (i - k1 - a) * d;
+	diet(i, d, a, t, k2, w2);
 
-	//Ãâ·Â
-	//Ã¹¹øÂ°ÁÙ Ãâ·Â (º¯È­ X)
-	if (w1 <= 0) { //k1Àº Ç×»ó 0º¸´Ù Å­
-		cout << "Danger Diet" << "\n";
-	}
-	else {
-		cout << w1 << " " << k1 << "\n";
-	}
-	//µÎ¹øÂ°ÁÙ Ãâ·Â (º¯È­ O)
+	//ì¶œë ¥
+	//ì²«ë²ˆì§¸ì¤„ ì¶œë ¥ (ë³€í™” X), k1ì€ í•­ìƒ 0ë³´ë‹¤ í¼
+	(w1 <= 0) ? cout << "Danger Diet\n" : cout << w1 << " " << k1 << "\n";
+
+	//ë‘ë²ˆì§¸ì¤„ ì¶œë ¥ (ë³€í™” O)
 	if (w2 <= 0 || k2 <= 0) {
 		cout << "Danger Diet";
+		return 0;
+	}
+	cout << w2 << " " << k2 << " ";
+	if (k2 >= k1) { //ìš”ìš” ë°œìƒ ì•ˆí•¨
+		cout << "NO";
 	}
 	else {
-		cout << w2 << " " << k2 << " ";
-		if (k2 >= k1) { //¿ä¿ä ¹ß»ı ¾ÈÇÔ
-			cout << "NO";
-		}
-		else {
-			cout << "YOYO";
-		}
+		cout << "YOYO";
 	}
 
 	return 0;
