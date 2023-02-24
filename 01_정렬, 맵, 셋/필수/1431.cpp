@@ -21,8 +21,8 @@ bool cmp(const string& a, const string& b) {
 		return a.length() < b.length();
 	}
 
-	if (sum(a) != sum(b)) {
-		return sum(a) < sum(b);
+	if (sumNumber(a) != sumNumber(b)) {
+		return sumNumber(a) < sumNumber(b);
 	}
 
 	return a < b;
