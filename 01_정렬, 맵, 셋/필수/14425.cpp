@@ -5,26 +5,30 @@ using namespace std;
 
 int main()
 {
-    unordered_set<string> S;
-    int N;
-    int M;
+    unordered_set<string> s;
+    int n;
+    int m;
     string str1;
     string str2;
     int cnt = 0;
 
-    cin >> N >> M;
+    cin >> n >> m;
 
-    while (N--)
+    //입력
+    while (n--)
     {
         cin >> str1;
-        S.insert(str1);
+        s.insert(str1);
     }
 
-    while (M--)
+    //M의 element가 N 안에 존재하면 count
+    while (m--)
     {
         cin >> str2;
-        if (S.find(str2) != S.end())
+        if (s.find(str2) != s.end())
+        {
             cnt++;
+        }
     }
 
     cout << cnt;

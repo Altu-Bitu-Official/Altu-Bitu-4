@@ -4,7 +4,15 @@
 
 using namespace std;
 
-bool comp(string n1, string n2)
+void sumUp(int &sum, const char &n)
+{
+    if (isdigit(n))
+    {
+        sum += n - '0';
+    }
+}
+
+bool comp(const string &n1, const string &n2)
 {
     // 1번째 기준
     if (n1.length() != n2.length())
@@ -17,10 +25,8 @@ bool comp(string n1, string n2)
     int sum2 = 0;
     for (int i = 0; i < n1.length(); i++)
     {
-        if (isdigit(n1[i]))
-            sum1 += n1[i] - 48;
-        if (isdigit(n2[i]))
-            sum2 += n2[i] - 48;
+        sumUp(sum1, n1[i]);
+        sumUp(sum2, n2[i]);
     }
 
     if (sum1 != sum2)
@@ -32,17 +38,17 @@ bool comp(string n1, string n2)
 
 int main()
 {
-    int N = 0;
-    cin >> N;
-    vector<string> serial_num(N);
-    for (int i = 0; i < N; i++)
+    int n = 0;
+    cin >> n;
+    vector<string> serial_num(n);
+    for (int i = 0; i < n; i++)
     {
         cin >> serial_num[i];
     }
 
     sort(serial_num.begin(), serial_num.end(), comp);
 
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < n; i++)
     {
         cout << serial_num[i] << '\n';
     }
