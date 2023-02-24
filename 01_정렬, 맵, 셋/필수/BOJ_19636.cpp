@@ -3,8 +3,9 @@
 
 using namespace std;
 
-void diet(const int& i, int& d, const int& a, const int& t, int& k2, int& w2) {
-	while (d--) {
+void diet(const int& i, const int& d, const int& a, const int& t, int& k1, int& k2, int& w1, int& w2) {
+	for (int j = 0; j < d; j++) {
+		w1 += i - (k1 + a);
 		w2 += i - (k2 + a);
 
 		if (abs(i - (k2 + a)) > t) {
@@ -28,24 +29,28 @@ int main() {
 	w2 = w0; //일일 기초대사량 변화 O
 
 	//연산
-	w1 += (i - k1 - a) * d;
-	diet(i, d, a, t, k2, w2);
+	diet(i, d, a, t, k1, k2, w1, w2);
 
 	//출력
-	//첫번째줄 출력 (변화 X), k1은 항상 0보다 큼
-	(w1 <= 0) ? cout << "Danger Diet\n" : cout << w1 << " " << k1 << "\n";
-
+	//첫번째줄 출력 (변화 X)
+	if (w1 <= 0) { //k1은 항상 0보다 큼
+		cout << "Danger Diet" << "\n";
+	}
+	else {
+		cout << w1 << " " << k1 << "\n";
+	}
 	//두번째줄 출력 (변화 O)
 	if (w2 <= 0 || k2 <= 0) {
 		cout << "Danger Diet";
-		return 0;
-	}
-	cout << w2 << " " << k2 << " ";
-	if (k2 >= k1) { //요요 발생 안함
-		cout << "NO";
 	}
 	else {
-		cout << "YOYO";
+		cout << w2 << " " << k2 << " ";
+		if (k2 >= k1) { //요요 발생 안함
+			cout << "NO";
+		}
+		else {
+			cout << "YOYO";
+		}
 	}
 
 	return 0;

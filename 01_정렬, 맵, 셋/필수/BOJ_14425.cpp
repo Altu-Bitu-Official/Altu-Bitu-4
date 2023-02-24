@@ -8,7 +8,7 @@ int main() {
 	string input;
 	set<string> s;
 	int result = 0;
-
+	
 	//ÀÔ·Â
 	cin >> n >> m;
 	for (int i = 0; i < n; i++) {
