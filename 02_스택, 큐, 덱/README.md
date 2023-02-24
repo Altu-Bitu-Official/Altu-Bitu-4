@@ -8,9 +8,9 @@
 
 |                                 문제 번호                                 |                                문제 이름                                 |                                      난이도                                       |  풀이 링크   | 분류 |
 | :-----------------------------------------------------------------------: | :----------------------------------------------------------------------: | :-------------------------------------------------------------------------------: | :----------: | :--: |
-| <a href="https://www.acmicpc.net/problem/10828" target="_blank">10828</a> | <a href="https://www.acmicpc.net/problem/10828" target="_blank">스택</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/7.svg"/> | [바로가기]() | 스택 |
-| <a href="https://www.acmicpc.net/problem/10845" target="_blank">10845</a> |  <a href="https://www.acmicpc.net/problem/10845" target="_blank">큐</a>  | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/7.svg"/> | [바로가기]() |  큐  |
-| <a href="https://www.acmicpc.net/problem/10866" target="_blank">10866</a> |  <a href="https://www.acmicpc.net/problem/10866" target="_blank">덱</a>  | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/7.svg"/> | [바로가기]() |  덱  |
+| <a href="https://www.acmicpc.net/problem/10828" target="_blank">10828</a> | <a href="https://www.acmicpc.net/problem/10828" target="_blank">스택</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/7.svg"/> | [바로가기](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/02_%EC%8A%A4%ED%83%9D%2C%20%ED%81%90%2C%20%EB%8D%B1/%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EC%BD%94%EB%94%A9/10828.cpp) | 스택 |
+| <a href="https://www.acmicpc.net/problem/10845" target="_blank">10845</a> |  <a href="https://www.acmicpc.net/problem/10845" target="_blank">큐</a>  | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/7.svg"/> | [바로가기](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/02_%EC%8A%A4%ED%83%9D%2C%20%ED%81%90%2C%20%EB%8D%B1/%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EC%BD%94%EB%94%A9/10845.cpp) |  큐  |
+| <a href="https://www.acmicpc.net/problem/10866" target="_blank">10866</a> |  <a href="https://www.acmicpc.net/problem/10866" target="_blank">덱</a>  | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/7.svg"/> | [바로가기](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/02_%EC%8A%A4%ED%83%9D%2C%20%ED%81%90%2C%20%EB%8D%B1/%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EC%BD%94%EB%94%A9/10866.cpp) |  덱  |
 
 ## ✏️ 과제
 
