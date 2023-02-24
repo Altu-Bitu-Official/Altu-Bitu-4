@@ -1,10 +1,11 @@
 #include <iostream>
 #include <map>
+#include <vector>
 
 using namespace std;
 
-int count(int m, map<int, int> &apy) {
-    int count = 1;
+void counter(int m, map<int, int> &apy) {
+    int countNum = 1;
     // 시간 초과
     /*for (int i = 1; i <= m; i++) {
         for (int j = 1; j < i; j++) {
@@ -18,11 +19,11 @@ int count(int m, map<int, int> &apy) {
 
     for (int i = 2; i <= m; i++) {
         if (apy[i] < apy[me]) {
-            count++;
+            countNum++;
             me = i;
         }
     }
-    return count;
+    cout << countNum << "\n";
 }
 
 int main() {
@@ -31,25 +32,20 @@ int main() {
 
     int n;
     cin >> n;
-    int arr[n];
 
-    // 입력 및 연산
-    for (int i = 0; i < n; i++) {
+    while(n--) {
         int m;
         cin >> m;
         map<int, int> apy;
         int document, interview;
 
+        // 입력
         for (int j = 0; j < m; j++) {
             cin >> document >> interview;
             apy[document] = interview;
         }
-        arr[i] = count(m, apy);
-    }
-
-    // 출력
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << "\n";
+        // 연산 및 출력
+        counter(m, apy);
     }
 
     return 0;
