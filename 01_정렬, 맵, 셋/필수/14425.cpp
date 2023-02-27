@@ -7,25 +7,21 @@ using namespace std;
 int main(){
     int n;
     int m;
-    set<string> s;
-    vector<string> v;
+    int ans = 0;
+    set<string> s; 
+    vector<string> v;   
     //입력
     cin >> n >> m;
-    for(int i=0; i<n; i++){
+    for(int i=0; i<n; i++){      //집합
         string str;
         cin >> str;
         s.insert(str);
     }
-    for(int i=0; i<m; i++)
+    while(m--)      //검사해야하는 문자열
     {
         string str;
         cin >> str;
-        v.push_back(str);
-    }
-    //검사
-    int ans = 0;
-    for(int i = 0; i<m; i++){
-        if(s.find(v[i]) != s.end()){   //vector 내의 값이 집합에 있으면
+        if(s.find(str) != s.end()){     //입력받은 문자열이 set에 존재하는지 검사
             ans++;
         }
         //찾은 문자열의 개수가 집합 내 원소의 개수를 초과하면 (더 검사할 필요가 없으니) 멈추기
