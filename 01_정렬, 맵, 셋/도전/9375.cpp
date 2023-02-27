@@ -14,12 +14,11 @@ int main(){
     while(t--){
         cin >> n;   //해빈이가 가진 의상 수
         map<string, int> m;     //map 초기화
-        for(int i=0; i<n; i++){
+
+        while(n--){
             cin >> name >> cloth;
-            if(m.find(cloth) != m.end())    //map에 옷이 존재하면
-                m[cloth]++;
-            else   
-                m.insert({cloth, 1});
+            // //map에 옷이 존재하면 +1, 존재하지 않으면 옷을 추가한 뒤 +1
+            m[cloth]++;       
         }
         //계산
         int ans = 1;
