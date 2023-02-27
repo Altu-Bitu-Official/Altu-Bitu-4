@@ -6,23 +6,23 @@ using namespace std;
 int main() {
 	//1. 입력
 	//첫째줄
-	int 다이어트_전_체중, 다이어트_전_일일_에너지_섭취량_및_일일_기초_대사량, 기초_대사량_변화_역치;
-	cin >> 다이어트_전_체중 >> 다이어트_전_일일_에너지_섭취량_및_일일_기초_대사량 >> 기초_대사량_변화_역치;
+	int weight_bef_diet, daily_engy_intake_and_BMR_bef_diet, BMR_change_minimun;
+	cin >> weight_bef_diet >> daily_engy_intake_and_BMR_bef_diet >> BMR_change_minimun;
 	//둘째줄
-	int 다이어트_기간, 다이어트_기간_일일_에너지_섭취량, 다이어트_기간_일일_활동_대사량;
-	cin >> 다이어트_기간 >> 다이어트_기간_일일_에너지_섭취량 >> 다이어트_기간_일일_활동_대사량;
+	int diet_day, daily_engy_intake_dur_diet, daily_act_met_dur_diet;
+	cin >> diet_day >> daily_engy_intake_dur_diet >> daily_act_met_dur_diet;
 
 	//2. 연산
-	int 다이어트_후_예상_체중 = 다이어트_전_체중;
-	int 일일_에너지_소비량;
-	int 일일_기초_대사량 = 다이어트_전_일일_에너지_섭취량_및_일일_기초_대사량;
+	int pred_weight_aft_diet = weight_bef_diet;
+	int daily_engy_cons;
+	int daily_BMR = daily_engy_intake_and_BMR_bef_diet;
 	bool is_danger = false;
 	string yoyo;
 	//첫째줄
-	for (int i = 0; i < 다이어트_기간; i++) {
-		일일_에너지_소비량 = 다이어트_전_일일_에너지_섭취량_및_일일_기초_대사량 + 다이어트_기간_일일_활동_대사량;
-		다이어트_후_예상_체중 += 다이어트_기간_일일_에너지_섭취량 - 일일_에너지_소비량;
-		if (다이어트_후_예상_체중 <= 0 || 다이어트_전_일일_에너지_섭취량_및_일일_기초_대사량 <= 0) {
+	for (int i = 0; i < diet_day; i++) {
+		daily_engy_cons = daily_engy_intake_and_BMR_bef_diet + daily_act_met_dur_diet;
+		pred_weight_aft_diet += daily_engy_intake_dur_diet - daily_engy_cons;
+		if (pred_weight_aft_diet <= 0 || daily_engy_intake_and_BMR_bef_diet <= 0) {
 			is_danger = true;
 			break;
 		}
@@ -31,23 +31,23 @@ int main() {
 	if (is_danger) {
 		cout << "Danger Diet" << endl;
 	}
-	else	cout << 다이어트_후_예상_체중 << " " << 다이어트_전_일일_에너지_섭취량_및_일일_기초_대사량 << endl;
+	else	cout << pred_weight_aft_diet << " " << daily_engy_intake_and_BMR_bef_diet << endl;
 	//2. 연산
 	//둘째줄 
-	다이어트_후_예상_체중 = 다이어트_전_체중;//초기화
+	pred_weight_aft_diet = weight_bef_diet;//초기화
 	is_danger = false;//초기화
-	for (int i = 0; i < 다이어트_기간; i++) {
-		일일_에너지_소비량 = 일일_기초_대사량 + 다이어트_기간_일일_활동_대사량;
-		다이어트_후_예상_체중 += 다이어트_기간_일일_에너지_섭취량 - 일일_에너지_소비량;
-		if (abs(다이어트_기간_일일_에너지_섭취량 - 일일_에너지_소비량) > 기초_대사량_변화_역치) {
-			일일_기초_대사량 += (다이어트_기간_일일_에너지_섭취량 - 일일_에너지_소비량) / 2.0;//floor작용
+	for (int i = 0; i < diet_day; i++) {
+		daily_engy_cons = daily_BMR + daily_act_met_dur_diet;
+		pred_weight_aft_diet += daily_engy_intake_dur_diet - daily_engy_cons;
+		if (abs(daily_engy_intake_dur_diet - daily_engy_cons) > BMR_change_minimun) {
+			daily_BMR += (daily_engy_intake_dur_diet - daily_engy_cons) / 2.0;//floor작용
 		}
-		if (다이어트_후_예상_체중 <= 0 || 일일_기초_대사량 <= 0) {
+		if (pred_weight_aft_diet <= 0 || daily_BMR <= 0) {
 			is_danger = true;
 			break;
 		}
 	}
-	if (0 < 다이어트_전_일일_에너지_섭취량_및_일일_기초_대사량 - (일일_기초_대사량 + 0)) {
+	if (0 < daily_engy_intake_and_BMR_bef_diet - (daily_BMR + 0)) {
 		yoyo = "YOYO";
 	}
 	else yoyo = "NO";
@@ -55,7 +55,7 @@ int main() {
 	if (is_danger) {
 		cout << "Danger Diet" << endl;
 	}
-	else	cout << 다이어트_후_예상_체중 << " " << 일일_기초_대사량 << " " << yoyo << endl;
+	else	cout << pred_weight_aft_diet << " " << daily_BMR << " " << yoyo << endl;
 
 
 	return 0;
