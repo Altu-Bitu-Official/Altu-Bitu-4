@@ -4,6 +4,7 @@ fun main(args:Array<String>) = with(System.`in`.bufferedReader()){
     val N = readLine().toInt()
     val serialArray = ArrayList<String>()
 
+
     repeat(N){
         serialArray.add(readLine())
     }
