@@ -9,6 +9,7 @@ int main() {
     int tmp;
     cin >> n >> k;
 
+    
     queue<int> q;
     for(int i=0; i< n; i++){
         q.push(i+1);

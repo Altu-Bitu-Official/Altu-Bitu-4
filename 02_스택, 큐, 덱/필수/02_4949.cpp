@@ -10,7 +10,6 @@ int main() {
 
         string s;
         getline(cin, s);
-
         if(s=="."){
             break;
         }

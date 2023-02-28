@@ -12,7 +12,6 @@ int main() {
     int a_len = a.length();
     int b_len = b.length();
 
-
     if(a_len > b_len){
         for(int i=0;i<a_len-b_len;i++){
             b = to_string(0)+b;
