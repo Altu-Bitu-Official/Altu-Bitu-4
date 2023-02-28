@@ -16,7 +16,7 @@ int main()
         q.push(i);
     
     //연산 및 출력 
-    printf("<");
+    printf("<"); 
     
     while(!q.empty()){
         for(int i=0; i<k-1; i++){

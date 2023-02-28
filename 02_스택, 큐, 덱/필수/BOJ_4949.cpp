@@ -33,7 +33,7 @@ int main() {
             else if (str[i] == ']') {
                 if (!s.empty() && s.top() == '[') {
                     s.pop();
-                }
+                } 
                 else {
                     flag = 1;
                 }
