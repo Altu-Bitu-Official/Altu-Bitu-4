@@ -1,12 +1,15 @@
 #include <iostream>
 #include <stack>
-#include <stdio.h>
 #include <string>
 
 using namespace std;
 
 int main(){
 
+    ios::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    
     string line;
     stack<char> st;
 
@@ -17,20 +20,16 @@ int main(){
         } // 줄 나눔 역할
 
 		for (int i = 0; i < line.length() - 1; i++){
-			if (line[i] == '(') {
-                st.push('(');
+			if (line[i] == '(' || line[i] == '[') {
+                st.push(line[i]);
             }
-			if (line[i] == '[') {
-                st.push('[');
-            }
-
 
 			if (line[i] == ']'){
 				if (!st.empty() && st.top() == '[') {
                     st.pop();
                 }
 				else { 
-                    printf("no\n");
+                    cout << "yes\n";
                 }
 			}
 
@@ -40,15 +39,17 @@ int main(){
                     st.pop();
                 }
 				else { 
-                    printf("no\n");
+                    cout << "no\n";
+                    break;
                 }
 			}
 
 			if (st.empty() && i == line.length() - 2) {
-                printf("yes\n");
+                cout << "yes\n";
             } 
 			else if (!st.empty() && i == line.length() - 2) {
-                printf("no\n");
+                cout << "no\n";
+                break;
             }
 		}
 
