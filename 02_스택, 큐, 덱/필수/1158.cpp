@@ -3,12 +3,13 @@
 
 using namespace std;
 
+  int n, k;
+  queue<int> q; 
 int main(){
      ios::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
   
-  int n, k;
-  queue<int> q; 
+
 
 //숫자 입력 받아서 큐에 집어 넣기
 cin >> n >>k;
