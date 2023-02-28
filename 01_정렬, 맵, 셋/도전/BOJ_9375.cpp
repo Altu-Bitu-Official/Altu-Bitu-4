@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    int n, m, size, total;
+    int n, m, total;
     string name, part;
     map<string, int> arr;
     cin >> n;
