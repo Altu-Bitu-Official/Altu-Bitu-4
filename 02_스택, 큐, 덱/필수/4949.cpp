@@ -4,78 +4,65 @@
 #include <string>
 
 using namespace std;
-void removeStack(stack<char> *s) {
-	
-	while (true) {
-		if ((*s).empty())
-			break;
-		(*s).pop();
-	}
-	
-}
 
-int main() {
+bool isPair(string input) {
+	bool is_pair=true;
 	stack<char> s;
-	string input;
-	string answer="";
-	/*int debug=0;
-	int debug2 = 0;*/
-	while (true) {
-		removeStack(&s);
-		getline(cin, input); /*debug++;*/
-		//종료조건
-		if (input==".")
-			break;
-		
-		for (int i = 0; i < input.length(); i++) {			
-			//디버그
-			//if (debug == 6) {
-			//	debug2++;//여기
-			//}
-			//왼쪽 괄호 만나면 푸시
-			if (input.at(i) == '(' || input.at(i) == '[') {
-				s.push(input.at(i));
-				continue;
+
+	for (int i = 0; i < input.length(); i++) {
+		//왼쪽 괄호 만나면 푸시
+		if (input[i] == '(' || input[i] == '[') {
+			s.push(input[i]);
+			continue;
+		}
+		//오른쪽 만나면, 탑이 짝인지 본다
+		if (input[i] == ']') {
+			//엠티인지 먼저확인!!!!!
+			if (!s.empty() && s.top() == '[') {
+				s.pop(); continue;
 			}
-			//오른쪽 만나면, 탑이 짝인지 본다
-			//string, index, char, &s 
-			if (input.at(i) == ']') {
-				//엠티인지 먼저확인!!!!!
-				if (!s.empty()&& s.top() == '[') {
-					s.pop(); continue;	
-				}
-				else {
-					answer += "no\n"; 
-					break;
-				}					
+			else {
+				is_pair = false;
+				break;
 			}
-			if (input.at(i) == ')') {
-				//엠티인지 먼저확인!!!!!
-				if (!s.empty() && s.top() == '(') {
-					s.pop(); continue;
-				}					
-				else {
-					answer += "no\n";		
-					break;
-				}					
+		}
+		if (input[i] == ')') {
+			//엠티인지 먼저확인!!!!!
+			if (!s.empty() && s.top() == '(') {
+				s.pop(); continue;
 			}
-			
-			//끝일때
-			if (i == input.length() - 1) {
-				// 스택 비었음=짝맞음, 안 비었음=>짝 안 맞음
-				if (s.empty()) {
-					answer += "yes\n";
-				}
-				else {
-					answer += "no\n";
-					//스택 비운다. 
-					removeStack(&s);
-				}
+			else {
+				is_pair = false;
+				break;
 			}
 		}
 	}
-	
-	std::cout << answer;
+	//끝일때 한꺼번에 출력
+	//스택 비었음=짝맞음, 안 비었음=>짝 안 맞음
+	//스택 비었을 때도 false인 경우가 있다. 초기값을 true 로 주어서
+	//false로 바뀌었는지 확인하자. 
+	if (s.empty()&&is_pair!=false) {
+		is_pair = true;
+	}
+	else {
+		is_pair = false;
+	}
+	return is_pair;
+}
 
+int main() {
+	string input;
+	string answer = "";
+	while (true) {
+		//입력
+		getline(cin, input);//한줄입력받기
+		//종료조건
+		if (input == ".")
+			break;
+		//계산&출력
+		if (isPair(input) == true) answer += "yes\n";
+		else answer += "no\n";
+	}
+	cout << answer;
 	return 0;
 }
