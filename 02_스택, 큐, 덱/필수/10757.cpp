@@ -1,90 +1,77 @@
+//벡터 사용
 #include <iostream>
-#include <stack>
-#include <algorithm>
-
+#include <vector>
 using namespace std;
 
-void leftOperate(stack<int>& longer, stack<int>& result, bool up, int n)
-{
-    for(int i =0 ; i< n; i++)
-    {
-        if(i==0 && up)
-        {
-            result.push(longer.top()+ up);
-        }
-        else
-        {
-            result.push(longer.top());
-        }
-        longer.pop();
-    }
+/*
+    매개변수에 &를 붙이면 원본을 참조하게 됩니다.
+    **이 문제에서는 굳이 참조자를 사용할 필요는 없지만, C++에서는 주로 &를 붙입니다**
+*/
+
+// 문자에서 정수로 변환하는 함수
+int charToint(char ch){
+    return (ch - '0');
 }
 
-int main()
-{
-    string a, b, l, s;
-    int sum_size, temp =0;
-    bool up =0;
-    stack<int> longer, shorter, result;
+// 덧셈 함수
+vector<int> calcPlus(string &a, string &b) {
+    int idx_a = a.size() - 1; // 일의 자리 인덱스
+    int idx_b = b.size() - 1;
+    bool carry = false; // 올림 유무
+    vector<int> ans;    // 정답 벡터
 
+
+    while (idx_a >= 0 && idx_b >= 0) {
+        int num = charToint(a[idx_a--]) + charToint(b[idx_b--]); // 문자를 숫자로 바꾸어 더하기, 그리고 인덱스 변경
+
+        num += carry;            // num에 carry 더해주기. (carry는 어차피 1 아니면 0)
+        carry = num / 10;        // num의 값이 10이상이면 carry가 1, 아니면 0
+        ans.push_back(num % 10); // 올림을 제외한 값만 스택에 push
+    }
+
+    // a에서 남은 숫자 반영
+    while (idx_a >= 0) {
+        // a[idx_a] 문자 -> 정수형 변환
+        int num = charToint(a[idx_a--]);
+
+        // 올림 반영
+        num += carry;
+        // 다음 자리 올림 업데이트
+        carry = num / 10;
+        //정답 벡터에 num push_back
+        ans.push_back(num % 10);
+    }
+
+    // 남은 올림 확인
+    if (carry){
+        // carry가 존재한다면 ans에 1 push
+        ans.push_back(1);
+    }
+
+    // 정답 반환
+    return ans;
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    string a, b;        // 입력값
+    vector<int> ans;    // 정답 벡터
+
+    //입력
     cin >> a >> b;
 
-    // a와 b 중 긴 숫자는 l에 짧은 숫자는 s에 복사
-    s = (a.size()<b.size()) ? a : b;
-    l = (a.size()<b.size()) ? b : a;
-
-    // stack에 숫자 저장
-    for(int i=0; i<l.size() ; i++)
-    {
-        longer.push(l[i] - '0');
-    }
-    for(int i=0; i<s.size() ; i++)
-    {
-        shorter.push(s[i] - '0');
+    //연산
+    if (a.length() < b.length()) {       // b의 길이가 더 길다면
+        swap(a, b);               // a와 b를 swap
     }
 
-    sum_size = longer.size() - shorter.size();
+    ans = calcPlus(a, b);         // 연산
 
-    // 1의 자리부터 짧은 숫자의 자릿수까지 차례로 덧셈
-    for(int i=0; i<s.size() ; i++)
-    {
-        // 각 숫자의 자리 합
-        temp = longer.top() + shorter.top();
-        // 올림까지 더해서 9를 초과한다면
-        if(temp + up > 9)
-        {
-            // 더한 값에 -1 해준뒤 result에 push, 올림값을 true로 설정.
-            temp -= 10;
-            result.push(temp + up);
-            up = true;
-        }
-        else
-        {
-            // 아니라면 그대로 result에 push, 올림값은 false.
-            result.push(temp + up);
-            up = false;
-        }
-        // 덧셈이 끝난 자리를 제거
-        longer.pop();
-        shorter.pop();
-    }
-
-    // 자릿수가 똑같은데 마지막 연산에서 올림이 있을 때
-    if(sum_size==0 && up)
-    {
-        result.push(up);
-    }
-    // 긴 숫자 쪽에 남은 자리가 있다면 처리
-    else
-    {
-        leftOperate(longer, result, up, longer.size());
-    }
-
-    // 출력
-    temp = result.size();
-    for(int i=0; i<temp; i++)
-    {
-        cout << result.top();
-        result.pop();
+    //출력
+    while (!ans.empty()) {
+        cout << ans.back();
+        ans.pop_back();
     }
 }
