@@ -17,13 +17,14 @@ int main()
     // 입력
     stack<char> st;
     string sentence;
+    bool flag = false;
     getline(cin, sentence); // 입력 가능한 최대 문자 수를 지정하지 않아도 됨.
     // 개행 문자 만나기 전까지 모든 문자 읽어서 string 객체 (sentence) 에 저장
 
     // 괄호가 하나도 없는 경우도 균형잡힌 문자열
     if (sentence == ".")
     {
-      cout << "yes\n";
+      flag = true;
       break;
     }
 
@@ -40,22 +41,31 @@ int main()
       {
         if (st.top() == '(')
         {
-          st.pop();
-                }
+
+          flag = true;
+        }
+        else
+        {
+          flag = false;
+        }
+        st.pop();
       }
 
       else if (sentence[i] == ']')
       {
         if (st.top() == '[')
         {
-          st.pop();
+          flag = true;
         }
-
-        break;
+        else
+        {
+          flag = false;
+        }
+        st.pop();
       }
     }
 
-    if (st.empty())
+    if (flag == true)
     {
       cout << "yes\n";
     }
