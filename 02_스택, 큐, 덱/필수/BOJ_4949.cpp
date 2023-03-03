@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool checkBalance (string str) {
+bool checkBalance (const string& str) {
         int i, len;
         stack<char> stack;
         len = str.length();
