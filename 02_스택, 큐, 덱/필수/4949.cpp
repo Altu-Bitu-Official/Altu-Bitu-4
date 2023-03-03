@@ -3,14 +3,55 @@
 #include <string>
 using namespace std;
 
+void checkBalance(stack<char> &s, string &str, bool &balance)
+{
+    // 입력받은 문자열을 문자 하나씩 검사
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (str[i] == ')') // 입력받은 문자가 ) 이면
+        {
+            // 스택이 비지 않고 앞에 짝 괄호가 있을 때
+            if (!s.empty() && s.top() == '(')
+            {
+                s.pop();
+            }
+            // 스택이 비었거나 앞에 짝괄호가 없을 때 균형 X라고 판단해서 루프 벗어남 -> 바로 균형잡힌 세상인지 검사
+            else
+            {
+                balance = false;
+                return;
+            }
+        }
+        else if (str[i] == ']')
+        {
+            // 스택이 비지 않고 앞에 짝 괄호가 있을 때
+            if (!s.empty() && s.top() == '[')
+            {
+                s.pop();
+            }
+            // 스택이 비었거나 앞에 짝괄호가 없을 때 균형 X라고 판단해서 루프 벗어남 -> 바로 균형잡힌 세상인지 검사
+            else
+            {
+                balance = false;
+                return;
+            }
+        }
+        // 문자열이 ( 혹은 [ 라면 스택에 넣기
+        else if (str[i] == '(' || str[i] == '[')
+        {
+            s.push(str[i]);
+        }
+    }
+}
+
 int main()
 {
     string str;
     while (1)
     {
-        //초기화
+        // 초기화
         stack<char> s;
-        bool balance = true;        //균형잡힌 세상일 때 true, 아닐 시 false
+        bool balance = true; // 균형잡힌 세상일 때 true, 아닐 시 false
         // 입력
         getline(cin, str);
         //'.'만 입력받으면 종료
@@ -18,44 +59,9 @@ int main()
         {
             return 0;
         }
-        //입력받은 문자열을 문자 하나씩 검사
-        for (int i = 0; i < str.length(); i++)
-        {
-            if (str[i] == ')')      //입력받은 문자가 ) 이면
-            {
-                //스택이 비지 않고 앞에 짝 괄호가 있을 때
-                if (!s.empty() && s.top() == '(')
-                {
-                    s.pop();
-                }
-                //스택이 비었거나 앞에 짝괄호가 없을 때 균형 X라고 판단해서 루프 벗어남 -> 바로 균형잡힌 세상인지 검사
-                else
-                {
-                    balance = false;
-                    break;
-                }
-            }
-            else if (str[i] == ']')
-            {
-                //스택이 비지 않고 앞에 짝 괄호가 있을 때
-                if (!s.empty() && s.top() == '[')
-                {
-                    s.pop();
-                }
-                //스택이 비었거나 앞에 짝괄호가 없을 때 균형 X라고 판단해서 루프 벗어남 -> 바로 균형잡힌 세상인지 검사
-                else
-                {
-                    balance = false;
-                    break;
-                }
-            }
-            //문자열이 ( 혹은 [ 라면 스택에 넣기
-            else if (str[i] == '(' || str[i] == '[')
-            {
-                s.push(str[i]);
-            }
-            
-        }
+
+        checkBalance(s, str, balance);
+
         // 균형잡힌 세상인지 검사
         if (s.empty() && balance == true)
         {
