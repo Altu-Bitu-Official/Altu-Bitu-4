@@ -1,47 +1,118 @@
-
 #include <iostream>
-#include <algorithm>
 #include <vector>
 
 using namespace std;
 
-int sum;
-int a_arr[10001], b_arr[10001];
-string a, b;
-vector<int> res;
+int charToint(char a)
+{
+    return (a - '0');
+}
+
+vector<int> calcPlus(string &a, string &b)
+{
+    vector<int> ans;
+    int idx_a = a.size() - 1; // 일의자리 인덱스
+    int idx_b = b.size() - 1;
+    bool carry = 0;
+
+    while (idx_a >= 0 && idx_b >= 0)
+    {
+        int num = charToint(a[idx_a--]) + charToint(b[idx_b--]);
+        num += carry;
+        carry = num / 10;
+        ans.push_back(num % 10);
+    }
+
+    while (idx_a >= 0)
+    {
+        int num = charToint(a[idx_a--]);
+        num += carry;
+        carry = num / 10;
+        ans.push_back(num % 10);
+    }
+
+    if (carry)
+    {
+        ans.push_back(1);
+    }
+
+    return ans;
+}
 
 int main()
 {
+    string a, b;
+    vector<int> ans;
+
     cin >> a >> b;
 
-    if (a.size() < b.size()) // a와 b 중 b 크기가 더 클때 a와 b를 swap함수를 이용해 바꿔준다 (긴 수 + 짧은 수)로 생각하기위해
+    if (a.length() < b.length())
     {
         swap(a, b);
     }
+    ans = calcPlus(a, b);
+    while (ans.empty())
+    {
+        cout << ans.back();
+        ans.pop_back();
+    }
+    return 0;
+}
 
-    for (int i = 0; i < a.size(); i++)
-        a_arr[i + 1] = a[i] - '0';
+/*수정 전 코드 */
+/*#include <algorithm>
+#include <string> */
 
-    for (int i = 0; i < b.size(); i++)
-        b_arr[i + 1 + (a.size() - b.size())] = b[i] - '0'; // a_arr[1]과 b_arr[1]을 더했을때 10이 넘어서 a_arr[0]이 존재할 수 있으므로 a_arr[1]부터 시작하게 만든다.
+/*int main()
+{
+    string a, b;
+    int a_arr[10001]; // a b 범위가 0 < a,b < 100000 이므로
+    int b_arr[10001];
+    int sum;
+    vector<int> res;
 
-    for (int i = a.size(); i > 0; i--)
+    cin >> a >> b;
+
+    int a_size = a.size();
+    int b_size = b.size();
+
+    if (b.size() > a.size())
+    {
+        swap(a, b);
+        swap(a_size, b_size);
+    }
+
+    for (int i = 0; i < a_size; i++)
+    {
+        a_arr[i + 1] = a[i] - '0'; // 문자열 a를 정수 배열 a_arr로 바꾸기
+    }
+    for (int i = 0; i < b_size; i++)
+    {
+        b_arr[i + 1 + (a_size - b_size)] = b[i] - '0'; // 문자열 b를 정수 배열 b_arr로 바꾸기
+    }
+
+    for (int i = a_size; i > 0; i--)
     {
         sum = a_arr[i] + b_arr[i];
         if (sum >= 10)
         {
-            a_arr[i - 1]++; // 인덱스를 하나 감소시킨 배열에 1을 증가시킨다.
+            a_arr[i - 1]++;
             sum -= 10;
         }
         res.push_back(sum);
     }
 
-    if (a_arr[0])  // a_arr[1]과 b_arr[1]을 더했을때 10이 넘을 경우
-        cout << 1; // 1을 출력하도록 한다.
-
-    for (int i = res.size() - 1; i >= 0; i--)
+    if (a_arr[0])
     {
-        cout << res[i];
+        cout << 1;
     }
+    else
+    {
+        for (int i = res.size() - 1; i >= 0; i--)
+        {
+            cout << res[i];
+        }
+    }
+
     return 0;
-}
+}*/

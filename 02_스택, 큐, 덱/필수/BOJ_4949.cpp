@@ -1,10 +1,77 @@
-
 #include <iostream>
 #include <stack>
 #include <string> //getline()함수 사용하기위해
 
 using namespace std;
 
+bool is_balanced(string input)
+{
+    stack<char> s;
+
+    for (int i = 0; i < input.length(); i++)
+    {
+        char ch = input[i];
+
+        switch (ch)
+        {
+        case '(':
+        case '[':
+            s.push(ch);
+            break;
+        case ')':
+            if (s.empty() || s.top() != '(')
+            {
+                return false; // 바로 종료조건 때린다.
+            }
+            else
+            {
+                s.pop();
+                break; // 한 순간의 ex) input [2]에서의 switch문이 끝난다.
+            }
+        case ']':
+            if (s.empty() || s.top() != '[')
+            {
+                return false;
+            }
+            else
+            {
+                s.pop();
+                break;
+            }
+        }
+    }
+
+    return s.empty();
+}
+
+int main()
+{
+    string input;
+
+    while (true)
+    {
+        // 입력
+        getline(cin, input); // 줄바꿈 \n이 나올 때 까지 읽기 (한줄 읽기)
+        if (input == ".")
+        {
+            break;
+        }
+
+        // 연산 & 출력
+        if (is_balanced(input))
+        {
+            cout << "yes\n";
+        }
+        else
+        {
+            cout << "no\n";
+        }
+    }
+    return 0;
+}
+
+/*수정 전 코드*/
+/*
 int main()
 {
     ios::sync_with_stdio(false);
@@ -71,3 +138,4 @@ int main()
 
     return 0;
 }
+*/
