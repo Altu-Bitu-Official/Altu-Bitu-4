@@ -4,7 +4,8 @@
 
 using namespace std;
 
-bool checkBracket(string str, stack<int> st) {
+bool checkBracket(string str) {
+    stack<int> st;
     for (int i = 0; i < str.length(); i++) {
         char c = str[i];
         if (c == '[' || c == '(') {   // 여는 괄호면 스택에 저장
@@ -21,7 +22,6 @@ bool checkBracket(string str, stack<int> st) {
         else if (c == ')') {
             if (st.empty() || st.top() != '(') {
                 return false;
-                break;
             }
             else {
                 st.pop();
@@ -39,15 +39,13 @@ bool checkBracket(string str, stack<int> st) {
 
 int main() {
     while (true) {
-        stack<int> st;
-        bool result = true;
         string input;
         getline(cin, input);  // 입력을 줄 단위로 받음
         if (input == ".") { // 입력이 .이면 반복 종료
             break;
         }
 
-        result = checkBracket(input, st);
+        bool result = checkBracket(input);
 
         string print = result ? "yes" : "no";
         cout << print << endl;
