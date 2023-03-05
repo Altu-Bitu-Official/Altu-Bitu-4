@@ -23,6 +23,21 @@ void cmpSize(int& n, int& top, stack<int>& result) {
 	}
 }
 
+//나머지 스택에 반영 안된 자릿 수들 추가하기
+void addTop(stack<int>& s, int& top) {
+	while (!s.empty()) {
+		if (top == 1) { // 마지막 올림수까지 반영
+			n = s.top() + 1;
+			cmpSize(n, top, result);
+		}
+		else {
+			result.push(s.top());
+		}
+
+		s.pop(); // 계산한 자릿 수 지우기
+	}
+}
+
 // 숫자 합 계산하기
 void sumNumber(stack<int>& s1, stack<int>& s2, stack<int>& result) {
 	int n, top = 0; // 한 자리씩 계산하는 변수, 올림하는 수
@@ -40,32 +55,11 @@ void sumNumber(stack<int>& s1, stack<int>& s2, stack<int>& result) {
 	}
 
 	// 나머지 스택에 반영 안된 자릿 수들 추가하기 
-	while (!s1.empty()) {
-		if (top == 1) { // 마지막 올림수까지 반영
-			n = s1.top() + 1;
-			cmpSize(n, top, result);
-		}
-		else {
-			result.push(s1.top());
-		}
-
-		s1.pop(); // 계산한 자릿 수 지우기
-	}
-
-	while (!s2.empty()) {
-		if (top == 1) { // 마지막 올림수까지 반영
-			n = s2.top() + 1;
-			cmpSize(n, top, result);
-		}
-		else {
-			result.push(s2.top());
-		}
-		s2.pop();// 계산한 자릿 수 지우기
-	}
+	addTop(s1, top);
+	addTop(s2, top);
 
 	if (top == 1) { // 최종 올림 수 추가
 		result.push(1);
-
 	}
 }
 
