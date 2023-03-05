@@ -4,8 +4,9 @@
 
 using namespace std;
 
-vector<int> yosephus(int n, int k, vector<int>& result) {
+vector<int> yosephus(int n, int k) {
 	queue<int> q; // n번째까지의 원
+	vector<int> arr;
 
 	// 1~n까지의 원 구성
 	for (int i = 1; i <= n; i++) {
@@ -17,12 +18,12 @@ vector<int> yosephus(int n, int k, vector<int>& result) {
 			q.push(q.front());
 			q.pop();
 		}
-		result.push_back(q.front()); // k번째 원소 넣고 제거
+		arr.push_back(q.front()); // k번째 원소 넣고 제거
 		q.pop();
 		n--;
 	}
 
-	return result;
+	return arr;
 }
 
 int main()
@@ -34,7 +35,7 @@ int main()
 	cin >> n >> k;
 
 	//연산
-	result = yosephus(n, k, result);
+	result = yosephus(n, k);
 
 	//출력
 	cout << "<";
