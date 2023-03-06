@@ -1,37 +1,51 @@
 #include <iostream>
-#include <vector>
+#include <queue>
 #include <algorithm>
 
 using namespace std;
 
-int main()
+vector<int> josephus(int n, int k)
 {
-    int n, k;
-    cin >> n >> k;
-    vector<int> circle;
+    queue<int> circle;
+    vector<int> result;
 
     // 1번부터 n번까지 입력
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        circle.push_back(i + 1);
+        circle.push(i);
     }
 
     // k번째에 도달하려면 k-1번 건너 뛰어야되므로 decrement해줌
     k--;
 
-    // 시작 index
-    int i = 0;
-    cout << '<';
-
-    // 출력용: 처음 원소 앞에는 comma가 없으므로 빈 string
-    const char *padding = "";
-
     while (!circle.empty())
     {
-        i = (i + k) % circle.size();
-        cout << padding << circle[i];
-        padding = ", "; // 출력용 comma
-        circle.erase(remove(circle.begin(), circle.end(), circle[i]), circle.end());
+        // k번째 수가 나올때까지 앞에서 pop후 뒤로 push
+        for (int i = 0; i < k; i++)
+        {
+            circle.push(circle.front());
+            circle.pop();
+        }
+        result.push_back(circle.front());
+        circle.pop();
+    }
+    return result;
+}
+
+int main()
+{
+    int n, k;
+    cin >> n >> k;
+
+    vector<int> result = josephus(n, k);
+
+    // 출력
+    cout << '<';
+    const char *padding = "";
+    for (int i = 0; i < n; i++)
+    {
+        cout << padding << result[i];
+        padding = ", ";
     }
     cout << '>';
 }

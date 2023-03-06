@@ -4,23 +4,19 @@
 
 using namespace std;
 
-int main()
+stack<int> stackDigits(string n)
 {
-    string n1, n2;
-    cin >> n1 >> n2;
-
-    // 일의자리(뒤쪽 수)부터 계산할 예정이므로 stack 사용
-    stack<int> num1, num2, sum;
-
-    // string을 앞숫자부터 int화해서 stack함
-    for (char &c : n1)
+    stack<int> num;
+    for (char &c : n)
     {
-        num1.push(c - '0');
+        num.push(c - '0');
     }
-    for (char &c : n2)
-    {
-        num2.push(c - '0');
-    }
+    return num;
+}
+
+stack<int> sumUp(stack<int> &num1, stack<int> &num2)
+{
+    stack<int> sum;
 
     // 각 stack에서 하나씩 꺼내서 덧셈연산 후 결과에 stack함
     int carry = 0;
@@ -60,11 +56,27 @@ int main()
     {
         sum.push(carry);
     }
+    return sum;
+}
+
+int main()
+{
+    string n1, n2;
+    cin >> n1 >> n2;
+
+    // 일의자리(뒤쪽 수)부터 계산할 예정이므로 stack 사용
+    stack<int> num1, num2, result;
+
+    // string을 앞숫자부터 int화해서 stack함
+    num1 = stackDigits(n1);
+    num2 = stackDigits(n2);
+
+    result = sumUp(num1, num2);
 
     // 결과값 출력
-    while (!sum.empty())
+    while (!result.empty())
     {
-        cout << sum.top();
-        sum.pop();
+        cout << result.top();
+        result.pop();
     }
 }
