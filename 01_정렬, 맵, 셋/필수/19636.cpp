@@ -1,3 +1,4 @@
+//요요 시뮬레이션
 #include <iostream> 
 #include <cmath> 
 using namespace std; 

@@ -3,48 +3,49 @@
 
 using namespace std;
 
-vector<int> josephus(int n, int k) { // 요세푸스 순열 반환
-    vector<int> result; // 요세푸스 순열
-    queue<int> q; // 원
+int n, k;
+queue<int> q1; // 입력 큐
+queue<int> q2; // 결과 큐
 
-    for(int i = 1; i <= n; i++) { // 원 초기화
-        q.push(i);
+int main()
+{
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+  // 숫자 입력 받아서 큐에 집어 넣기
+  cin >> n >> k;
+
+  for (int i = 1; i <= n; i++)
+  {
+    q1.push(i);
+  }
+
+  cout << "<";
+
+  // 결과 큐에 입력
+  while (!q1.empty())
+  {
+    for (int i = 0; i < k - 1; i++)
+    {
+      q1.push(q1.front());
+      q1.pop(); // 앞으로 빼서 다시 뒤로 넣기
     }
 
-    while(!q.empty()) {
-        for(int i = 0; i < k-1; i++) { // k-1번 pop & push
-            q.push(q.front());
-            q.pop();
-        }
+    // k번째이면 결과 큐에 삽입
+    q2.push(q1.front());
+    q1.pop();
+  }
+  int last = q1.back();
 
-        // k번째 사람 pop 후 순열에 추가
-        result.push_back(q.front());
-        q.pop();
-    }
-    return result;
-}
+  // 결과 큐 출력
+  for (int i = 1; i < n; i++)
+  {
+    cout << q2.front() << ", ";
+    q2.pop();
+  }
 
-/*
- * 원을 따라 k번째 사람을 제거한다.
- * 1. k번째 사람이 아닌 사람은 원의 맨 뒤로 보낸다.
- * 2. k번째 사람은 원에서 제거한다.
-*/
+  cout << last << ">";
 
-int main() {
-    int n, k;
-    queue<int> q;
-
-    // 입력
-    cin >> n >> k;
-
-    // 연산
-    vector<int> result = josephus(n, k);
-
-    // 출력
-    cout << "<" << result[0];
-    for(int i = 1; i < n; i++) {
-        cout << ", " << result[i];
-    }
-    cout << ">";
-    return 0;
+  return 0;
 }

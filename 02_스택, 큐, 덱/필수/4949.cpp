@@ -1,61 +1,78 @@
 #include <iostream>
 #include <stack>
+#include <string>
 
 using namespace std;
 
-bool isBalanced(string input) { // 괄호가 균형을 이루었는지 여부 반환
-    stack<char> s; // 괄호 저장하는 스택
+int main()
+{
+  // 시간 초과 방지
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
 
-    for(int i = 0; i < input.length(); i++) {
-        char ch = input[i];
-        switch(ch) {
-            case '(': case '[': // 여는 괄호는 무조건 push
-                s.push(ch);
-                break;
-            case ')': // 닫는 소괄호
-                if(s.empty() || s.top() != '(') {
-                    return false;
-                }
-                s.pop();
-                break;
-            case ']': // 닫는 대괄호
-                if(s.empty() || s.top() != '[') {
-                    return false;
-                }
-                s.pop();
-                break;
-        }
+  while (1)
+  { // 입력 개수가 주어지지 않음
+
+    // 입력
+    stack<char> st;
+    string sentence;
+    bool flag = false;
+    getline(cin, sentence); // 입력 가능한 최대 문자 수를 지정하지 않아도 됨.
+    // 개행 문자 만나기 전까지 모든 문자 읽어서 string 객체 (sentence) 에 저장
+
+    // 괄호가 하나도 없는 경우도 균형잡힌 문자열
+    if (sentence == ".")
+    {
+      flag = true;
+      break;
     }
-    return s.empty();
-}
 
-/*
- * [괄호 균형 확인하기]
- * 1. 여는 괄호는 바로 스택에 넣는다.
- * 2. 닫는 괄호가 나오면 가장 최근에 넣었던 여는 괄호와 비교한다.
- * 2-1. 닫는 괄호와 여는 괄호의 종류가 같다면 해당 닫는 괄호가 균형을 이룬다.
- * 2-2. 직전에 나온 여는 괄호가 없거나 그 종류가 다르다면 해당 닫는 괄호가 균형을 이루지 못한다.
- * 3. 모든 닫는 괄호가 여는 괄호와 짝을 이루었더라도 스택에 여는 괄호가 남아있다면 균형을 이루지 못한다.
-*/
+    // 글자 하나씩 탐색
+    for (int i = 0; i < sentence.length(); i++)
+    {
+      // 여는 괄호 나오면 스택에 푸쉬
+      if (sentence[i] == '(' || sentence[i] == '[')
+      {
+        st.push(sentence[i]);
+      }
+      // 닫는 괄호 나오면 스택에 여는 괄호가 있어야 팝
+      else if (sentence[i] == ')')
+      {
+        if (st.top() == '(')
+        {
 
-
-int main() {
-    string input;
-
-    while(true) {
-        // 입력
-        getline(cin, input);
-        if(input == ".") {
-            break;
+          flag = true;
         }
+        else
+        {
+          flag = false;
+        }
+        st.pop();
+      }
 
-        // 연산 & 출력
-        if(isBalanced(input)) {
-            cout << "yes\n";
+      else if (sentence[i] == ']')
+      {
+        if (st.top() == '[')
+        {
+          flag = true;
         }
-        else {
-            cout << "no\n";
+        else
+        {
+          flag = false;
         }
+        st.pop();
+      }
     }
-    return 0;
+
+    if (flag == true)
+    {
+      cout << "yes\n";
+    }
+    else
+    {
+      cout << "no\n";
+    }
+  }
+  return 0;
 }
