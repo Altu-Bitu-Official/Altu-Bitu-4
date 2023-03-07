@@ -3,8 +3,12 @@
 #include <string>
 using namespace std;
 
-void checkBalance(stack<char> &s, string &str, bool &balance)
+bool checkBalance(string &str)
 {
+	// 초기화
+    stack<char> s;
+    bool balance = true; // 균형잡힌 세상일 때 true, 아닐 시 false
+
     // 입력받은 문자열을 문자 하나씩 검사
     for (int i = 0; i < str.length(); i++)
     {
@@ -19,7 +23,7 @@ void checkBalance(stack<char> &s, string &str, bool &balance)
             else
             {
                 balance = false;
-                return;
+                return balance;
             }
         }
         else if (str[i] == ']')
@@ -33,7 +37,7 @@ void checkBalance(stack<char> &s, string &str, bool &balance)
             else
             {
                 balance = false;
-                return;
+                return balance;
             }
         }
         // 문자열이 ( 혹은 [ 라면 스택에 넣기
@@ -42,6 +46,14 @@ void checkBalance(stack<char> &s, string &str, bool &balance)
             s.push(str[i]);
         }
     }
+
+    if(s.empty()){
+        return balance;
+    }
+    else{
+        return false;   //balance = false;
+    }
+	
 }
 
 int main()
@@ -49,9 +61,7 @@ int main()
     string str;
     while (1)
     {
-        // 초기화
-        stack<char> s;
-        bool balance = true; // 균형잡힌 세상일 때 true, 아닐 시 false
+        
         // 입력
         getline(cin, str);
         //'.'만 입력받으면 종료
@@ -60,10 +70,10 @@ int main()
             return 0;
         }
 
-        checkBalance(s, str, balance);
+        bool balance = checkBalance(str);
 
         // 균형잡힌 세상인지 검사
-        if (s.empty() && balance == true)
+        if (balance == true)
         {
             cout << "yes\n";
         }
