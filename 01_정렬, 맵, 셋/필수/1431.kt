@@ -1,6 +1,6 @@
 import kotlin.collections.*
 
-fun main(args:Array<String>) = with(System.`in`.bufferedReader()){
+fun main() = with(System.`in`.bufferedReader()){
     val N = readLine().toInt()
     val serialArray = ArrayList<String>()
 
