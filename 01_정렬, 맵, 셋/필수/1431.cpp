@@ -4,48 +4,52 @@
 
 using namespace std;
 
-// 시리얼 번호를 구성하는 숫자의 합을 구하는 함수
-int sumNum(string serial_num) {
-	int sum = 0;
-	for (int i = 0; i < serial_num.size(); i++) {
-		if (isdigit(serial_num[i])) { // 문자(char)가 숫자인 경우에만 더함
-			sum += serial_num[i] - '0'; // char to int (아스키 코드 사용)
-		}
-	}
-	return sum;
-}
-
-// 비교 함수
 bool cmp(const string& s1, const string& s2)
 {
-	if (s1.size() != s2.size()) { // 길이가 다르면 짧은 것 먼저
+	// 시리얼 번호의 길이가 다를 경우 짧은 순으로
+	if (s1.size() != s2.size())
 		return s1.size() < s2.size();
-	}
-	if (sumNum(s1) != sumNum(s2)) { // 길이가 같고 자리수의 합이 다르면 작은 합을 가지는 것 먼저
-		return sumNum(s1) < sumNum(s2);
-	}
-	return s1 < s2; // 길이와 자리수의 합이 같으면 사전순 (숫자 < 알파벳)
-}
 
-/*
-* 시리얼 번호의 정렬 조건을 비교 함수로 구현
-* 문자열에서 숫자만의 합 구하기
-*/
+	// 시리얼 번호의 숫자 합이 다르다면 적은 순으로
+	int sum_s1 = 0, sum_s2 = 0;
+	for (int i = 0; i < s1.size(); i++)
+	{
+		if (48 <= s1[i] && s1[i] <= 57)
+			sum_s1 += (int)s1[i] - 48;
+		if (48 <= s2[i] && s2[i] <= 57)
+			sum_s2 += (int)s2[i] - 48;
+	}
+	if(sum_s1 != sum_s2)
+		return sum_s1 < sum_s2;
+
+	// 그외에는 사전순으로 숫자 먼저 => 아스키코드 비교
+	// 시리얼 번호는 중복되지 않으므로 중복을 고려하지 않음
+	int i;
+	for (i = 0; i < s1.size(); i++)
+	{
+		if(s1[i] != s2[i])
+			return s1[i] < s2[i];
+	}
+}
 
 int main()
 {
-	int n;
 	// 입력
+	int n;
 	cin >> n;
-	vector<string> guitar(n, "");
-	for (int i = 0; i < n; i++) {
-		cin >> guitar[i];
+
+	vector<string> serials;
+	serials.assign(n, {});
+	for (int i = 0; i < n; i++)
+	{
+		cin >> serials[i];
 	}
-	// 연산
-	sort(guitar.begin(), guitar.end(), cmp);
+
+	// 정렬
+	sort(serials.begin(), serials.end(), cmp);
+
 	// 출력
-	for (int i = 0; i < n; i++) {
-		cout << guitar[i] << '\n';
+	for (int i = 0; i < serials.size(); i++) {
+		cout << serials[i] << '\n';
 	}
-	return 0;
 }
