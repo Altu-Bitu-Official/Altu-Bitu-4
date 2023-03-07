@@ -1,38 +1,34 @@
 import java.util.*
 
-fun main() = with(System.`in`.bufferedReader()){
+fun main(args:Array<String>) = with(System.`in`.bufferedReader()){
     val (N, K) = readLine().split(" ").map{it.toInt()}
-    val queue = LinkedList<Int>() // queue 구현
+    val queue = LinkedList<Int>()
 
     for(i in 1..N){
-        queue.add(i) // 1 ~ N 순으로 queue에 입력
+        queue.add(i)
     }
     var queueSize = queue.size
     var Josephus = "<"
     var cursor = 1
 
     while(queueSize>=0){
-        val element = queue.poll() // head의 element
+        val element = queue.poll()
         when(cursor<K){
             true ->{
-                queue.add(element) // queue의 끝에 붙임
+                queue.add(element)
                 cursor++
             }
             else ->{
-                queueSize-- // queue의 끝에 붙이지 않음
+                queueSize--
                 Josephus += element
                 cursor = 1
 
-                when(queueSize){  // 모든 원소를 Josephus에 추가할 때까지 반복
-                    0 -> {
-                        Josephus+=">"
-                        break
-                    }
-                    else -> Josephus += ", "
-                }
+                if(queueSize == 0)
+                    break
+                Josephus += ", "
             }
         }
     }
-
+    Josephus+=">"
     println(Josephus)
 }
