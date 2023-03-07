@@ -2,46 +2,50 @@
 #include <queue>
 
 using namespace std;
-int top;
-int back;
-int cnt=0;
 
-void printJosephus(queue<int>* que, int n, int k);
+vector<int> josephus( int n, int k);
 
 int main() {
 	int n, k;
+	vector<int> answer;
 	//n, k입력받기
 	cin >> n >> k;
-	//큐에 넣기
-	queue<int> que;
-	for (int i = 1; i <= n; i++) {
-		que.push(i);
-	}
+	
 	//계산하기
-	cout<<"<";//괄호 열기
-	printJosephus(&que, n, k);
-	cout<<">";//괄호 닫기
-
+	answer=josephus(n, k);
+	
+	//출력하기
+	for (int i = 0; i < n; i++) {
+		if (i == 0) cout << "<";
+		if (i == n-1) {
+			cout << answer[i] << ">";
+		}else 	cout << answer[i] << ", ";
+	}
+	
 	return 0;
 }
 
-void printJosephus(queue<int>* que, int n, int k) {
-	cnt++;
-	// k-1번째는 팝만, 나머지는 뒤로 채워줌
-	for (int i = 0; i < k - 1; i++) {
-		que->push(que->front());
-		que->pop();
-		//디버그
-		//top = que->front();
+vector<int> josephus(int n, int k) {
+	int top;
+	queue<int> que;
+	vector<int> answer(n);
+	//큐 초기화
+	for (int i = 1; i <= n; i++) {
+		que.push(i);
 	}
-	top = que->front();
-	//맨앞에있는거 출력할거로 저장
-	if (cnt == n) {//n번 다 돌면 빠져나가기
-		cout << top; return;
+	//답 구하기
+	for (int j = 0; j < n; j++) {
+		// k번째는 팝만, k-1까지는 뒤로 채워줌
+		for (int i = 0; i < k - 1; i++) {
+			que.push(que.front());
+			que.pop();
+		}
+		//k번째 저장
+		top = que.front();
+		//answer 배열에 저장
+		answer[j] = top;
+		//최상단 저장 후 k번째 요소 팝
+		que.pop();
 	}
-	else cout << top << ", ";
-	//최상단 출력후 팝
-	que->pop();
-	//재귀
-	printJosephus(que, n, k);
+	return answer;
 }
