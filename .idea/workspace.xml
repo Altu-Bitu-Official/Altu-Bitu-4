@@ -139,6 +139,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="파일 확장자 수정" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Altu_Bitu_4$_16563Kt.ic" NAME="_16563Kt Coverage Results" MODIFIED="1678181220334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Altu_Bitu_4$_16563Kt.ic" NAME="_16563Kt Coverage Results" MODIFIED="1678189063065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Altu_Bitu_4$_2960Kt.ic" NAME="_2960Kt Coverage Results" MODIFIED="1678189082888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Altu_Bitu_4$_1158Kt.ic" NAME="_1158Kt Coverage Results" MODIFIED="1678189120946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Altu_Bitu_4$_19636Kt.ic" NAME="_19636Kt Coverage Results" MODIFIED="1678189045885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

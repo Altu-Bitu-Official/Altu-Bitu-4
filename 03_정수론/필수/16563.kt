@@ -1,39 +1,39 @@
-fun main() = with(System.`in`.bufferedReader()){
-    val N = readLine().toInt()
-    val num = readLine().split(" ").map { it.toInt() }
+import java.util.*
 
-    for(M in num) {
-        var m = M
-        val twoToN = ArrayList<Int>()
-        when(isPrime(m)){
-            true ->println(m)
-            else -> {
-                for(i in 2..m){
-                    if(isPrime(i)) twoToN.add(i)
+fun main(args: Array<String>) = with(System.`in`.bufferedReader()){
+    val sb = StringBuilder()
+    val N = readLine().toInt() // 자연수 개수
+
+    val minFactor = IntArray(5000001)
+    for (i in 2..5000000) {
+        minFactor[i] = i
+    }
+
+    // 미리 각 자연수의 가장 작은 소인수를 저장해 둔다.
+    var i = 2
+    while (i * i <= 5000000) {
+        if (minFactor[i] == i) {    // i가 소수라면
+            var j = i * i
+            while (j <= 5000000) {
+                // 그 다음 큰 배수부터 전부 해당 소수로 표시 (각 자연수의 가장 작은 소인수 값이 저장됨)
+                if (minFactor[j] == j) {
+                    minFactor[j] = i
                 }
-                var i = 0
-                while(true) {
-                    if (m % num[i] == 0) {
-                        print("$num[i]  ")
-                        m /= num[i]
-                        if (m == 1) {
-                            print("\n")
-                            break
-                        } else{
-                            i=2
-                        }
-                    } else{
-                        i++
-                    }
-                }
+                j += i
             }
         }
+        i++
     }
-}
-fun isPrime(n : Int): Boolean{
-    var i = 2
-    while(i*i <= n){
-        if(n%i++==0) return false
+    val st = StringTokenizer(readLine())
+    for (i in 0 until N) {
+        var n = st.nextToken().toInt()
+
+        // 소인수 분해
+        while (n > 1) {
+            sb.append(minFactor[n].toString() + " ")
+            n /= minFactor[n]
+        }
+        sb.append("\n")
     }
-    return true
+    println(sb.toString())
 }
