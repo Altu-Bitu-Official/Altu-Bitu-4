@@ -1,51 +1,68 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
 using namespace std;
 
-// 시리얼 번호를 구성하는 숫자의 합을 구하는 함수
-int sumNum(string serial_num) {
-	int sum = 0;
-	for (int i = 0; i < serial_num.size(); i++) {
-		if (isdigit(serial_num[i])) { // 문자(char)가 숫자인 경우에만 더함
-			sum += serial_num[i] - '0'; // char to int (아스키 코드 사용)
-		}
-	}
-	return sum;
+void calculate(const string& str, int& sum){
+    for(char i:str){
+        if(i >= '0' && i <= '9')  
+            sum += i-48;          //0의 아스키코드는 48
+    }
 }
 
-// 비교 함수
-bool cmp(const string& s1, const string& s2)
-{
-	if (s1.size() != s2.size()) { // 길이가 다르면 짧은 것 먼저
-		return s1.size() < s2.size();
-	}
-	if (sumNum(s1) != sumNum(s2)) { // 길이가 같고 자리수의 합이 다르면 작은 합을 가지는 것 먼저
-		return sumNum(s1) < sumNum(s2);
-	}
-	return s1 < s2; // 길이와 자리수의 합이 같으면 사전순 (숫자 < 알파벳)
+bool sortGuitar(const string& a, const string& b){
+    if(a.length() == b.length()){
+        int sum_a = 0;
+        int sum_b = 0;
+        //합을 계산하는 함수
+        calculate(a, sum_a);
+        calculate(b, sum_b);
+
+        /*@@@질문입니다!! -> 이해했어요. 감사합니다(ㅠㅠS2)
+
+        for(char i:a){
+            if(i >= '1' && i <= '9')  
+                sum_a += i;  
+        }
+        for(char i:b){
+            if(i >= '0' && i <= '9')     
+                sum_b += i-48;
+        }
+
+        25~32번줄 대신 위의 코드로 풀면 왜 답이 안 나오는지,,^_^ 궁금합니다.
+        0(아스키코드로 48)을 제외하고 더해도 (어차피 '0'은 0으로, 더하지 않아도 값이 달라지지 않으니)
+        괜찮다고 생각했는데 답이 틀렸다고 나와서요!!
+
+        A) 반례
+        2
+        145C = 49+53+52 = 154
+        A910 = 57+49+(0 제외) = 106
+        */
+
+        if(sum_a != sum_b)
+            return sum_a < sum_b;        //작은 순 대로 정렬
+        //A의 모든 자리수의 합과 B의 모든 자리수의 합이 같을 때
+        return a < b;
+    }
+    else   //A와 B의 길이가 다르면, 짧은 것이 먼저 온다.
+    {
+        return a.length() < b.length();
+    }
 }
 
-/*
-* 시리얼 번호의 정렬 조건을 비교 함수로 구현
-* 문자열에서 숫자만의 합 구하기
-*/
-
-int main()
-{
-	int n;
-	// 입력
-	cin >> n;
-	vector<string> guitar(n, "");
-	for (int i = 0; i < n; i++) {
-		cin >> guitar[i];
-	}
-	// 연산
-	sort(guitar.begin(), guitar.end(), cmp);
-	// 출력
-	for (int i = 0; i < n; i++) {
-		cout << guitar[i] << '\n';
-	}
-	return 0;
+int main(void){
+    int n;
+    cin >> n;
+    vector<string> number;
+    //시리얼 번호 입력 받기
+    for(int i=0; i<n; i++) {
+        string str;
+        cin >> str;
+        number.push_back(str);
+    }
+    //정렬
+    sort(number.begin(), number.end(), sortGuitar);
+    //출력
+    for(int i=0; i<n; i++)
+        cout << number[i] << "\n";
 }
