@@ -5,31 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6d0c5c2-15e2-4372-8456-341768a6d70c" name="Changes" comment="파일 확장자 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/Altu-Bitu-4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Altu-Bitu-4.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_정수론/필수/16563.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_정수론/필수/2609.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03_정수론/필수/2960.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_정렬, 맵, 셋/도전/1946.kts" beforeDir="false" afterPath="$PROJECT_DIR$/01_정렬, 맵, 셋/도전/1946.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_정렬, 맵, 셋/도전/9375.kts" beforeDir="false" afterPath="$PROJECT_DIR$/01_정렬, 맵, 셋/도전/9375.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_정렬, 맵, 셋/필수/1431.kts" beforeDir="false" afterPath="$PROJECT_DIR$/01_정렬, 맵, 셋/필수/1431.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_정렬, 맵, 셋/필수/14425.kts" beforeDir="false" afterPath="$PROJECT_DIR$/01_정렬, 맵, 셋/필수/14425.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_정렬, 맵, 셋/필수/19636.kts" beforeDir="false" afterPath="$PROJECT_DIR$/01_정렬, 맵, 셋/필수/19636.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_스택, 큐, 덱/필수/10757.kts" beforeDir="false" afterPath="$PROJECT_DIR$/02_스택, 큐, 덱/필수/10757.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_스택, 큐, 덱/필수/1158.kts" beforeDir="false" afterPath="$PROJECT_DIR$/02_스택, 큐, 덱/필수/1158.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_스택, 큐, 덱/필수/4949.kts" beforeDir="false" afterPath="$PROJECT_DIR$/02_스택, 큐, 덱/필수/4949.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Altu-Bitu-4/META-INF/Altu-Bitu-4.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Altu-Bitu-4/META-INF/Altu-Bitu-4.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_1431Kt$main$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_1431Kt$main$1$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_1431Kt$main$1$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_1431Kt$main$1$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_1431Kt$main$1$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_1431Kt$main$1$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_1431Kt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_1431Kt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_14425Kt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_14425Kt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_1946Kt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_1946Kt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_19636Kt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_19636Kt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_9375Kt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Altu-Bitu-4/_9375Kt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_스택, 큐, 덱/필수/10757.kt" beforeDir="false" afterPath="$PROJECT_DIR$/02_스택, 큐, 덱/필수/10757.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Script" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,16 +37,44 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/02_스택, 큐, 덱/도전" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager" selected="Kotlin._4949Kt">
-    <configuration name="_1158Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="_1158Kt" />
+    <configuration name="_10757Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="_10757Kt" />
+      <module name="Altu-Bitu-4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="_16563Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="_16563Kt" />
+      <module name="Altu-Bitu-4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="_2609Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="_2609Kt" />
+      <module name="Altu-Bitu-4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="_2960Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="_2960Kt" />
       <module name="Altu-Bitu-4" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -72,34 +94,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="1431.kts" type="KotlinStandaloneScriptRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <module name="Altu-Bitu-4" />
-      <option name="filePath" value="$PROJECT_DIR$/01_정렬, 맵, 셋/필수/1431.kts" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="14425.kts" type="KotlinStandaloneScriptRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <module name="Altu-Bitu-4" />
-      <option name="filePath" value="$PROJECT_DIR$/01_정렬, 맵, 셋/필수/14425.kts" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="4949.kts" type="KotlinStandaloneScriptRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <module name="Altu-Bitu-4" />
-      <option name="filePath" value="$PROJECT_DIR$/02_스택, 큐, 덱/필수/4949.kts" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin._4949Kt" />
-        <item itemvalue="Kotlin._1158Kt" />
-        <item itemvalue="Kotlin script.14425.kts" />
-        <item itemvalue="Kotlin script.1431.kts" />
-        <item itemvalue="Kotlin script.4949.kts" />
+        <item itemvalue="Kotlin._16563Kt" />
+        <item itemvalue="Kotlin._10757Kt" />
+        <item itemvalue="Kotlin._2609Kt" />
+        <item itemvalue="Kotlin._2960Kt" />
       </list>
     </recent_temporary>
   </component>
@@ -136,5 +137,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="파일 확장자 수정" />
     <option name="LAST_COMMIT_MESSAGE" value="파일 확장자 수정" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Altu_Bitu_4$_16563Kt.ic" NAME="_16563Kt Coverage Results" MODIFIED="1678181220334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
