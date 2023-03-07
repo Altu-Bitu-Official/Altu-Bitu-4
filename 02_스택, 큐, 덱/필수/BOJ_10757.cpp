@@ -34,7 +34,7 @@ int main() {
         //나머지
         
         carry = (carry + a_back + b_back) / 10; 
-        //올림수 carry
+        //올림수 carry 
         
         result = (char)(r + '0') + result; 
         a.pop_back();
