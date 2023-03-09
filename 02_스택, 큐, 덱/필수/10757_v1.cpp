@@ -1,4 +1,4 @@
-//벡터 사용
+// 벡터 사용
 #include <iostream>
 #include <vector>
 using namespace std;
