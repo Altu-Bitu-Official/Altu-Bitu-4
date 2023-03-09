@@ -18,6 +18,20 @@ vector<bool> isPrime(int n) { // n까지의 수들의 소수 여부가 저장된
     return is_prime;
 }
 
+vector<int> findNum(vector<bool> &prime, int &target) {
+    vector<int> result;
+
+    for(int i = target - 3; i >= target / 2; i -= 2) {   // target으로부터 3 이상 차이나는 수부터 탐색 (다른 수가 3 이상이므로)
+        int other = target - i;
+        if(prime[i] && prime[other]) {      // 더해질 두 수가 모두 소수면
+            result.push_back(i);            // 결과에 넣고 반복문을 빠져나감
+            result.push_back(other);
+            break;
+        }
+    }
+    return result;
+}
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -33,36 +47,16 @@ int main() {
         if(input == 0) {
             break;
         }
-        int target = input;
-        bool check = false;
-        for(int i = target - 3; i >= target / 2; i -= 2) { // target으로부터 3 이상 차이나는 수부터 탐색 (다른 수가 3 이상이므로)
-            int other = target - i;
-            if(prime[i] && prime[other]) {                 // 더해질 두 수가 모두 소수면
-                check = true;
-                cout << target << " = " << other << " + " << i << "\n"; // 작은 수가 먼저 오도록 결과 출력
-                break;
-            }
-        }
+        int target = input; 
 
-        if (!check) {
+        vector<int> result = findNum(prime, target); // 합으로 표현될 두 소수 찾기
+
+        if(result.size() == 2) { // 두 소수가 모두 저장되었다면 결과 출력
+            cout << target << " = " << result[1] << " + " << result[0] << "\n";
+        }
+        else {                   // 아니라면 오류 메세지 출력
             cout << "Goldbach's conjecture is wrong.";
         }
     }
     return 0;
 }
-
-/* 함수로 작성하려 했으나 시간 초과가 발생하여 메인함수에 작성
-vector<int> findNum(vector<bool> prime, int target) {
-    vector<int> result;
-
-    for(int i = target - 3; i > target / 2; i -= 2) {   // target으로부터 3 이상 차이나는 수부터 탐색 (다른 수가 3 이상이므로)
-        int other = target - i;
-        if(prime[i] && prime[other]) {      // 더해질 두 수가 모두 소수면
-            result.push_back(i);            // 결과에 넣고 반복문을 빠져나감
-            result.push_back(other);
-            break;
-        }
-    }
-    return result;
-}
-*/
