@@ -1,4 +1,4 @@
-//스택 사용
+// 스택 사용
 #include <iostream>
 #include <stack>
 using namespace std;
