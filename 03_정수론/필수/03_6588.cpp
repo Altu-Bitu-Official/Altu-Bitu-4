@@ -23,7 +23,6 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
-
     int n;
     vector<int> fac = prime(n);
 
