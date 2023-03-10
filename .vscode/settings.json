@@ -4,6 +4,8 @@
     "queue": "cpp",
     "iostream": "cpp",
     "xiosbase": "cpp",
-    "stack": "cpp"
-  }
+    "stack": "cpp",
+    "vector": "cpp"
+  },
+  "cmake.configureOnOpen": true
 }
