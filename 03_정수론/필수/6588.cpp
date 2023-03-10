@@ -15,19 +15,17 @@ void isPrime(vector<int>& prime){
             }
         }
     }
-
 }
 
-void calculate(const int n, vector<int>& prime){
+int calculate(const int n, vector<int>& prime){
     for(int i=3; i<=n/2; i++){
         //i가 소수고, n-i도 소수면 해당함
         if(prime[i] == 1 && prime[n-i] == 1){
-            cout << n << " = " << i << " + " << n-i << "\n";
-            return;
+            return i;
         }
     }
     //찾지 못했다면
-    cout << "Goldbach's conjecture is wrong.\n";
+    return -1;
 }
 
 int main()
@@ -51,7 +49,14 @@ int main()
             return 0;
         }
         //골드바흐의 추측 계산
-        calculate(n, prime);
-    }
+        int num = calculate(n, prime);  
 
+        //출력
+        if(num > 0){
+            cout << n << " = " << num << " + " << n-num << "\n";
+        }
+        else{
+            cout << "Goldbach's conjecture is wrong.\n";
+        }
+    }
 }

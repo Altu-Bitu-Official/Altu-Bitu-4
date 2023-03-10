@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void checkWheel(int &k, const int n, int& s, vector<char> &wheel, int alphabet[])
+void checkWheel(int &k, const int n, int& s, vector<char> &wheel)
 {
     char c;
     int before = 0; // 직전 s
@@ -54,16 +54,11 @@ int main()
     int n, k;
     int s;
 
-    vector<char> wheel;
-    int alphabet[30] = {0, };
-
     cin >> n >> k;
-    for (int i = 0; i < n; i++)
-    {
-        wheel.push_back('?'); // 바퀴를 ?로 채우기
-    }
+    vector<char> wheel(n, '?');
+    
     //바퀴 채우기
-    checkWheel(k, n, s, wheel, alphabet);
+    checkWheel(k, n, s, wheel);
     //중복 알파벳 검사
     checkDuplication(wheel);
     // 출력
