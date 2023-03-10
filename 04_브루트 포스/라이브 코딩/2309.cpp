@@ -15,19 +15,19 @@ void printVector(vector<int> v, int i, int j) {
 int main() 
 {
 	int n = 9;
-	int sum = 0;
+	int sumHeight = 0, num;
 	vector<int> v;
 	//입력
 	while (n--) {
-		int num; cin >> num;
+		cin >> num;
 		v.push_back(num);
-		sum += num;
+		sumHeight += num;
 	}
 	sort(v.begin(), v.end()); //정렬
 	//연산 & 출력
 	for (int i = 0; i < 8; i++) {
 		for (int j = i + 1; j < 9; j++) {
-			if (sum - v[i] - v[j] == 100) {
+			if (sumHeight - v[i] - v[j] == 100) {
 				printVector(v, i, j);
 				return 0;
 			}
