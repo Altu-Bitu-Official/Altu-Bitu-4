@@ -31,11 +31,12 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    int a = 0, b;
+    int a, b;
     int n = 1;
     vector<int> is_prime = findPrime();
     while (n)
     {
+        a = 0;
         cin >> n;
         if (n == 0)
         {
