@@ -10,8 +10,12 @@ int main(void){
     int n, k;
     cin >> n >> k;
 
-    vector<char> v(n);
-    fill(v.begin(), v.end(), '?'); //벡터 초기화
+    /*vector<char> v(n);
+    fill(v.begin(), v.end(), '?');
+    이렇게 말고 벡터를 선언하면서 바로 특정 값으로 초기화 가능*/
+
+    vector<char> v(n,'?');
+
 
     int idx = 0;
     for (int i=0; i<k; i++) {
@@ -42,7 +46,7 @@ int main(void){
             if (v[i] != '?' && v[i] == v[j]){
                 cout << "!\n";
                 return 0;
-            }
+            } // 이중반복문은 O(n^2)의 시간복잡도를 가지므로 배열을 선언해서 풀어주면 더 좋다
 
     for (int i=0; i<n; i++) {
         cout << v[(i + idx) % n];
