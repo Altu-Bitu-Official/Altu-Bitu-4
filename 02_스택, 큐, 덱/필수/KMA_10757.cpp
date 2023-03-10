@@ -16,7 +16,8 @@ int main()
     string a, b;
     int sum;
     int crr=0;  //올림수
-    int arr_a[10001], arr_b[10001];
+    int arr_a[10001] = {0,};
+    int arr_b[10001] = {0,};
     vector<int> answ;
 
     //입력 - 두 숫자를 문자열 a, b로 입력받음
@@ -52,7 +53,7 @@ int main()
     //자릿수 +1 되었을 때 1 먼저 출력 (맨 앞자릿수 출력)
     if (crr == 1) {cout << 1;}  
     //answ 벡터 거꾸로 출력 (높은 자릿수부터 출력)
-    for (int i = a_size-1; i >= 0; i--) {cout << answ[i] << '\n';}
+    for (int i = a_size-1; i >= 0; i--) {cout << answ[i];}
 
     return 0;
 }
