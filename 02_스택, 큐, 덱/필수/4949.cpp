@@ -7,51 +7,65 @@ using namespace std;
 int main(){
 
     ios::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
+    cin.tie(NULL); cout.tie(NULL);   
 
-    
-    string line;
-    stack<char> st;
 
     while (true){ // 한줄 한줄 판단해야 하므로, .이 나오면 다음 문장으로 넘어가야 하므로 while 사용해줌
-		getline(cin, line); 
+		string line;
+        getline(cin, line); 
+        stack<char> st;
+        bool flag = true;
+
 		if (line[0] == '.') {
             break;
         } // 줄 나눔 역할
 
-		for (int i = 0; i < line.length() - 1; i++){
-			if (line[i] == '(' || line[i] == '[') {
-                st.push(line[i]);
-            }
-
-			if (line[i] == ']'){
-				if (!st.empty() && st.top() == '[') {
-                    st.pop();
-                }
-				else { 
-                    cout << "yes\n";
-                }
+		for(int i=0; i<line.size(); i++){
+			
+			if(line[i] == '[' || line[i] == '('){
+				st.push(line[i]);
 			}
-
-			if (line[i] == ')')
-            {
-				if (!st.empty() && st.top() == '(') {
-                    st.pop();
-                }
-				else { 
-                    cout << "no\n";
-                    break;
-                }
+			
+			else if(line[i] == ']'){
+				if(st.empty()){
+					flag = false;
+					break;
+				}
+				
+				else if(st.top() == '['){
+					st.pop();
+				}
+				
+				else if(st.top() == '('){
+					flag = false;
+					break;
+				}
 			}
-
-			if (st.empty() && i == line.length() - 2) {
-                cout << "yes\n";
-            } 
-			else if (!st.empty() && i == line.length() - 2) {
-                cout << "no\n";
-                break;
-            }
+			
+			else if(line[i] == ')'){
+				if(st.empty()){
+					flag = false;
+					break;
+				}
+				
+				else if(st.top() == '('){
+					st.pop();
+				}
+				
+				else if(st.top() == '['){
+					flag = false;
+					break;
+				}
+			}
+			
 		}
-
+		
+		if(st.empty() && flag)
+			cout << "yes\n" ;
+			
+		else
+			cout << "no\n" ;
+	
 	}
+    return 0;
 }
