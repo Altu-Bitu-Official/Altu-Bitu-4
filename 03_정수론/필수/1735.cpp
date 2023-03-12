@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 int gcdIter(int a, int b);
@@ -29,20 +29,17 @@ int main() {
 	result_bottom = bottom_lcm;
 
 	//기약분수로 나타내자
-	//최대공약수로 계속 나눔. 최대공약수가 1이되는 순간 멈추기
-	while (1) {
-		int gcd;
-		gcd = gcdIter(result_bottom, result_top);
-		if (gcd == 1) {
-			break;
-		}		
-		result_top = result_top/gcd;
-		result_bottom = result_bottom / gcd;
-	}
+	
+	int gcd;
+	gcd = gcdIter(result_bottom, result_top);
+				
+	result_top = result_top/gcd;
+	result_bottom = result_bottom / gcd;
+	
 
 	//출력
 	//질문: 1 20 1 5 넣었을 때 디버그 하니 result_top안에 1이 들어있는데, 출력이 왜 안되는지 모르겠어요ㅠ_ㅠ
-	cout << result_top + " ";
+	cout << to_string(result_top) + " ";
 	cout << result_bottom;
 
 	return 0;
