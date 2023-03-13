@@ -1,4 +1,4 @@
-// 킹
+// 분해합
 
 #include <iostream>
 #include <string>
