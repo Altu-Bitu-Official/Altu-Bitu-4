@@ -6,14 +6,14 @@ using namespace std;
 
 
 
-int main(void){
+int main( ){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
 
     int N, K;
     cin >> N >> K;
 
-    vector<char> findWords(N); // n만큼 벡터 생성후 0으로 초기화 상태
+    vector<char> findWords(N, '?'); // n만큼 벡터 생성후 0으로 초기화 상태
     int index=0;
 
     for (int i = 0; i < K; i++){
@@ -22,21 +22,31 @@ int main(void){
 
         cin >> changeNumbers >> alphabet;
 
-        changeNumbers = (changeNumbers+index)%N;
-        index=changeNumbers;
+        changeNumbers = changeNumbers%N;
+        if(index < changeNumbers){
+            index = index-changeNumbers + N;
+        }
+        else{
+            index = index-changeNumbers;
+        }
 
-        if(findWords[index] !=0){
+        if(findWords[index] != '?' && findWords[index] !=alphabet){
             cout <<"!\n";
+            return 0;
         }
 
         else{
             findWords[index] = alphabet;
         }
     }
+    
 
-    for (int i=0; i<K;i++){
-        if (findWords[i] == 0){
-            findWords[i] = '?';
+    for(int i=0; i<N; i++){
+        for(int j = i+1; j<N; j++){
+            if(findWords[i] != '?'&& findWords[i] == findWords[j]){
+                cout<<"!\n";
+                return 0;
+            }
         }
     }
     for(int i=0; i<N; i++){

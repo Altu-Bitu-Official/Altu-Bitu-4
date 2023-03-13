@@ -1,61 +1,56 @@
 #include <iostream>
 #include <vector>
-
-const int MAX  = 1000000; 
+#include <algorithm>
 
 using namespace std;
 
-vector<int> getPrimes() {
-    vector<int> primes(MAX + 1, 0);
-    for(int i = 2; i * i <= MAX; i++) {
-        if(primes[i] != 0) { 
-            continue;
+vector<bool> getPrimes(int n) {
+    vector<bool> primes(n + 1, true);  
+    primes[0] = primes[1] = false;
+    for (int i = 2; i * i <= n; i++) {
+        if (primes[i] !=0 ) {
+            continue;     //소수가 아니면 탐색을 하지 않는다.
         }
-        
-        for(int j = i * i; j <= MAX; j += i) {
-            if (primes[j] == 0) {
-                primes[j] = i;
-            }
+        for (int j = i * i; j <= n; j += i) {
+            primes[j] = false;
         }
     }
     return primes;
 }
 
-vector<int> getPrimeFactors(int k, vector<int> &primes) {
-    vector<int> factors; 
 
-    while(primes[k] != 0) { 
-        factors.push_back(primes[k]);
-        k /= primes[k];
+int goldbach(int n, vector<bool> &primes) {
+    for (int a = 3; a <= n / 2; a+= 2) {
+        if (primes[a] && primes[n - a]) {
+            return a;
+        }
     }
-    factors.push_back(k);
-    return factors;
+    return 0;
 }
- 
-int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
 
-    int n, k;
-    cin>>n;
-
-    vector<int> primes = getPrimes();
-    vector<int> factors = getPrimeFactors(k, primes);
-
-   while (true){
-        int n;
-        cin >> n;
-
-        if (n == 0)
+int main() {
+    vector<int> vec;
+    int input;
+    while(1) {
+        cin >> input;
+        if (input == 0) {
             break;
-        
-        for (int i = 0; i < factors.size(); i++){
-            if (primes[n - factors[i]] == n - factors[i])
-            {
-                cout << n << " = " << factors[i] << " + " << n - factors[i] << '\n';
-                break;
-            }
+        }
+        vec.push_back(input);
+    }
+
+
+    int max_num = *max_element(vec.begin(), vec.end()); //*연산자를 통해 최대값 구해보기
+    vector<bool> primes = getPrimes(max_num);
+
+    for (int i = 0; i < vec.size(); i++) {
+        int a = goldbach(vec[i], primes);
+
+
+        if (a != 0) { 
+            cout << vec[i] << " = " << a << " + " << vec[i] - a << "\n";
+        } else {      
+            cout << "Goldbach's conjecture is wrong.\n";
         }
     }
     return 0;
