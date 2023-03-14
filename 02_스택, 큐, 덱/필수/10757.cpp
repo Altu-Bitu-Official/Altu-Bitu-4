@@ -7,6 +7,7 @@ stack<int> setStack() {
     stack<int> q;
     char ch;
 
+    // 한 글자씩 읽어서 스택에 저장
     while (scanf("%1c", &ch)) {
         if (!isdigit(ch)) {
             break;
@@ -27,6 +28,7 @@ stack<int> add(stack<int> &a, stack<int> &b) {
         int n1 = 0;
         int n2 = 0;
 
+        // 런타임에러를 피하기 위해 스택이 비어있지 않을 때에만 top, pop 수행
         if (!a.empty()) {
             n1 = a.top();
             a.pop();
@@ -59,6 +61,7 @@ int main() {
     // 입력
     stack<int> a = setStack();
     stack<int> b = setStack();
+
     stack<int> res = add(a, b);
     print(res);
 }
