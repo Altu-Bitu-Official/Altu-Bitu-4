@@ -3,16 +3,15 @@
 
 using namespace std;
 
-int n, k;
-queue<int> q1; // 입력 큐
-queue<int> q2; // 결과 큐
-
 int main()
 {
   ios::sync_with_stdio(false);
   cin.tie(NULL);
   cout.tie(NULL);
 
+  int n, k;
+  queue<int> q1; // 입력 큐
+  queue<int> q2; // 결과 큐
   // 숫자 입력 받아서 큐에 집어 넣기
   cin >> n >> k;
 
