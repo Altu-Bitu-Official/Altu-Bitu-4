@@ -27,7 +27,7 @@ int main() {
     vector<bool> is_prime = isPrime(1000000);
 
     while (true) {
-        int num, a, b;
+        int num, a = 0, b = 0;
         cin >> num;
 
         if (num == 0) {
@@ -39,8 +39,6 @@ int main() {
 
                 a = i;
                 b = num - a;
-
-                //cout << "a: " << a << " b: " << b <<"\n";
 
                 if (a > b) {
                     break;
@@ -55,7 +53,7 @@ int main() {
             }
         }
 
-        if (a > b) {
+        if (a != 0 && a > b) {
             cout << "Goldbach's conjecture is wrong.";
         } else {
             cout << num << " = " << a << " + " << b << "\n";
