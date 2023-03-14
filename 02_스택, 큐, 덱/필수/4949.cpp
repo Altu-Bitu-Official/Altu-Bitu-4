@@ -28,12 +28,14 @@ bool checkStack(string s) {
 
 int main() {
     while (true) {
+        // 입력
         string s;
         getline(cin, s);
 
         if (s == ".")
             break;
 
+        // 연산 및 출력
         if (checkStack(s)) {
             cout << "yes" << "\n";
         } else {
@@ -41,3 +43,4 @@ int main() {
         }
     }
 }
+
