@@ -61,11 +61,7 @@ int main() {
     // 입력
     stack<int> a = setStack();
     stack<int> b = setStack();
-    // 연산
+
     stack<int> res = add(a, b);
-    // 출력
-    /* 함수의 결과값은 reference로 넘겨줄 수 없나요?
-     * print(add(a, b)); 로 작성했더니 코드에서 에러가 발생하더라구요ㅠ.ㅠ
-    */
     print(res);
 }
