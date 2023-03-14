@@ -27,18 +27,18 @@ int main()
     for (int i=0; i<n; i++)
         for (int j=0; j<n; j++){
             cin >> v;
-            s[i][j] = v;
+            s[i][j] = v; // 화단 별 가격
     }
-    // 비용 계산
+    // 해당 지점이 꽃의 중심일 때 비용 계산
     for (int i=1; i<n-1; i++)
         for (int j=1; j<n-1; j++)
             price[i-1][j-1] = s[i][j-1] + s[i][j] + s[i][j+1] + s[i-1][j] + s[i+1][j];
     
     // 최적 비용 찾기
-    for (int x1=0; x1<n-4; x1++){
-        for (int y1=0; y1<n-4; y1++)
-            for (int x2=0; x2<n-3; x2++)
-                for (int y2=0; y2<n-3; y2++)
+    for (int x1=0; x1<n-2; x1++){
+        for (int y1=0; y1<n-2; y1++)
+            for (int x2=0; x2<n-2; x2++)
+                for (int y2=0; y2<n-2; y2++)
                     if (planting(x1, y1, x2, y2)) // 꽃을 심을 수 있으면
                         for (int x3=0; x3<n-2; x3++)
                             for (int y3=0; y3<n-2; y3++)
