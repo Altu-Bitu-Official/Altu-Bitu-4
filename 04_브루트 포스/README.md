@@ -8,8 +8,8 @@
 
 |                                문제 번호                                |                                   문제 이름                                    |                                      난이도                                       |  풀이 링크   |       분류        |
 | :---------------------------------------------------------------------: | :----------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: | :----------: | :---------------: |
-| <a href="https://www.acmicpc.net/problem/2309" target="_blank">2309</a> | <a href="https://www.acmicpc.net/problem/2309" target="_blank">일곱 난쟁이</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/5.svg"/> | [바로가기]() | 브루트 포스, 정렬 |
-| <a href="https://www.acmicpc.net/problem/2231" target="_blank">2231</a> |   <a href="https://www.acmicpc.net/problem/2231" target="_blank">분해합</a>    | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/4.svg"/> | [바로가기]() |    브루트 포스    |
+| <a href="https://www.acmicpc.net/problem/2309" target="_blank">2309</a> | <a href="https://www.acmicpc.net/problem/2309" target="_blank">일곱 난쟁이</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/5.svg"/> | [바로가기](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/04_%EB%B8%8C%EB%A3%A8%ED%8A%B8%20%ED%8F%AC%EC%8A%A4/%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EC%BD%94%EB%94%A9/2309.cpp) | 브루트 포스, 정렬 |
+| <a href="https://www.acmicpc.net/problem/2231" target="_blank">2231</a> |   <a href="https://www.acmicpc.net/problem/2231" target="_blank">분해합</a>    | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/4.svg"/> | [바로가기](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/04_%EB%B8%8C%EB%A3%A8%ED%8A%B8%20%ED%8F%AC%EC%8A%A4/%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EC%BD%94%EB%94%A9/2231.cpp) |    브루트 포스    |
 
 ## ✏️ 과제
 
