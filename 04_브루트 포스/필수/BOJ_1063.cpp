@@ -1,132 +1,99 @@
-/*필수*/
 #include <iostream>
 #include <vector>
 #include <string>
 
 using namespace std;
 
-int x[8] = {1, -1, 0, 0, 1, -1, 1, -1}; // 오 왼 아래 위 오위 왼위 오바 왼바
-int y[8] = {0, 0, -1, 1, 1, 1, -1, -1};
+typedef pair<char, char> cc;
 
-int index(string location)
+cc location(string input, char x, char y) //입력받은 위치 열x 행y
 {
-    if (location == "R")
+    for (int i = 0; i < input.size(); i++) //  RT RB 와 같이 크기가 2개일 수 있다
     {
-        return 0;
-    }
-    else if (location == "L")
-    {
-        return 1;
-    }
-    else if (location == "B")
-    {
-        return 2;
-    }
-    else if (location == "T")
-    {
-        return 3;
-    }
-    else if (location == "RT")
-    {
-        return 4;
-    }
-    else if (location == "LT")
-    {
-        return 5;
-    }
-    else if (location == "RB")
-    {
-        return 6;
-    }
-    else if (location == "LB")
-    {
-        return 7;
-    }
-}
-
-int kingIsStone(vector<int> &king, vector<int> &dol, vector<int> &idx, int i)
-{
-    if (king[0] + x[idx[i]] == dol[0] && king[1] + y[idx[i]] == dol[1])
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-}
-
-int include(vector<int> &a, vector<int> &idx, int i)
-{
-    if ((a[0] + x[idx[i]]) < 1 || (a[0] + x[idx[i]]) > 8 || (a[1] + y[idx[i]]) < 1 || (a[1] + y[idx[i]] > 8))
-    {
-        return 0;
-    }
-    else
-    {
-        return 1;
-    }
-}
-void result(vector<int> &king, vector<int> &dol, vector<int> &idx, int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        if (kingIsStone(king, dol, idx, i)) // king dol idx 0
+        char how = input[i];
+        if (how == 'R')
         {
-            if (include(dol, idx, i)) // dol idx 0
-            {
-                king[0] += x[idx[i]];
-                dol[0] += x[idx[i]];
-                king[1] += x[idx[i]];
-                dol[1] += x[idx[i]];
-            }
-            else
-            {
-                continue;
-            }
+            x++; //원래 위치에서 증가시킴
+        }
+        else if (how == 'L')
+        {
+            x--;
+        }
+        else if (how == 'B')
+        {
+            y--;
         }
         else
         {
-            if (include(king, idx, i))
-            {
-                king[0] += x[idx[i]];
-                king[1] += x[idx[i]];
-            }
-            else
-            {
-                continue;
-            }
+            y++;
         }
     }
+    return {x, y};
 }
 
+// 이동된 킹의 위치가 원래의 스톤과 일치할때
+bool sameStone(cc new_k, cc s)
+{
+
+    return (new_k.first == s.first && new_k.second == s.second);
+}
+/* 질문
+아래 sameStone 함수를 사용하면 입력값을 넣었을때 출력값이 제대로 도출되지 않습니다
+혹시 그 이유를 알 수 있을까요?
+*/
+/*
+bool sameStone(cc new_k, cc s)
+{
+
+    if (new_k.first == s.first && new_k.second == s.second)
+    {
+        return true;
+    }
+}
+*/
+bool check(cc pos) //현재 위치가 체스판 범위를 넘어서는지 확인하는 함수
+{
+    if (pos.first < 'A' || pos.second > '8' || pos.first > 'H' || pos.second < '1')
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
 int main()
 {
-    string k, d;
-    int n;
-    cin >> k >> d >> n;
-
-    vector<int> king(2);
-    vector<int> dol(2);
-
-    king[0] = k[0] - 'A';
-    king[1] = k[1] - '0';
-    dol[0] = d[0] - 'A';
-    dol[1] = d[1] - '0';
-
-    string location;
-    vector<int> idx(n);
-    int i;
+    cc k, s; //입력하는 킹과 스톤
+    int n;//개수
+    string input; // 개수만큼의 위치
+    // 입력
+    cin >> k.first >> k.second >> s.first >> s.second >> n;
+    // 계산
     while (n--)
     {
-        i = 0;
-        cin >> location;
-        idx[i++] = index(location); 
+        cin >> input;
+        cc new_k, new_s;                            // 이동된 k , s
+        new_k = location(input, k.first, k.second); // 이동된 k.  킹을 업데이트 시킨다
+
+        if (sameStone(new_k, s)) //만약 업데이트된 킹이 스톤과 만나면
+        {
+            new_s = location(input, s.first, s.second); // 스톤을 업데이트시킨다
+        }
+        else //아니라면
+        {
+            new_s = s; // 스톤은 그대로
+        }
+
+        if (check(new_k) && check(new_s)) // 킹과 스톤이 문제에서 정해진 범위에 놓여있는지 확인 후
+        {
+            k = new_k; //입력받은 킹값을 new_k로 업데이트
+            s = new_s; //입력받은 스톤값을 new_s로 업데이트
+        }
     }
 
-    result(king, dol, idx, n);
-
-    cout << char(king[0] + 'A') << king[1] << "\n";
-    cout << char(dol[0] + 'A') << dol[1] << "\n";
+    // 출력
+    cout << k.first << k.second << "\n"
+         << s.first << s.second;
     return 0;
 }
