@@ -1,62 +1,44 @@
-#include <iostream> 
-#include <cmath> 
-using namespace std; 
-  
- /* 
- *  
- * 1) 일일 기초 대사량 변화를 고려하지 않는 경우: 매일 체중이 (I - init_input - activity_metabolism)만큼 증가 
- * 2) 일일 기초 대사량 변화를 고려하는 경우 
- *      일일 기초 대사량(basal): |I - b_prev - activity_metabolism| >= T 인 경우, floor((I - b_prev - activity_metabolism)/2)만큼 증가 
- *      일일 체중 증가량: (I - basal - activity_metabolism) 
- *  
- * 사망 조건: (체중 <= 0) OR (basal <= 0) 
- *  
- * 요요 조건: (init_input - basal > 0) 
- */ 
-  
-  
- int main() { 
-         int init_input, diet_input; //기존 일일 에너지 섭취량, 다이어트 중 일일 에너지 섭취량 
-         int activity, thres; //다이어트 중 일일 활동 대사량, 기초 대사량 변화 역치 
-         int init_w, dur; //기존 체중, 다이어트 기간 
-          
-         //입력 
-         cin >> init_w >> init_input >> thres; 
-         cin >> dur >> diet_input >> activity; 
-  
-         int basal = init_input; //일일 기초대사량 
-         int weight = init_w;  
-  
-         //일일 기초대사량 변화 고려 안한 예상 체중, 일일 기초 대사량 출력 
-         weight += (diet_input - basal - activity) * dur; 
-         (weight<=0)? cout << "Danger Diet\n": cout << weight << ' ' << basal<<'\n'; 
-  
-  
-         //일일 기초대사량 변화 고려한 연산 
-         weight = init_w; 
-         while (dur--) { 
-                 //몸무게 변화 
-                 weight += (diet_input - basal - activity); 
-  
-                 //일일 기초대사량 업데이트 
-                 if (abs(diet_input - basal - activity) > thres) { 
-                         basal += floor((double)(diet_input - basal - activity) / 2); 
-                 } 
-  
-                 //죽으면 끝 
-                 if (weight <=0 || basal<=0) { 
-                         cout << "Danger Diet\n"; 
-                         return 0; 
-                 } 
-         } 
-  
-         //일일 기초대사량 고려한 예상 체중, 일일 기초 대사량 출력 
-         cout << weight << ' ' << basal << ' '; 
-         //요요 여부 
-         if(init_input-basal>0){
-             cout << "YOYO";
-         }else{
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main(){
+    int w, bi, t, d, i, a;
+
+    // 입력
+    cin >> w >> bi >> t;
+    cin >> d >> i >> a;
+
+    int w1 = w;  // 첫번째 줄 계산
+
+    int w2 = w;  // 두번째 줄 계산
+    int bi2 = bi; //두번째 줄 계산을 위한 작업
+
+    while (d--){
+        w1 += i - (bi + a) ;
+
+        w2 += i - (bi2 + a) ;
+        if (abs(i - (bi2 + a)) > t){
+            bi2 += floor((i - (bi2 + a))/2.0);
+        }
+    }
+
+
+    if (w1 <= 0) // 일일 기초대사량이 고정인 경우이므로 고려 x
+        cout << "Danger Diet\n";
+    else
+        cout << w1 << " " << bi << "\n";
+
+
+
+    if (w2 <= 0 || bi2 <= 0)
+        cout << "Danger Diet\n";
+    else{
+        cout << w2 << " " << bi2 << " ";
+        if (bi - bi2 > 0) 
+            cout << "YOYO";
+        else
             cout << "NO";
-         }
-  
- }
+    }
+}
