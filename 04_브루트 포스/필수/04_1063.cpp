@@ -25,7 +25,7 @@ cc move(string input, char x, char y){//이동함수 x:열, y:행
 }
 
 bool checkRange(cc position){//범위를 체크하는 함수
-    if(position.first < '1' || position.second > '8'){//위치가 체스보드 밖으로 나가는 경우
+    if(position.first < 'A' || position.first > 'H' || position.second<'1' || position.second > '8'){//위치가 체스보드 밖으로 나가는 경우
         return false;//false 반환
     }
     return true;//체스보드 범위 안에 있을 경우 true를 반환
