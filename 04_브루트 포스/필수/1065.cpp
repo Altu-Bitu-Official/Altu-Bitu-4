@@ -33,10 +33,12 @@ int main() {
 	cin >> n;
 	vector<bool> Hansu(n+1, true);
 	judgeHansu(Hansu);
-	//답안다른문제
+
 	for (int i = 1; i <Hansu.size(); i++) {
 		if (Hansu[i] == true)
+		{
 			answer_count++;
+		}
 	}
 	cout << answer_count;
 
