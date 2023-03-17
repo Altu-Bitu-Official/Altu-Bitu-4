@@ -4,78 +4,81 @@
 
 using namespace std;
 
-// 각 자리수의 제곱의 합 계산 함수
-int getSum(int n) {
-    int total = 0, tmp;
-    while (n != 0) {
-        tmp = n % 10;
-        n /= 10;
-        total += tmp * tmp;
-    }
-    return total;
-}
-// 소수 여부 반환 함수: 에라토스테네스의 체 이용
-vector<bool> getPrimes(int n) {
-    vector<bool> is_prime(n+1, true);
-    is_prime[0] = is_prime[1] = false;
-    for (int i = 2; i * i <= n; i++) {
-        if (!is_prime[i]) {
-            continue;
-        }
-        for (int j = i * i; j <= n; j += i) {
-            is_prime[j] = false;
-        }
-    }
-    return is_prime;
-}
-// 소수상근수 여부 반환 함수
-bool is_valid(int n) {
-    set<int> visited;
-    visited.insert(n);
-    while(1) {
-        n = getSum(n);
-        if (n == 1) {
-            return true;
-        }
-        if (visited.find(n) != visited.end()) {
-            return false;
-        }
-        visited.insert(n);
-    }
+void isPrime(int n, vector<bool>& is_prime){
+	is_prime[0] = is_prime[1] = false;
+
+	for (int i = 2; i * i <= n; i++) {
+		if (is_prime[i]) {
+			for (int j = i * i; j <= n; j += i) {
+				is_prime[j] = false;
+			}
+		}
+	}
 }
 
-// n보다 작거나 같은 소수상근수 벡터 반환
-vector<int> solution(int n) {
-    vector<bool> is_prime = getPrimes(n);
-    vector<int> result;
-    for (int i = 2; i <= n; i++) {
-        if (is_prime[i] && is_valid(i)) {
-            result.push_back(i);
-        }
-    }
-    return result;
+void isSanggeun(int n, vector<bool>& is_prime) {
+	is_prime[2] = is_prime[3] = is_prime[5] = false; // 초반 상근수가 아닌 것들 지우기
+
+	for (int i = 7; i <= n; i++) {
+		if (is_prime[i]) { //소수이면 상근수인지 확인
+			set <int> s; //상근수 계산결과를 저장할 set
+			int num = i; //계산할 값
+			while (true) {
+				int sum = 0; //계산 결과
+				while (true) { // 한 자릿수씩 계산해서 더하기 
+					//cout << num << "\n";
+					sum += ((num % 10) * (num % 10));
+					if (num >= 10) {
+						num /= 10;
+					}
+					else {
+						break;
+					}
+				}
+
+				//sum의 결과로 소수 상근수인지 판단
+				if (s.find(sum) != s.end()) { // 이미 한 번 계산한 결과라면 
+					is_prime[i] = false;
+					break;
+				}
+				else if (sum == 1) { //소수상근수
+					break;
+				}
+				else { //계속 계산
+					s.insert(sum);
+					num = sum; //num 갱신
+				}
+			}
+
+		}
+	}
 }
 
-/* [백준 9421: 소수상근수]
- * 상근수는 각 자리수의 제곱의 합을 재귀적으로 계산했을 때 1이 되는 수이다.
- * 즉, 각 자리수의 제곱의 합을 재귀적으로 계산했을 때
- * 이전에 나왔던 값이 다시 나온다면 그 수는 상근수가 될 수 없다.
- * 1. n보다 작거나 같은 모든 소수를 찾는다.
- * 2. n보다 작거나 같은 소수들이 상근수인지 판단한다.
- * 3. 소수이면서 상근수이면 결과값으로 추가한다.
- */
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-int main() {
-    // 입력
-    int n;
-    cin >> n;
-    
-    // 연산
-    vector<int> result = solution(n);
+	int n;
+	vector<bool>is_prime;
 
-    // 출력
-    for (int num : result) {
-        cout << num << "\n";
-    }
-    return 0;
+	//입력
+	cin >> n;
+
+	//연산
+	//미리 n까지의 소수 구하기
+	is_prime.assign(n + 1, true);
+	isPrime(n, is_prime);
+	//n까지의 소수 상근수 구하기
+	isSanggeun(n, is_prime);
+
+	//출력
+	for (int i = 7; i <= n; i++) {
+		if (is_prime[i]) {
+			cout << i << "\n";
+		}
+	}
+	
+return 0;
 }

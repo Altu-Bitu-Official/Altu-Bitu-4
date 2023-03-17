@@ -15,7 +15,6 @@ int sumNumber(const string& a) {
 	return sum;
 }
 
-
 // 비교하여 정렬하는 함수 
 bool cmp(const string& a, const string& b) {
 	if (a.length() != b.length()) {

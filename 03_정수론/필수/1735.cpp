@@ -1,35 +1,57 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-// 최대공약수(GCD) 계산 함수: 유클리드 호제법 이용
-int getGCD(int a, int b) {
-    if (b == 0) return a;
-    return getGCD(b, a % b);
+int gcdIter(int a, int b) {//최대 공약수 구하는 함수
+	while (b) {
+		a %= b;
+		swap(a, b);
+	}
+	return a;
 }
 
-/* [백준 1735: 분수 합]
- * a/b + c/d = (a*d)/(b*d) + (b*c)/(b*d) = (a*d + b*c)/(b*d)
- * 위 분수를 기약분수로 나타낸 것을 x/y라 하고,
- * gcd를 (a*d + b*c)와 (b*d)의 최대공약수라 하면
- * x = (a*d + b*c) / gcd
- * y = (b*d) / gcd
-*/
+vector<int> addFountain(vector<int>& n1, vector<int>& n2) {
+	vector<int> result; //두 분수를 더한 값
+	int gcd;
+	result.assign(2, 0);
+	//분모의 최소 공배수 구하기
+	gcd = gcdIter(max(n1[1], n2[1]), min(n1[1], n2[1]));
+	result[1] = n1[1] * n2[1] / gcd; //공통 분모 구하기
 
-int main() {
-    // 입력 
-    int a, b, c, d;
-    cin >> a >> b >> c >> d;
+	//두 분수를 더한 분수의 분자 구하기
+	n1[0] *= result[1] / n1[1];
+	n2[0] *= result[1] / n2[1];
+	result[0] = n1[0] + n2[0];
 
-    // 연산
-    int x = (a * d) + (b * c);  // 분자
-    int y = b * d;              // 분모
-    int gcd = getGCD(x, y);
-    x = x / gcd;    // 기약분수의 분자
-    y = y / gcd;    // 기약분수의 분모
+	//기약 분수인지 확인 
+	int i = gcdIter(max(result[0], result[1]), min(result[0], result[1]));
+	if (i != 1) { //기약 분수가 아니면
+		result[0] /= i;
+		result[1] /= i;
+	}
 
-    // 출력
-    cout << x << " " << y;
-    
-    return 0;
+	return result;
+}
+
+int main()
+{
+	vector<int> n1; // 첫번째 분수
+	vector<int> n2; // 두번째 분수
+	vector<int> result; //두 분수를 더한 분수
+	n1.assign(2, 0);
+	n2.assign(2, 0);
+
+	//입력
+	cin >> n1[0] >> n1[1];
+	cin >> n2[0] >> n2[1];
+
+	//연산
+	result = addFountain(n1, n2);
+	
+	//출력
+	cout << result[0] << " " << result[1];
+
+	return 0;
+
 }
