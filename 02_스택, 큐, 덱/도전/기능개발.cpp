@@ -1,62 +1,40 @@
 #include <iostream>
-#include <string>
 #include <vector>
-#include <queue>
-#include <cmath>
+#include <stack>
 
 using namespace std;
 
-queue<int> completionTime(int n, vector<int> progresses, vector<int> speeds) { // 작업별 완료시간 반환
-    queue<int> q; // 작업 완료시간
-
-    for(int i = 0; i < n; i++) {
-        int remain = 100 - progresses[i]; // 남은 작업량
-        q.push(ceil((double) remain / speeds[i])); // 완료시간 계산
-    }
-    return q;
-}
-
 vector<int> solution(vector<int> progresses, vector<int> speeds) {
+    int due; //작업기간
+    stack<int> s;
     vector<int> answer;
 
-    int n = progresses.size(); // 작업 개수
-    queue<int> q = completionTime(n, progresses, speeds); // 작업 완료시간
+    for (int i = (progresses.size()-1); i >= 0 ; i--) { // progresses size 만큼 반복
 
-    while(!q.empty()) {
-        int curr_time = q.front(); // 현재 작업의 완료 시간
-        q.pop();
-        int cnt = 1; // 현재 작업과 함께 배포될 수 있는 작업 수
+        // 연산 
+        due = ((100 - progresses[i]) / speeds[i]);
 
-        // 현재 작업과 함께 배포할 수 있는 작업 세기
-        // q.front() : 현재 작업보다 뒷순서인 작업의 완료 시간
-        while(!q.empty() && q.front() <= curr_time) {
-            q.pop();
-            cnt++;
+        if (((100 - progresses[i]) % speeds[i]) != 0) {
+            // 나머지가 존재한다면
+            due++;
         }
-        answer.push_back(cnt);
+
+        s.push(due);
     }
+
+    //한번에 배포되는 기능의 개수 연산
+    while (!s.empty()) { //스택이 빌 때까지 반복
+        int num = 0; //한번에 배포되는 기능의 개수
+        int top = s.top(); // 기준 작업기간 설정
+
+        while (!s.empty() && s.top() <= top) {  // 스택이 비어있지 않고 기준 작업기간보다 top 원소가 작다면 배포할 기능 개수 추가
+            num++;
+            s.pop();
+        }
+        answer.push_back(num); // answer에 추가
+    }
+
+       
     return answer;
-}
 
-/*
- * 배포 프로세스 : 작업 완료 후 배포
- * 1. 작업별 작업 완료 시간을 계산한다.
- * 2. 작업 순서대로 배포를 시작한다.
- *
- * HINT : 뒷 순서의 작업이 앞 순서보다 먼저 개발될 수는 있지만 '먼저 배포될 수는 없다'
- * -> 앞 순서의 작업이 먼저 배포되는 (== FIFO) 구조
-*/
-
-int main() {
-    vector<int> progresses = {93, 30, 55};
-    vector<int> speeds = {1, 30, 5};
-
-    // 연산
-    vector<int> answer = solution(progresses, speeds);
-
-    // 출력
-    for(int i = 0; i < answer.size(); i++) {
-        cout << answer[i] << ' ';
-    }
-    return 0;
 }

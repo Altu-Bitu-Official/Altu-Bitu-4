@@ -1,78 +1,69 @@
 #include <iostream>
 #include <stack>
+#include <map>
 
 using namespace std;
 
-int priority(char ch) { // 연산자 우선순위 반환
-    switch(ch) {
-        case '(': return 0;
-        case '+': case '-': return 1;
-        case '*': case '/': return 2; // 연산자 순위 가장 높음 (먼저 계산되어야 함)
-    }
-}
+int main()
+{
+	char str[500]; // 문자열 받을 배열
+	stack<char>s;
 
-string postfix(string input) { // 중위 표기식 -> 후위 표기식
-    string result = ""; // 후위 표기식
-    stack<char> op; // 연산자 저장하는 스택
+	//각 기호에 대한 우선순위 매핑
+	map<char, int> m;
+	m['('] = m[')'] = 0;
+	m['*'] = m['/'] = 1;
+	m['+'] = m['-'] = 2;
 
-    for(int i = 0; i < input.size(); i++) {
-        char ch = input[i];
-        switch(ch) {
-            // 여는 괄호는 무조건 push
-            case '(':
-                op.push(ch);
-                break;
 
-            // 닫는 괄호는 여는 괄호를 만날 때까지 pop
-            case ')':
-                while(!op.empty() && op.top() != '(') {
-                    result += op.top();
-                    op.pop();
-                }
-                op.pop(); // 여는 괄호 제거
-                break;
+	//입력
+	cin.getline(str, 501);
 
-            // 연산자의 경우, 스택에 들어있는 연산자와 우선순위 비교
-            case '+': case '-': case '*': case '/':
-                // 스택에 현재 연산자보다 우선순위가 높은 (=먼저 계산되어야 하는) 연산자가 있는 경우 pop
-                while(!op.empty() && priority(op.top()) >= priority(ch)) {
-                    result += op.top();
-                    op.pop();
-                }
-                op.push(ch); // 현재 연산자 push
-                break;
+	for (int i = 0; str[i] != '\0'; i++) { //문장의 끝에 도달할 때까지 반복
+		if (str[i] == '(' || str[i] == ')' || str[i] == '*' || str[i] == '/' || str[i] == '+' || str[i] == '-') {
+			//기호라면
 
-            // 피연산자는 바로 결과에 추가
-            default:
-                result += ch;
-        }
-    }
+			if (s.empty()|| m[s.top()] > m[str[i]]) {
+				//스택이 비어있거나 우선순위가 높은 애들이 들어올 경우
+				if (str[i] != ')') { //닫힌 괄호가 아닌 경우만 삽입
+					s.push(str[i]);
+				}
+				else {
+					//닫힌 괄호라면 ( 만날때 까지 출력
+					while (s.top() != '(') {
+						cout << s.top();
+						s.pop();
+					}
+					s.pop(); // ( 도 제거
+				}
+			}
+			else {
+				//스택이 비어있지 않고 우선순위가 같거나 낮은 애들이 들어올 경우
+				
+				if (str[i] == ')') { // 닫힌 괄호일 경우 무조건 우선순위가 같은 ( 일 수 밖에 없으므로 
+					s.pop(); // ( 제거
+				}
+				else {
+					//닫힌 괄호가 아닐 경우 우선순위가 스택의 top 원소보다 높아지거나 스택이 빌 때까지 출력
+					while (!s.empty() && (m[s.top()] <= m[str[i]])) {
+						if (s.top() == '(') { // ( 그냥 무시 
+							break;
+						}
+						cout << s.top();
+						s.pop();
+					}
+					s.push(str[i]); // 새로 들어온 기호 스택에 삽입
+				}
+			}
+		}
+		else { //문자라면 그냥 출력
+			cout<<str[i];
+		}
+	}
 
-    // 스택에 남아있는 연산자 결과에 추가
-    while(!op.empty()) {
-        result += op.top();
-        op.pop();
-    }
-    return result;
-}
-
-/*
- * [중위 표기식 -> 후위 표기식]
- * 1. 피연산자는 순서가 변하지 않으므로 바로 결과에 추가한다.
- * 2. 연산자는 우선순위에 따라 순서가 변하므로 스택에 잠시 저장한다.
- * 3. 스택의 top에 있는 연산자는 우선순위가 제일 높아야 한다.
- * 4. 스택의 top에 있는 연산자가 현재 연산자보다 우선순위가 같거나 높으면 스택에서 값을 꺼내야 한다.
- * 5. 여는 괄호는 무조건 스택에 넣는다.
- * 6. 닫는 괄호가 들어오면 여는 괄호가 나올 때까지 스택에 있는 연산자를 결과에 추가한다.
-*/
-
-int main() {
-    string input; // 입력값 (중위 표기식)
-
-    // 입력
-    cin >> input;
-
-    // 연산 & 출력
-    cout << postfix(input);
-    return 0;
+	while (!s.empty()) { // 스택에 남아있는 기호 출력
+		cout << s.top();
+		s.pop();
+	}
+	return 0;
 }
