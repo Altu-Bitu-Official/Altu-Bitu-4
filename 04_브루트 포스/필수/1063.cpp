@@ -1,7 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <map>
 #include <string>
 
 using namespace std;
@@ -18,15 +16,11 @@ vector<int> LB = {-1, -1};
 vector<vector<int>> direction = {R, L, B, T, RT, LT, RB, LB};
 string name[] = {"R", "L", "B", "T", "RT", "LT", "RB", "LB"};
 
-vector<int> location(){
-    vector<int> arr = {0, 0};
-
-    string tmp;
-    cin >> tmp;
-    arr[0] = tmp[0]-'A' + 1;     //A = 1
-    arr[1] = tmp[1]-'0';
-
-    return arr;
+pair<int, int> location(string tmp){
+    pair<int, int> p;
+    p.first = tmp[0]-'A' + 1;     //A = 1
+    p.second = tmp[1]-'0';
+    return p;
 }
 
 bool checkBoard(int a, int b){
@@ -36,16 +30,16 @@ bool checkBoard(int a, int b){
     return true;
 }
 
-int checkRock(vector<int>& king, vector<int>& rock, int x, int y){
+int checkRock(pair<int, int>& king, pair<int, int>& rock, int x, int y){
     //돌이 있다면
-    if(king[0]+x == rock[0] && king[1]+y == rock[1]){
+    if(king.first+x == rock.first && king.second+y == rock.second){
         //돌을 움직였을 때 체크판 범위 체크
-        if(checkBoard(rock[0]+x, rock[1]+y)){
+        if(checkBoard(rock.first+x, rock.second+y)){
             //범위를 벗어나지 않는다면 돌과 체스 옮기기
-            rock[0] += x;
-            rock[1] += y;
-            king[0] += x;
-            king[1] += y;
+            rock.first += x;
+            rock.second += y;
+            king.first += x;
+            king.second += y;
             return 1;
         }
         //범위를 넘어서는 경우
@@ -55,7 +49,7 @@ int checkRock(vector<int>& king, vector<int>& rock, int x, int y){
     return 0;
 }
 
-void moveKing(vector<int>& king, vector<int>& rock, int n){
+void moveKing(pair<int, int>& king, pair<int, int>& rock, int n){
     string m;
     while(n--){
         //입력
@@ -68,25 +62,22 @@ void moveKing(vector<int>& king, vector<int>& rock, int n){
                 int y = direction[i][1];
                 
                 //돌 체크
-                int cr = checkRock(king, rock, x, y);
-                //돌이 있으면
-                if(cr){
+                //돌이 있으면 && 돌이 있지만 범위를 넘어서는 경우
+                if(checkRock(king, rock, x, y)){
                     break;
                 }
                 //돌이 없으면
-                if(cr == 0){
+                else{
                     //체스판 범위 검사
-                    if(checkBoard(king[0]+x, king[1]+y)){
+                    if(checkBoard(king.first+x, king.second+y)){
                         //이동
-                        king[0] += x;
-                        king[1] += y;
+                        king.first += x;
+                        king.second += y;
                     }
                     else{
                         break;
                     }
                 }
-                //돌이 있지만 범위를 넘어서는 경우
-                break;
             }
         }
     }
@@ -95,14 +86,19 @@ void moveKing(vector<int>& king, vector<int>& rock, int n){
 int main()
 {
     int n;
+    //pair<int, int> king;
+
     //입력
-    vector<int> king = location();
-    vector<int> rock = location();
+    string tmp;
+    cin >> tmp;
+    pair<int, int> king = location(tmp);
+    cin >> tmp;
+    pair<int, int> rock = location(tmp);
     cin >> n;
 
     //킹 움직이기
     moveKing(king, rock, n);
 
-    cout << char(king[0]+'A'-1) << king[1] << "\n";
-    cout << char(rock[0]+'A'-1) << rock[1];
+    cout << char(king.first+'A'-1) << king.second << "\n";
+    cout << char(rock.first+'A'-1) << rock.second;
 }
