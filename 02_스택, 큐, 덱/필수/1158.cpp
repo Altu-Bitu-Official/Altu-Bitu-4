@@ -22,11 +22,11 @@ int main()
         circle.push(i);
         i++;
     }
-
-    i=0;
+    
+    i=0; 
 
     cout << "<";
-    // 큐가 빌 때까지 = 모든 사람이 제거될 때 까지
+    // 큐가 빌 때까지 = 모든 사람이 제거될 때 까지 
     while(!circle.empty())
     {
         i++;
@@ -35,7 +35,8 @@ int main()
         {
             circle.push(circle.front());
         }
-            // i가 K의 배수라면 출력
+        
+        // i가 K의 배수라면 출력
         else
         {
             cout << circle.front();
