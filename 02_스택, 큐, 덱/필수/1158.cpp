@@ -1,50 +1,51 @@
 #include <iostream>
+#include <vector>
 #include <queue>
 
 using namespace std;
 
-vector<int> josephus(int n, int k) { // 요세푸스 순열 반환
-    vector<int> result; // 요세푸스 순열
-    queue<int> q; // 원
-
-    for(int i = 1; i <= n; i++) { // 원 초기화
-        q.push(i);
-    }
-
-    while(!q.empty()) {
-        for(int i = 0; i < k-1; i++) { // k-1번 pop & push
-            q.push(q.front());
-            q.pop();
-        }
-
-        // k번째 사람 pop 후 순열에 추가
-        result.push_back(q.front());
-        q.pop();
-    }
-    return result;
-}
-
-/*
- * 원을 따라 k번째 사람을 제거한다.
- * 1. k번째 사람이 아닌 사람은 원의 맨 뒤로 보낸다.
- * 2. k번째 사람은 원에서 제거한다.
-*/
-
-int main() {
-    int n, k;
-    queue<int> q;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
     // 입력
-    cin >> n >> k;
+    int N, K;
+    cin >> N >> K;
 
-    // 연산
-    vector<int> result = josephus(n, k);
+    queue<int> circle;  // 현재 서클 상태를 나타내는 큐
 
-    // 출력
-    cout << "<" << result[0];
-    for(int i = 1; i < n; i++) {
-        cout << ", " << result[i];
+    // 1부터 N까지 큐에 push
+    int i = 1;
+    while(i < N + 1)
+    {
+        circle.push(i);
+        i++;
+    }
+
+    i=0;
+
+    cout << "<";
+    // 큐가 빌 때까지 = 모든 사람이 제거될 때 까지
+    while(!circle.empty())
+    {
+        i++;
+        // i가 K의 배수가 아니라면 큐의 front 원소를 큐의 가장 뒤에 push
+        if(i%K != 0)
+        {
+            circle.push(circle.front());
+        }
+            // i가 K의 배수라면 출력
+        else
+        {
+            cout << circle.front();
+            if(circle.size() != 1)
+            {
+                cout << ", ";
+            }
+        }
+        // 큐의 front 원소를 pop
+        circle.pop();
     }
     cout << ">";
-    return 0;
 }
