@@ -26,16 +26,16 @@
 
 |                                 문제 번호                                 |                                      문제 이름                                      |                                      난이도                                       | 풀이 링크 |  분류  |
 | :-----------------------------------------------------------------------: | :---------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: | :-------: | :----: |
-| <a href="https://www.acmicpc.net/problem/19636" target="_blank">19636</a> | <a href="https://www.acmicpc.net/problem/19636" target="_blank">요요 시뮬레이션</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/6.svg"/> |  [C++]()  |  구현  |
-|  <a href="https://www.acmicpc.net/problem/1431" target="_blank">1431</a>  |   <a href="https://www.acmicpc.net/problem/1431" target="_blank">시리얼 번호</a>    | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/8.svg"/> |  [C++]()  |  정렬  |
-| <a href="https://www.acmicpc.net/problem/14425" target="_blank">14425</a> |   <a href="https://www.acmicpc.net/problem/14425" target="_blank">문자열 집합</a>   | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/8.svg"/> |  [C++]()  | 맵, 셋 |
+| <a href="https://www.acmicpc.net/problem/19636" target="_blank">19636</a> | <a href="https://www.acmicpc.net/problem/19636" target="_blank">요요 시뮬레이션</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/6.svg"/> |  [C++](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/01_%EC%A0%95%EB%A0%AC%2C%20%EB%A7%B5%2C%20%EC%85%8B/%ED%95%84%EC%88%98/19636.cpp)  |  구현  |
+|  <a href="https://www.acmicpc.net/problem/1431" target="_blank">1431</a>  |   <a href="https://www.acmicpc.net/problem/1431" target="_blank">시리얼 번호</a>    | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/8.svg"/> |  [C++](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/01_%EC%A0%95%EB%A0%AC%2C%20%EB%A7%B5%2C%20%EC%85%8B/%ED%95%84%EC%88%98/1431.cpp)  |  정렬  |
+| <a href="https://www.acmicpc.net/problem/14425" target="_blank">14425</a> |   <a href="https://www.acmicpc.net/problem/14425" target="_blank">문자열 집합</a>   | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/8.svg"/> |  [C++](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/01_%EC%A0%95%EB%A0%AC%2C%20%EB%A7%B5%2C%20%EC%85%8B/%ED%95%84%EC%88%98/14425.cpp)  | 맵, 셋 |
 
 ### 도전
 
 |                                문제 번호                                |                                    문제 이름                                     |                                       난이도                                       | 풀이 링크 |  분류  |
 | :---------------------------------------------------------------------: | :------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :-------: | :----: |
-| <a href="https://www.acmicpc.net/problem/1946" target="_blank">1946</a> |   <a href="https://www.acmicpc.net/problem/1946" target="_blank">신입 사원</a>   | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/10.svg"/> |  [C++]()  |  정렬  |
-| <a href="https://www.acmicpc.net/problem/9375" target="_blank">9375</a> | <a href="https://www.acmicpc.net/problem/9375" target="_blank">패션왕 신해빈</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/8.svg"/>  |  [C++]()  | 맵, 셋 |
+| <a href="https://www.acmicpc.net/problem/1946" target="_blank">1946</a> |   <a href="https://www.acmicpc.net/problem/1946" target="_blank">신입 사원</a>   | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/10.svg"/> |  [C++](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/01_%EC%A0%95%EB%A0%AC%2C%20%EB%A7%B5%2C%20%EC%85%8B/%EB%8F%84%EC%A0%84/1946.cpp)  |  정렬  |
+| <a href="https://www.acmicpc.net/problem/9375" target="_blank">9375</a> | <a href="https://www.acmicpc.net/problem/9375" target="_blank">패션왕 신해빈</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/8.svg"/>  |  [C++](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/01_%EC%A0%95%EB%A0%AC%2C%20%EB%A7%B5%2C%20%EC%85%8B/%EB%8F%84%EC%A0%84/9375.cpp)  | 맵, 셋 |
 
 ---
 
