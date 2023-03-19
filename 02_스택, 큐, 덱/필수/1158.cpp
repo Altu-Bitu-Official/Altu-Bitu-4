@@ -7,13 +7,13 @@ using namespace std;
 int main()
 {
     ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
+    cin.tie(NULL);
 
     // 입력
     int N, K;
     cin >> N >> K;
 
-    queue<int> circle;  // 현재 서클 상태를 나타내는 큐 
+    queue<int> circle;  // 현재 서클 상태를 나타내는 큐
 
     // 1부터 N까지 큐에 push
     int i = 1;
@@ -22,7 +22,7 @@ int main()
         circle.push(i);
         i++;
     }
-
+    
     i=0; 
 
     cout << "<";
@@ -35,6 +35,7 @@ int main()
         {
             circle.push(circle.front());
         }
+        
         // i가 K의 배수라면 출력
         else
         {
