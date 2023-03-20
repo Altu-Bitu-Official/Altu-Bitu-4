@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 bool isit_similar(string word, string factor) {//정렬된 상태의 word와 factor가 전달되었습니다.
-    
+
     string longer, shorter;
     if (word.length() > factor.length()) {
         longer = word; shorter = factor;
@@ -15,14 +15,14 @@ bool isit_similar(string word, string factor) {//정렬된 상태의 word와 fac
     else {
         longer = word; shorter = factor;
     }
-    
+
     vector<char> l(longer.begin(), longer.end());
     vector<char> s(shorter.begin(), shorter.end());
-    
+
     for (int i = 0; i < shorter.length(); i++) {
         for (int j = 0; j < longer.length(); j++) {
             if (shorter[i] == longer[j]) {
-               s[i] = '0'; l[j] = '0';
+                s[i] = '0'; l[j] = '0';
                 //일치하는 문자를 찾으면 지운다.
             }
         }
@@ -61,7 +61,7 @@ int main() {
         else if (isit_similar(word, factor) == true) {//구성이 같진 않더라도 비슷하면
             count++;
         }
-        
+
     }
     cout << count;
 }
