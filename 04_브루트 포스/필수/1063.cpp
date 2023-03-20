@@ -6,10 +6,7 @@ using namespace std;
 
 //체스판에 위치하는지 확인하는 함수
 bool check(int c, int r) {
-	if (c > 7 || r > 7 || c < 0 || r < 0 ) { //체스판을 넘어가면
-		return 0;
-	}
-	return 1;
+	return (c > 7 || r > 7 || c < 0 || r < 0) //체스판을 넘어가면
 }
 
 //way에 맞게 위치를 계산하는 함수

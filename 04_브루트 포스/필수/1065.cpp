@@ -6,8 +6,14 @@ using namespace std;
 //연산
 int cal(int n) {
 	int cnt = 0;
+
+	if (n <= 99) {
+		return n;
+	}
+
 	for (int i = 1; i <= n; i++) {//n까지 반복
 		if (i > 99) { // 100 이상 부터는 추가 계산 
+			
 			string s = to_string(i);
 
 			int diff = (s[1] - '0') - (s[0] - '0'); // 등차 기준 설정
