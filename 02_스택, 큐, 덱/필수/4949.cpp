@@ -1,61 +1,54 @@
 #include <iostream>
 #include <stack>
+#include <map>
 
 using namespace std;
 
-bool isBalanced(string input) { // 괄호가 균형을 이루었는지 여부 반환
-    stack<char> s; // 괄호 저장하는 스택
+bool cmpBalance(char str[500]) {
+	stack<char>s; // 괄호를 넣을 스택
+	map<char, char> m;
+	m[')'] = '(';
+	m[']'] = '[';
 
-    for(int i = 0; i < input.length(); i++) {
-        char ch = input[i];
-        switch(ch) {
-            case '(': case '[': // 여는 괄호는 무조건 push
-                s.push(ch);
-                break;
-            case ')': // 닫는 소괄호
-                if(s.empty() || s.top() != '(') {
-                    return false;
-                }
-                s.pop();
-                break;
-            case ']': // 닫는 대괄호
-                if(s.empty() || s.top() != '[') {
-                    return false;
-                }
-                s.pop();
-                break;
-        }
-    }
-    return s.empty();
+	for (int i = 0; str[i] != '.'; i++) { //문장의 끝에 도달할 때 까지 반복
+		if (str[i] == '(' || str[i] == '[') {
+			s.push(str[i]);
+		}
+		else if (str[i] == ')' || str[i] == ']') {
+			if (!s.empty() && s.top() == m[str[i]]) { // 닫히는 괄호의 경우, 스택이 비어 있지 않고, top의 짝이 맞으면 pop
+				s.pop();
+			}
+			else {
+				return false; //아니면 균형이 맞지 않음 
+			}
+		}
+	}
+
+	return s.empty(); // 최종 연산 후 스택이 비어있다면 균형이 잡힌 것
 }
 
-/*
- * [괄호 균형 확인하기]
- * 1. 여는 괄호는 바로 스택에 넣는다.
- * 2. 닫는 괄호가 나오면 가장 최근에 넣었던 여는 괄호와 비교한다.
- * 2-1. 닫는 괄호와 여는 괄호의 종류가 같다면 해당 닫는 괄호가 균형을 이룬다.
- * 2-2. 직전에 나온 여는 괄호가 없거나 그 종류가 다르다면 해당 닫는 괄호가 균형을 이루지 못한다.
- * 3. 모든 닫는 괄호가 여는 괄호와 짝을 이루었더라도 스택에 여는 괄호가 남아있다면 균형을 이루지 못한다.
-*/
+
+int main()
+{
+	char str[500]; // 줄 입력 받을 문자 - 100자 이상이므로 101자보다 크게 설정 
 
 
-int main() {
-    string input;
+	while (true) {
+		cin.getline(str, 501); // 한 줄 입력 받기
+		if (str[0] == '.') { // '.'이 들어오면 프로그램 종료
+			break;
+		}
 
-    while(true) {
-        // 입력
-        getline(cin, input);
-        if(input == ".") {
-            break;
-        }
+		//연산 및 출력
+		if (cmpBalance(str)) {
+			cout << "yes";
+		}
+		else {
+			cout << "no";
+		}
 
-        // 연산 & 출력
-        if(isBalanced(input)) {
-            cout << "yes\n";
-        }
-        else {
-            cout << "no\n";
-        }
-    }
-    return 0;
+	}
+
+	return 0;
+
 }

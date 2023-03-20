@@ -1,66 +1,72 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>    // sort() 이용
+#include <algorithm>
+#include <set>
 
 using namespace std;
 
-// 최대공약수(GCD) 계산 함수: 유클리드 호제법 이용
-int getGCD(int a, int b) {
-    if (b == 0) {
-        return a;
-    }
-    return getGCD(b, a % b);
+//최대 공약수 구하는 함수
+int gcdIter(int a, int b) {
+	while (b) {
+		a %= b;
+		swap(a, b);
+	}
+	return a;
 }
 
-// 가능한 M 검색 함수
-vector<int> solution(int n, vector<int> &numbers) {
-    vector<int> result; //가능한 M 저장
 
-    // 1. 검문소 사이 간격의 최대공약수(최대 M) 계산
-    int gcd = numbers[1] - numbers[0];
-    for (int i = 2; i < n; i++) {
-        gcd = getGCD(gcd, numbers[i] - numbers[i - 1]);
-    }
+set<int> cal(vector<int>& v) {
+	vector<int> v2; //주어진 수 중 최솟값 구하기
+	int n; // 최대공약수 구할 기준 수
+	set<int> s; //결과를 구할 셋
 
-    // 2. 가능한 모든 M 찾기: 최대공약수의 약수 찾기
-    for (int i = 2; i * 2 <= gcd; i++) {
-        if (gcd % i == 0) {
-            result.push_back(i);
-        }
-    }
-    result.push_back(gcd);
+	//차를 쉽게 구하기 위해 정렬
+	sort(v.begin(), v.end());
 
-    return result;
+	//이웃한 수들간의 차끼리 최대공약수 구하기
+	n = v[1] - v[0];
+
+	for (int i = 2; i < v.size(); i++) {
+		n = gcdIter(n, v[i] - v[i - 1]);
+	}
+
+	//최대공약수의 약수 구하기
+	for (int i = 2; i <= n; i++) {
+		if (n % i == 0) {
+			s.insert(i);
+		}
+	}
+	
+	
+	return s;
 }
 
-/* [백준 2981: 검문]
- * A, B, C를 M으로 나눴을 때의 나머지가 모두 같을 때, 이 나머지 값을 K라 하면
- * A = M * a + K, B = M * b + K, C = M * c + K 이므로
- * B - A = (M * b + K) - (M * a + K) = M(b - a)
- * C - B = (M * c + K) - (M * b + K) = M(c - b)
- * 즉, 우리가 구해야 하는 M은 각 검문소 사이 간격 간의 모든 공약수!
- * 
- * 1. 검문소 사이 간격 간의 최대공약수 구하기
- * 2. 1에서 구한 최대공약수의 모든 약수 구하기
- *    (모든 약수를 구할 때 시간초과 주의!)
- */
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-int main() {
-    // 입력
-    int n;
-    cin >> n;
-    vector<int> numbers(n);
-    for (int i = 0; i < n; i++) {
-        cin >> numbers[i];
-    }
+	int n, m;
+	set<int> result; //결과를 저장할 셋
 
-    // 연산
-    sort(numbers.begin(), numbers.end());
-    vector<int> result = solution(n, numbers);
+	//입력 
+	cin >> n;
 
-    // 출력
-    for (int i : result) {
-        cout << i << " ";
-    }
-    return 0;
+	vector<int> v;
+
+	while (n--) {
+		cin >> m;
+		v.push_back(m);
+	}
+
+	//연산
+	result = cal(v);
+
+	//출력
+	for (auto iter : result) {
+		cout << iter << " ";
+	}
+	
+	return 0;
 }
