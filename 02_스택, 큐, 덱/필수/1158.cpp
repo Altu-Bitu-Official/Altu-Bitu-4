@@ -1,50 +1,39 @@
 #include <iostream>
+#include <string>
 #include <queue>
 
 using namespace std;
 
-vector<int> josephus(int n, int k) { // 요세푸스 순열 반환
-    vector<int> result; // 요세푸스 순열
-    queue<int> q; // 원
+vector<int> sortOrder(int n, int k) {
+	queue<int> q;
+	for (int i = 1; i <= n; i++) {
+		q.push(i);
+	}
 
-    for(int i = 1; i <= n; i++) { // 원 초기화
-        q.push(i);
-    }
-
-    while(!q.empty()) {
-        for(int i = 0; i < k-1; i++) { // k-1번 pop & push
-            q.push(q.front());
-            q.pop();
-        }
-
-        // k번째 사람 pop 후 순열에 추가
-        result.push_back(q.front());
-        q.pop();
-    }
-    return result;
+	vector<int> result;
+	while (!q.empty()) {
+		for (int i = 0; i < k - 1; i++) { // front로부터 k-1번째까지의 요소는 삭제하고 다시 뒤로 보냄
+			int cur = q.front();
+			q.pop();
+			q.push(cur);
+		}
+		result.push_back(q.front()); // k번째의 요소는 배열에 넣은 후 삭제
+		q.pop();
+	}
+	return result;
 }
 
-/*
- * 원을 따라 k번째 사람을 제거한다.
- * 1. k번째 사람이 아닌 사람은 원의 맨 뒤로 보낸다.
- * 2. k번째 사람은 원에서 제거한다.
-*/
+int main()
+{
+	int n, k;
+	cin >> n >> k; // 사용자 입력
 
-int main() {
-    int n, k;
-    queue<int> q;
+	vector<int> arr = sortOrder(n, k);
 
-    // 입력
-    cin >> n >> k;
-
-    // 연산
-    vector<int> result = josephus(n, k);
-
-    // 출력
-    cout << "<" << result[0];
-    for(int i = 1; i < n; i++) {
-        cout << ", " << result[i];
-    }
-    cout << ">";
-    return 0;
+	// 배열 순서대로 출력
+	cout << "<" << arr[0];
+	for (int i = 1; i < n; i++) {
+		cout << ", " << arr[i];
+	}
+	cout << ">";
 }
