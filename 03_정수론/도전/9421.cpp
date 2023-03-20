@@ -1,81 +1,57 @@
 #include <iostream>
 #include <vector>
-#include <set>
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
-// 각 자리수의 제곱의 합 계산 함수
-int getSum(int n) {
-    int total = 0, tmp;
-    while (n != 0) {
-        tmp = n % 10;
-        n /= 10;
-        total += tmp * tmp;
-    }
-    return total;
-}
-// 소수 여부 반환 함수: 에라토스테네스의 체 이용
-vector<bool> getPrimes(int n) {
+vector<bool> findPrime(int n) {
     vector<bool> is_prime(n+1, true);
     is_prime[0] = is_prime[1] = false;
-    for (int i = 2; i * i <= n; i++) {
-        if (!is_prime[i]) {
-            continue;
-        }
-        for (int j = i * i; j <= n; j += i) {
-            is_prime[j] = false;
+    for(int i = 2; i*i <= n; i++) {
+        if(is_prime[i]) { // i가 소수라면
+            for(int j = i*i; j <= n; j+= i) { // 처음 지워지는 수는 제곱수부터, i의 각 배수마다 반복
+                is_prime[j] = false;
+            }
         }
     }
     return is_prime;
 }
-// 소수상근수 여부 반환 함수
-bool is_valid(int n) {
-    set<int> visited;
-    visited.insert(n);
-    while(1) {
-        n = getSum(n);
-        if (n == 1) {
-            return true;
-        }
-        if (visited.find(n) != visited.end()) {
+
+bool findHappy(int n) {
+    vector<int> prev; // 계산한 수들을 저장할 벡터
+    while(true) {
+        if(find(prev.begin(), prev.end(), n) != prev.end()) { // 계산할 수가 저장된 수에 이미 있다면 -> 반복
             return false;
         }
-        visited.insert(n);
-    }
-}
 
-// n보다 작거나 같은 소수상근수 벡터 반환
-vector<int> solution(int n) {
-    vector<bool> is_prime = getPrimes(n);
-    vector<int> result;
-    for (int i = 2; i <= n; i++) {
-        if (is_prime[i] && is_valid(i)) {
-            result.push_back(i);
+        prev.push_back(n);
+        string str = to_string(n);  // 문자열로 바꿔 한 자리씩 접근
+        int sum = 0;
+        for(int i = 0; i < str.size(); i++) {
+            int num = str[i] - '0'; // 문자 -> 숫자
+            sum += num*num;         // 각 자리 수의 제곱 더함
+        }
+        n = sum;                    // 합으로 다시 반복
+        if(sum == 1) {
+            return true;
         }
     }
-    return result;
 }
 
-/* [백준 9421: 소수상근수]
- * 상근수는 각 자리수의 제곱의 합을 재귀적으로 계산했을 때 1이 되는 수이다.
- * 즉, 각 자리수의 제곱의 합을 재귀적으로 계산했을 때
- * 이전에 나왔던 값이 다시 나온다면 그 수는 상근수가 될 수 없다.
- * 1. n보다 작거나 같은 모든 소수를 찾는다.
- * 2. n보다 작거나 같은 소수들이 상근수인지 판단한다.
- * 3. 소수이면서 상근수이면 결과값으로 추가한다.
- */
-
 int main() {
-    // 입력
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    
     int n;
     cin >> n;
-    
-    // 연산
-    vector<int> result = solution(n);
 
-    // 출력
-    for (int num : result) {
-        cout << num << "\n";
+    vector<bool> prime = findPrime(n);
+    for(int i = 0; i < n; i++) {
+        if(prime[i] && findHappy(i)) {
+             cout << i << "\n";
+        }
     }
     return 0;
 }
