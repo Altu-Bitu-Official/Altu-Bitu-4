@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int getGcdRecur(int a, int b) {
+int getGcdRecur(int a, int b) { // 최대공약수를 구하는 재귀함수
     if(b == 0) {
         return a;
     }
@@ -13,6 +13,7 @@ int getGcdRecur(int a, int b) {
 }
 
 vector<int> findM(vector<int> &nums) { // m에 해당하는 수 집합 리턴하는 함수
+vector<int> findM(vector<int> &nums) { // m에 해당하는 수를 구하는 함수
     vector<int> m;
 
     // 두 수 사이 간격의 최대공약수 구하기

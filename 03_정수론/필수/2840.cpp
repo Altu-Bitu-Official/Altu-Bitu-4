@@ -42,6 +42,10 @@ string createWheel(int size, int spin_num) {
 }
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    
     int size, spin_num; // 바퀴의 크기, 돌린 횟수
     cin >> size >> spin_num;
     
