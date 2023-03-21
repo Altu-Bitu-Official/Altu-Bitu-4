@@ -61,8 +61,7 @@ int main() {
     // 입력
     stack<int> a = setStack();
     stack<int> b = setStack();
-    
-    // 연산
+
     stack<int> res = add(a, b);
 
     print(res);
