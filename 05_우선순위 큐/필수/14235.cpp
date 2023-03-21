@@ -21,7 +21,7 @@ int main() {
     cin >> n; // 입력받을 수의 개수
     while(n--) {
         cin >> a;
-        if(a == 0) { // a가 0이면 선물을 꺼내서 나눠준다
+        if(!a) { // a가 0이면 선물을 꺼내서 나눠준다 (0이면 false, 0이 아니라면 true)
             if(pq.empty()) {            // 선물이 없으면 -1 출력
                 cout << "-1\n"; 
                 continue;

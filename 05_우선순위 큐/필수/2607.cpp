@@ -6,8 +6,7 @@ using namespace std;
 
 void storeString(string &str, vector<int> &alpha) { // 문자열을 알파벳 개수별로 저장
     for(int i = 0; i < str.size(); i++) { 
-        int idx = str[i] - 'A';
-        alpha[idx]++;  // 각 알파벳 자리의 수를 1만큼 증가
+        alpha[str[i] - 'A']++;  // 각 알파벳 자리의 수를 1만큼 증가
     }
 }
 // 비슷한 단어인지 확인해주는 함수
