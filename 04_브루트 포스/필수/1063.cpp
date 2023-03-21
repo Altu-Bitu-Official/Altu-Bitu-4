@@ -3,8 +3,8 @@
 
 using namespace std;
 
-bool checkValid(char x, char y, int dx, int dy) {
-    return (x+dx)>64 && (x+dx)<73 && (y+dy)>48 && (y+dy)<57;
+bool checkValid(pair<char, char> p, int dx, int dy) {
+    return (p.first+dx)>64 && (p.first+dx)<73 && (p.second+dy)>48 && (p.second+dy)<57;
 }
 
 int main() {
@@ -51,11 +51,11 @@ int main() {
         }
 
         //옮길 킹 위치가 범위 안이고
-        if(checkValid(king.first, king.second, x, y)) {
+        if(checkValid(king, x, y)) {
             //킹 옮긴 위치가 돌 위치랑 겹치면
             if(stone.first==(king.first+x) && stone.second==(king.second+y)){
                 //돌 똑같이 옮겼을 때 범위 안이면
-                if(checkValid(stone.first, stone.second, x, y)) {
+                if(checkValid(stone, x, y)) {
                     //돌도 이동
                     stone.first+=x;
                     stone.second+=y;
