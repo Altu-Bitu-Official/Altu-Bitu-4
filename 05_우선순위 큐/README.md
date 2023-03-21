@@ -1,4 +1,4 @@
-# 우선순위 큐
+# 우선순위 큐 (Priority Queue)
 
 [메인으로 돌아가기](https://github.com/Altu-Bitu-Official/Altu-Bitu-4)
 
