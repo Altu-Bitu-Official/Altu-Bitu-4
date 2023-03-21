@@ -21,19 +21,19 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	// ¼±¹° ÀúÀå
+	// ì„ ë¬¼ ì €ì¥
 	priority_queue<int> bag;
-	// ÀÔ·Â
+	// ì…ë ¥
 	int n, a;
 	cin >> n;
 
 	int p;
 	for (int i = 0; i < n; i++) {
 		cin >> a;
-		if (a == 0) { // ¾ÆÀÌµéÀ» ¸¸³²
+		if (a == 0) { // ì•„ì´ë“¤ì„ ë§Œë‚¨
 			cout << givePresent(bag) << endl;
 		}
-		else { // ¼±¹° ÃæÀü
+		else { // ì„ ë¬¼ ì¶©ì „
 			for (int j = 0; j < a; j++) {
 				cin >> p;
 				bag.push(p);

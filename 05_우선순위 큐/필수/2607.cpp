@@ -6,48 +6,48 @@ using namespace std;
 
 vector<string> s;
 int similarWord(vector<string>& s) {
-	string strdef = s[0]; // Ã¹´Ü¾î¸¦ ±âÁØÀ¸·Î 
+	string strdef = s[0]; // ì²«ë‹¨ì–´ë¥¼ ê¸°ì¤€ìœ¼ë¡œ 
 	int words = 0;
 	for (int i = 1; i < s.size(); i++) {
 		int cnt = 0;
 		string strvar = s[i];
 		int l = strvar.length() - strdef.length();
-		// ±æÀÌ Â÷ÀÌ 2 ÀÌ»óÀÌ¸é ¹ö¸®±â
+		// ê¸¸ì´ ì°¨ì´ 2 ì´ìƒì´ë©´ ë²„ë¦¬ê¸°
 		if (abs(l) > 1) {
 			continue;
 		}
-		// ±æÀÌÂ÷ÀÌ 0ÀÌ¸é
+		// ê¸¸ì´ì°¨ì´ 0ì´ë©´
 		else if (l == 0) {
-			// find·Î °Ë»ç
+			// findë¡œ ê²€ì‚¬
 			for (int i = 0; i < strdef.length(); i++) {
-				if (strvar.find(strdef[i]) == string::npos) { // find ÇØ¼­ Ã£´Â °ÍÀÌ ¾øÀ¸¸é string::npos ¸¦ ¹İÈ¯ÇÑ´Ù.
+				if (strvar.find(strdef[i]) == string::npos) { // find í•´ì„œ ì°¾ëŠ” ê²ƒì´ ì—†ìœ¼ë©´ string::npos ë¥¼ ë°˜í™˜í•œë‹¤.
 					cnt++;
 				}
 			}
-			if (cnt <= 1) { // ÇÏ³ª°¡ ´Ù¸¥ °Ç ±¦Âú´Ù
+			if (cnt <= 1) { // í•˜ë‚˜ê°€ ë‹¤ë¥¸ ê±´ ê´œì°®ë‹¤
 				words++;
 			}
 		}
-		// ±æÀÌÂ÷ÀÌ 1ÀÌ¸é
+		// ê¸¸ì´ì°¨ì´ 1ì´ë©´
 		else if (l == 1) {
-			// find·Î °Ë»ç
+			// findë¡œ ê²€ì‚¬
 			for (int i = 0; i < strdef.length(); i++) {
 				if (strvar.find(strdef[i]) == string::npos) {
 					cnt++;
 				}
 			}
-			if (cnt == 0) { // ±æÀÌ Â÷ÀÌ°¡ 1ÀÌ¸é ÇÏ³ª¸¦ »©¾ß °°Àº ±¸¼ºÀÌ µÈ´Ù. ¸ğµç ¹®ÀÚ°¡ ÀÖ¾î¾ßÇÔ. 
+			if (cnt == 0) { // ê¸¸ì´ ì°¨ì´ê°€ 1ì´ë©´ í•˜ë‚˜ë¥¼ ë¹¼ì•¼ ê°™ì€ êµ¬ì„±ì´ ëœë‹¤. ëª¨ë“  ë¬¸ìê°€ ìˆì–´ì•¼í•¨. 
 				words++;
 			}
 		}
 		else if (l == -1) {
-			// find·Î °Ë»ç
+			// findë¡œ ê²€ì‚¬
 			for (int i = 0; i < strdef.length(); i++) {
 				if (strvar.find(strdef[i]) == string::npos) {
 					cnt++;
 				}
 			}
-			if (cnt <= 1) { // ±æÀÌ Â÷ÀÌ°¡ -1ÀÌ¸é ÇÏ³ª¸¦ ´õÇØ¾ß °°Àº ±¸¼ºÀÌ µÊ. µû¶ó¼­ ´õÇÒ ¹®ÀÚ ÇÏ³ª »©°í´Â ¸ğµÎ ÀÖ¾î¾ßÇÑ´Ù.
+			if (cnt <= 1) { // ê¸¸ì´ ì°¨ì´ê°€ -1ì´ë©´ í•˜ë‚˜ë¥¼ ë”í•´ì•¼ ê°™ì€ êµ¬ì„±ì´ ë¨. ë”°ë¼ì„œ ë”í•  ë¬¸ì í•˜ë‚˜ ë¹¼ê³ ëŠ” ëª¨ë‘ ìˆì–´ì•¼í•œë‹¤.
 				words++;
 			}
 		}

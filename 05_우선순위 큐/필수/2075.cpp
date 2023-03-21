@@ -5,12 +5,12 @@ using namespace std;
 
 int usePq(int n) {
 	int ans;
-	priority_queue<int, vector<int>, greater<int>> pq; // ÀÛÀº ¼ö°¡ top¿¡ ¿À´Â ¿ì¼±¼øÀ§Å¥
+	priority_queue<int, vector<int>, greater<int>> pq; // ì‘ì€ ìˆ˜ê°€ topì— ì˜¤ëŠ” ìš°ì„ ìˆœìœ„í
 	for (int i = 0; i < n * n; i++) {
 		int num;
 		cin >> num;
 		pq.push(num);
-		// Å©±â¸¦ nÀ¸·Î À¯ÁöÇÏ¸é top¿¡´Â n¹øÂ°·Î Å« ¼ö°¡ Á¸ÀçÇÑ´Ù.
+		// í¬ê¸°ë¥¼ nìœ¼ë¡œ ìœ ì§€í•˜ë©´ topì—ëŠ” në²ˆì§¸ë¡œ í° ìˆ˜ê°€ ì¡´ì¬í•œë‹¤.
 		if (pq.size() > n) {
 			pq.pop();
 		}
