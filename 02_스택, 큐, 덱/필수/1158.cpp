@@ -1,7 +1,3 @@
-//
-// Created by dduoy on 2023-02-28.
-//
-
 #include <iostream>
 #include <queue>
 using namespace std;
