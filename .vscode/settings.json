@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "string": "cpp",
-    "utility": "cpp"
+    "utility": "cpp",
+    "iostream": "cpp"
   }
 }
