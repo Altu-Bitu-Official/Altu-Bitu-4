@@ -47,18 +47,17 @@ int main() {
         if(input == 0) {
             break;
         }
-        int target = input;
 
-        vector<int> result = findNum(prime, target);
+        int target = input; 
 
-        if(result.size() == 2) {
+        vector<int> result = findNum(prime, target); // 합으로 표현될 두 소수 찾기
+
+        if(result.size() == 2) { // 두 소수가 모두 저장되었다면 결과 출력
             cout << target << " = " << result[1] << " + " << result[0] << "\n";
         }
-        else {
+        else {                   // 아니라면 오류 메세지 출력
             cout << "Goldbach's conjecture is wrong.";
         }
-        
     }
     return 0;
 }
-
