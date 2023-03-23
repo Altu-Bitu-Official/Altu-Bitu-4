@@ -1,33 +1,8 @@
 ﻿#include <iostream>
 #include <vector>
+#include <queue>
 
 using namespace std;
-
-//첫 n개의 값을 heap에 push하는 함수
-void init(vector<int>& heap, int x, int n, int i) {
-	//주어진 인덱스에 입력받은 x 넣기
-	heap[i] = x;
-
-	//다음 노드가 이전 노드보다 크면 swap (내림차순 정렬)
-	int idx = i;
-	while (idx > 0 && heap[idx] > heap[idx - 1]) {
-		swap(heap[idx], heap[idx - 1]);
-		idx--;
-	}
-}
-
-//나머지 값을 heap에 push하는 함수
-void push(vector<int>& heap, int x, int n) {
-	//힙의 마지막에 입력받은 x 넣기
-	heap[n] = x;
-
-	//다음 노드가 이전 노드보다 크면 swap (내림차순 정렬)
-	int idx = n;
-	while (idx > 0 && heap[idx] > heap[idx - 1]) {
-		swap(heap[idx], heap[idx - 1]);
-		idx--;
-	}
-}
 
 int main() {
 	ios::sync_with_stdio(false);
@@ -37,22 +12,27 @@ int main() {
 	int n, x;
 	cin >> n;
 
-	//heap 초기화
-	vector<int> heap(n + 1);
-	for (int i = 0; i < n; i++) {
-		cin >> x; //n개의 값 넣어주기
-		init(heap, x, n, i);
-	}
+	priority_queue<int, vector<int>, greater<>> pq; //n개의 큰 수 저장
 
-	int cnt = n * n - n; //입력받을 숫자의 개수
-	while (cnt--) {
+	//연산
+	for (int i = 0; i < n * n; i++) {
 		cin >> x;
-		//연산
-		push(heap, x, n);
+
+		//pq의 사이즈를 n개가 되도록 저장
+		if (pq.size() < n) {
+			pq.push(x);
+		}
+		else {
+			//pq의 원소들이 새로 입력된 x보다 크도록 균형을 맞춤
+			if (!pq.empty() && x > pq.top()) {
+				pq.pop();
+				pq.push(x);
+			}
+		}
 	}
 
 	//출력
-	cout << heap[n - 1];
+	cout << pq.top();
 
 	return 0;
 }
