@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6d0c5c2-15e2-4372-8456-341768a6d70c" name="Changes" comment="파일 확장자 수정">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_정수론/필수/2840.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/03_정수론/필수/6588.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05_우선순위 큐/도전/1655.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05_우선순위 큐/도전/disk_controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05_우선순위 큐/필수/14235.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05_우선순위 큐/필수/2075.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/05_우선순위 큐/필수/2607.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Altu-Bitu-4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Altu-Bitu-4.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01_정렬, 맵, 셋/도전/1946.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01_정렬, 맵, 셋/도전/9375.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01_정렬, 맵, 셋/라이브 코딩/2002.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01_정렬, 맵, 셋/라이브 코딩/2751.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01_정렬, 맵, 셋/라이브 코딩/7785.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_정수론/필수/16563.kt" beforeDir="false" afterPath="$PROJECT_DIR$/03_정수론/라이브 코딩/16563.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_정수론/필수/2609.kt" beforeDir="false" afterPath="$PROJECT_DIR$/03_정수론/라이브 코딩/2609.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03_정수론/필수/2960.kt" beforeDir="false" afterPath="$PROJECT_DIR$/03_정수론/라이브 코딩/2960.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +22,7 @@
       <list>
         <option value="Kotlin Script" />
         <option value="Kotlin File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -48,15 +37,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/user/OneDrive/문서/GitHub/Altu-Bitu-4",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/OneDrive/문서/GitHub/Altu-Bitu-4&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\내 드라이브\이화여대\2023-01\알튜비튜\Altu-Bitu-4\03_정수론\라이브 코딩" />
@@ -67,41 +56,55 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.2607">
-    <configuration name="_10757Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="_10757Kt" />
-      <module name="Altu-Bitu-4" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="_16563Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="_16563Kt" />
-      <module name="Altu-Bitu-4" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="_2840Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="_2840Kt" />
-      <module name="Altu-Bitu-4" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="_4949Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="_4949Kt" />
-      <module name="Altu-Bitu-4" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Python.9375">
     <configuration name="1158.kts" type="KotlinStandaloneScriptRunConfigurationType" nameIsGenerated="true">
       <module name="Altu-Bitu-4" />
       <option name="filePath" value="$PROJECT_DIR$/02_스택, 큐, 덱/필수/1158.kts" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="1946" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Altu-Bitu-4" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/01_정렬, 맵, 셋/도전" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_정렬, 맵, 셋/도전/1946.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="2002" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Altu-Bitu-4" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/01_정렬, 맵, 셋/라이브 코딩" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_정렬, 맵, 셋/라이브 코딩/2002.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="2607" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Altu-Bitu-4" />
@@ -124,8 +127,54 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="7785" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Altu-Bitu-4" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/01_정렬, 맵, 셋/라이브 코딩" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_정렬, 맵, 셋/라이브 코딩/7785.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="9375" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Altu-Bitu-4" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/01_정렬, 맵, 셋/도전" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_정렬, 맵, 셋/도전/9375.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.9375" />
+        <item itemvalue="Python.1946" />
+        <item itemvalue="Python.2002" />
+        <item itemvalue="Python.7785" />
         <item itemvalue="Python.2607" />
       </list>
     </recent_temporary>
