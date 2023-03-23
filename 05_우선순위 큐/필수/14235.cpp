@@ -15,7 +15,7 @@ int main() {
 	priority_queue<int> gift;
 	while (n--) {
 		cin >> num;
-		if (num == 0) {
+		if (!num) {
 			if (gift.empty()) {
 				cout << -1 << '\n';// 없으면 -1 출력
 				continue; //선물이 없어도 바로 종료 되지 않도록

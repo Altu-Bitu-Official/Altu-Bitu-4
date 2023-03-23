@@ -8,7 +8,7 @@ int main() {
 	cin.tie(0);
 	cout.tie(0);
 
-	priority_queue<int> square;//greater를 써야하는데 정확하게 어떻게 써야하는지 모르겠어요...
+	priority_queue<int, vector<int>, greater<int>> square;//우리가 원하는 것은 오름차순이므로 greater사용
 
 	int n;
 	cin >> n;
