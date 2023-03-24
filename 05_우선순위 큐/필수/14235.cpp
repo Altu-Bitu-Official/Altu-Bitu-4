@@ -14,7 +14,7 @@ int main()
 	//연산 및 출력
 	while (n--) {
 		cin >> num;
-		if (num == 0) { //0이 입력으로 들어오면 선물의 가치 출력
+		if (!num) { //0이 입력으로 들어오면 선물의 가치 출력
 			if (pq.empty()) {
 				cout << "-1\n";
 			}
