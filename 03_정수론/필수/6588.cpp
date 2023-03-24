@@ -61,4 +61,7 @@ int main()
 			cout << "Goldbach's conjecture is wrong.\n";
 		}
 	}
+  
+  return 0;
 }
+

@@ -46,4 +46,5 @@ int main()
 	cout << result[n-1] << ">"; // 마지막 원소 출력 
 
 	return 0;
+
 }

@@ -31,6 +31,6 @@ int main()
 
 	//출력
 	cout << ans;
-  
+
 	return 0;
 }
