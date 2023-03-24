@@ -3,8 +3,8 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
+
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
@@ -41,6 +41,6 @@ int main()
 		//균형이 왼쪽을 기준으로 맞추어져 있으므로 왼쪽 최대를 출력 
 		cout << pq_left.top() << "\n";
 	}
-
+  
 	return 0;
 }
