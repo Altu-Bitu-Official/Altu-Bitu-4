@@ -1,4 +1,3 @@
-#include <iostream>
 #include <stack> //스택 헤더파일 선언
 using namespace std;
 
