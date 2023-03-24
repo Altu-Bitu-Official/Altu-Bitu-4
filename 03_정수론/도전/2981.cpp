@@ -50,6 +50,5 @@ int main() {
     for(int i : m) {
         cout << i << " ";
     }
-
     return 0;
 }
