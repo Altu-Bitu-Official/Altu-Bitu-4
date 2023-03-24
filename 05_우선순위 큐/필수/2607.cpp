@@ -1,56 +1,45 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>   //참고 : https://unluckyjung.github.io/cpp/2020/04/24/Set_Func/
-#include <string>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
+void countAlphabet( string word, vector<int> &count){
+    for( int i =0; i<word.length();i++){ //굳이 string을 char로 바꿔줄 필요 없이 바로 배열로
+        count[word[i] - 'A']++;
+    }
+}
+
+int countDiff(string word, vector<int> base_alp){
+    vector<int> freq(26,0);
+    int diff = 0;
+
+    countAlphabet(word,freq);
+
+    for( int i = 0; i< 26; i++){
+        diff += abs(base_alp[i] - freq[i]);
+    }
+    return diff;
+}
 
 int main(){
-    int n, count=0;
-    cin >> n;  //입력될 단어의 개수
-    string word;
-    cin>> word;
+    int n, ans=0;
+    string base;
+    cin >> n;
+    cin >> base;
+    vector<int> base_alp(26,0); //0으로 초기화. 이때 26은 알파벳 개수
 
-    vector<char> vec(word.begin(), word.end()); //string을 char vector
-    sort(vec.begin(), vec.end()); // 오름차순으로 정렬
+    countAlphabet(base, base_alp); //연산 - 각 알파벳 개수 몇개인지 count
 
-    for (int i=0; i<n-1;i++){ //본격적인 비교
-        string str;
-        cin >> str;
+    for( int i =1; i<n; i++){
+        string word;
+        cin>>word;
 
-        vector<char> strvec(str.begin(), str.end());
-        sort(strvec.begin(), strvec.end()); // 오름차순으로 정렬
+        int diff = countDiff(word, base_alp);
 
-        if (vec.size() == strvec.size()){ 
-            vector<char> buff(vec.size() + strvec.size());
-            auto iter = set_union(vec.begin(), vec.end(), strvec.begin(), strvec.end(), buff.begin());
-            buff.erase(iter, buff.end());
-            if( vec.size() == buff.size() || vec.size()+1 == buff.size()){
-                count+=1;
-            }
+        if( diff == 0 || diff ==1 || diff ==2 && base.length() == word.length()){
+            ans++;
         }
-        else if (vec.size() -1 == strvec.size()){ // vec 사이즈가 1 더 큰 경우
-            vector<char> buff(vec.size() + strvec.size()); //합집합
-            auto iter = set_union(vec.begin(), vec.end(), strvec.begin(), strvec.end(), buff.begin());
-            buff.erase(iter, buff.end());
-            if ( buff == vec){
-                count+=1;
-            }
-
-        }
-        else if (vec.size()  == strvec.size() -1){ // vec에 하나 추가한 경우
-            int size = vec.size();
-            swap(vec, strvec);
-            vector<char> buff(vec.size() + strvec.size()); // 합집합
-            auto iter = set_union(vec.begin(), vec.end(), strvec.begin(), strvec.end(), buff.begin());
-            buff.erase(iter, buff.end());
-            if ( size+1 == buff.size()){
-                count +=1;
-            }
-        }
-
     }
-    cout << count;
+    cout <<ans;
     return 0;
 }
