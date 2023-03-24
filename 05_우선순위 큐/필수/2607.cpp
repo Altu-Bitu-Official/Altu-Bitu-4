@@ -21,12 +21,13 @@ bool isit_similar(string word, string factor) {//정렬된 상태의 word와 fac
 
     for (int i = 0; i < shorter.length(); i++) {
         for (int j = 0; j < longer.length(); j++) {
-            if (shorter[i] == longer[j]) {
+            if (s[i] == l[j]) {
                 s[i] = '0'; l[j] = '0';
                 //일치하는 문자를 찾으면 지운다.
             }
         }
     }
+
     int a, b; a = b = 0;
     for (int i = 0; i < shorter.length(); i++) {
         if (s[i] != '0') {
