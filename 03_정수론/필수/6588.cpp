@@ -27,7 +27,9 @@ int main() {
     vector<bool> is_prime = isPrime(1000000);
 
     while (true) {
+
         int num, a = 0, b = 0;
+
         cin >> num;
 
         if (num == 0) {
@@ -52,6 +54,7 @@ int main() {
 
             }
         }
+
 
         if (a != 0 && a > b) {
             cout << "Goldbach's conjecture is wrong.";

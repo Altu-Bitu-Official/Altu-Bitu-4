@@ -63,5 +63,6 @@ int main() {
     stack<int> b = setStack();
 
     stack<int> res = add(a, b);
+
     print(res);
 }
