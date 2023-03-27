@@ -4,7 +4,7 @@
 using namespace std;
 
 int solution(int num) {
-	int cnt = 99; // 100미만의 숫자는 그 자체로 등차수열이다
+	int cnt = 99; // 100 미만의 숫자는 그 자체로 등차수열이다
 	for (int i = 100; i <= num; i++) {
 		int hun = i / 100;       // 백의 자릿수
 		int ten = (i / 10) % 10; // 십의 자릿수
