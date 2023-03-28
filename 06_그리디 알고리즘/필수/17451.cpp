@@ -14,16 +14,19 @@ int main() {
         cin >> num;
         v.push_back(num);
     }
-    int min_speed = *min_element(v.begin(), v.end());
-    int speed = v[n-1];
-    for(int i=n-1;i>0;i--){
-        if(v[i]>speed){
+    int speed = v[n - 1];
+
+    for (int i = n - 1; i >= 0; i--) {
+        if (v[i] > speed) {
             speed = v[i];
-        } else if (v[i] < speed){
-            speed *= floor((float)speed/(float)v[i]);
+        } else if (v[i] < speed) {
+            int t = 0;
+            if (speed % v[i] != 0) {
+                t = 1;
+            }
+            speed = v[i] * (speed / v[i] + t);
         }
     }
-
 
     cout << speed;
 }
