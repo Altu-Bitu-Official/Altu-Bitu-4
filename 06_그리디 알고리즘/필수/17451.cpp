@@ -14,7 +14,7 @@ int main() {
         cin >> num;
         v.push_back(num);
     }
-    int speed = v[n - 1];
+    long speed = v[n - 1];
 
     for (int i = n - 1; i >= 0; i--) {
         if (v[i] > speed) {
