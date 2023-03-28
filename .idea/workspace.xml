@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6d0c5c2-15e2-4372-8456-341768a6d70c" name="Changes" comment="파일 확장자 수정">
-      <change afterPath="$PROJECT_DIR$/기타/1002.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/10814.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/10989.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/11650.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/11651.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/1181.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/1427.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/18870.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/2108.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/2480.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/25305.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/2587.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/2751.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/삼성기출/14501.py" afterDir="false" />
+    <list default="true" id="958b6d31-aab7-4d39-8adc-7a6762539f9e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06_그리디 알고리즘/필수/17451.py" beforeDir="false" afterPath="$PROJECT_DIR$/06_그리디 알고리즘/필수/17451.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
