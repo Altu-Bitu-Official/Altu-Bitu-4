@@ -3,16 +3,15 @@
 
 using namespace std;
 
-vector<int> output;     //출력할 숫자를 저장하는 배열
 
 //선물과 입력을 받고 선물을 나눠주거나, 선물을 저장하는 함수
 void givePresent(priority_queue<int>& present, int input) {
-    if(input == 0) {    //선물을 줄 때
+    if(!input) {    //선물을 줄 때
         if(present.empty()) {
-            output.push_back(-1);
+            cout << -1 << '\n';
             return;
         }
-        output.push_back(present.top());
+        cout << present.top() << '\n';
         present.pop();
         return;
     }
@@ -35,10 +34,6 @@ int main() {
         int input;
         cin >> input;
         givePresent(present, input);
-    }
-    //출력
-    for (int i : output) {
-        cout << i << '\n';
     }
     
 }
