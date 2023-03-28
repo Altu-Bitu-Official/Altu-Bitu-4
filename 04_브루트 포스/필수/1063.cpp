@@ -1,90 +1,101 @@
-#include<iostream>
-#include<string>
-#include<vector>
+
+#include <iostream>
+#include <vector>
+#include <string>
 
 using namespace std;
-typedef pair<char, char>cc;
 
-cc move(string input, char x, char y) {//이동 함수 x : 열, y : 행
-	for (int i = 0; i < input.size(); i++) {
-		char how = input[i];
-		if (how == 'R') {
-			x++;
-		}
-		else if (how == 'L') {
-			x--;
-		}
-		else if (how == 'B') {
-			y--;
-		}
-		else {//T
-			y++;
+// R, L, B, T, RT, LT, RB, LB
+int dx[8] = {1, -1, 0, 0, 1, -1, 1, -1};
+int dy[8] = {0, 0, -1, 1, 1, 1, -1, -1};
 
-		}
-	}
-
-	return { x, y };
-
-}
-
-bool checkRange(cc position) {//범위 체크 하는 함수
-
-	if (position.first < 'A' || position.first > 'H'
-		|| position.second < '1' || position.second > '8') {
-		return false;
-	}
+void chess(int kx, int ky, int sx, int sy, vector<string> moves) {
 	
-	return true;
-}
+	for (int i = 0; i < moves.size(); i++) {
+		string move = moves[i];
+		int idx = 0;
+		int tmpkx = kx;
+		int tmpky = ky;
+		int tmpsx = sx;
+		int tmpsy = sy;
+		if (move == "R") {
+			idx = 0;
+		}
+		else if (move == "L") {
+			idx = 1;
+		}
+		else if (move == "B") {
+			idx = 2;
+		}
+		else if (move == "T") {
+			idx = 3;
+		}
+		else if (move == "RT") {
+			idx = 4;
+		}
+		else if (move == "LT") {
+			idx = 5;
+		}
+		else if (move == "RB") {
+			idx = 6;
+		}
+		else if (move == "LB") {
+			idx = 7;
+		}
 
-bool isSame(cc k, cc s) {
+		//킹 옮기기
+		tmpkx += dx[idx];
+		tmpky += dy[idx];
 
-	return (k.first == s.first && k.second == s.second);
+		//돌 옮기기
+		if (tmpkx == tmpsx && tmpky == tmpsy) {
+			tmpsx += dx[idx];
+			tmpsy += dy[idx];
+		}
 
-}
-
-/*
-* HINT : 문자형 변수의 연산은 비교적 자유로워요! 또 킹과 돌의 움직임이 모두 판 안에서 이뤄질 때만 다음으로 움직일 수 있는 점을 신경써주세요!
-* 1. king 이동 (move)
-* 2. king과 stone의 위치 동일 -> stone 이동 (move)
-* 3. king과 stone의 위치 점검 (checkRange
-*/
-
-int main() {
-
-	cc k, s;//king, stone
-	int n;
-	string input;
-
-	//입력
-	cin >> k.first >> k.second >> s.first >> s.second >> n;
-
-	//연산
-	while (n--) {
-		cin >> input;
-
-		cc next_k, next_s;//이동 후 위치 저장할 변수
-
-		//king 이동
-		next_k = move(input, k.first, k.second);
-
-		//stone 이동
-		if (isSame(next_k,s)) {
-			next_s = move(input, s.first, s.second);
+		//안쪽인지 확인한다
+		if ((tmpkx > 0 && tmpkx <= 8) && (tmpky > 0 && tmpky <= 8) && (tmpsx > 0 && tmpsx <= 8) && (tmpsy > 0 && tmpsy <= 8)) {
+			kx = tmpkx;
+			ky = tmpky;
+			sx = tmpsx;
+			sy = tmpsy;
 		}
 		else {
-			next_s = s;
+			continue;
 		}
+	}
+	kx += 'A' - 1;
+	sx += 'A' - 1;
+	// 어떻게 하면 입출력을 메인에서 할 수 있을지 잘 모르겠습니다.
+	printf("%c%d\n", kx, ky);
+	printf("%c%d\n", sx, sy);
+	return;
+}
 
-		//범위 체크
-		if (checkRange(next_k) && checkRange(next_s)){//이동한 king과 stone가 유효 범위면 최종적으로 이동
-			k = next_k;
-			s = next_s;
-		}
+int main() {
+	int kx, ky, sx, sy;
 
+	string king;
+	cin >> king;
+	kx = king[0] - 'A' + 1;
+	ky = king[1] - '0';
+
+	string stone;
+	cin >> stone;
+	sx = stone[0] - 'A' + 1;
+	sy = stone[1] - '0';
+
+	int cnt;
+	cin >> cnt;
+
+	vector<string> moves;
+
+	for (int i = 0; i < cnt; i++) {
+		string str; cin >> str;
+		moves.push_back(str);
 	}
 
-	//출력
-	cout << k.first << k.second <<'\n'<< s.first << s.second ;
+	chess(kx, ky, sx, sy, moves);
+
 	return 0;
 }
