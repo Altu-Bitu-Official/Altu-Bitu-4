@@ -19,9 +19,6 @@ void getAnswer(map<int, int> &house, vector<int> keys, int &time, int &height, i
                 temp_time += (keys[j] - i) * 2 * house[keys[j]];    // 위와 똑같다!
             }
         }
-        if(temp_b<0){   // 연산 결과 인벤토리에 있는 블록 개수가 음수라면 말이 되지 않는 방법이므로 패스
-            continue;
-        }
         if(temp_time == time && height < i){    // 작업 시간이 같을 경우 높이가 큰 방법을 채택
             time = temp_time;
             height = i;
