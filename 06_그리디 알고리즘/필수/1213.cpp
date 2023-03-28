@@ -96,3 +96,35 @@ int main()
         cout << i;
     }
 }
+/*
+@@질문입니다!
+처음에는 map 대신에 pair을 써서 사용했는데 벡터에 값이 
+
+input : AABB
+vector : 
+A 1
+A 1
+B 1
+B 1
+
+이런 식으로 쪼개져서 들어가더라구요 ㅠㅠ 
+왜... 아래 코드는 안 됐는지 궁금합니다.
+
+vector<pair<char, int>> v;  //first = 알파벳, second = 빈도수
+    
+for(char i:name){
+    if(v.empty()){
+        v.push_back({i, 1});
+        continue;
+    }
+    //v가 비지 않았다면 알파벳이 존재하는지 검사 후 ++
+    for(int i=0; i<v.size(); i++){
+        if(v[i].first == i){
+            v[i].second++;
+            continue;
+        }
+    }
+    //찾지 못했으면 추가
+    v.push_back({i, 1});
+}
+*/
