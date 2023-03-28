@@ -3,9 +3,10 @@
 #include <cmath>
 #include<algorithm>//reverse
 using namespace std;
+const int ALPHABET_NUM = 26;
 bool isPalindrome(string input) {
 	//알파벳 세기
-	vector<int> alphabet(26, 0);
+	int alphabet[26] = {};
 	for (int i = 0; i < input.size(); i++) {
 		//각 문자 갯수 세기
 		int alphabet_num = input[i] - 'A';
@@ -14,15 +15,15 @@ bool isPalindrome(string input) {
 
 	//이제 갯수차이를 봄
 	int count;
-	for (int i = 0; i < alphabet.size(); i++) {
+	for (int i = 0; i < ALPHABET_NUM; i++) {
 		if (alphabet[i] > 0) {//뭐 들어있으면
 			count = alphabet[i];
 			break;
 		}
 	}
 	//이제 갯수 다른지를 본다.
-	int one_dif_count=0;
-	for (int i = 0; i < alphabet.size(); i++) {
+	int one_dif_count = 0;
+	for (int i = 0; i < ALPHABET_NUM; i++) {
 		if (count != alphabet[i]) {//갯수가 다를경우? 
 			//다르면 딱 1개차이만 허용&딱 1개차이인게 하나만 있어야 함
 			if (abs(count - alphabet[i]) == 1) {//딱 1개 차이
@@ -44,28 +45,31 @@ bool isPalindrome(string input) {
 
 void makePalindrome(string input, string& answer) {
 	//알파벳 세기
-	vector<int> alphabet(26, 0);
-	vector<int> alpha_original(26, 0);
+	int alphabet[26] = {};
+	int alpha_original[26] = {};
 	for (int i = 0; i < input.size(); i++) {
 		//각 문자 갯수 세기
 		int alphabet_num = input[i] - 'A';
 		alphabet[alphabet_num]++;
 	}
 	//백업
-	alpha_original = alphabet;
+	for (int i = 0; i < ALPHABET_NUM; i++) {
+		alpha_original[i] = alphabet[i];
+	}
+
 	//알파벳 갯수 조작(/2로)
-	for (int i = 0; i < alphabet.size(); i++) {
+	for (int i = 0; i < ALPHABET_NUM; i++) {
 		alphabet[i] /= 2;//2로 나눈 몫
 	}
 	//2인게 있고, 나머지는 다 1인경우-> 이럴경우 2인거를 연속으로 채우기 위해
 	bool special_case = false;
 	int count = 0;
-	for (int i = 0; i < alphabet.size(); i++) {
+	for (int i = 0; i < ALPHABET_NUM; i++) {
 		if (alphabet[i] == 2) {
 			count = 2;
 		}
-		if (count==2 && count != alphabet[i]) {//다르다면 그건 1이어야함.
-			if (alphabet[i] != 1 && alphabet[i] !=0)
+		if (count == 2 && count != alphabet[i]) {//다르다면 그건 1이어야함.
+			if (alphabet[i] != 1 && alphabet[i] != 0)
 			{
 				special_case = false;
 				break;
@@ -82,11 +86,11 @@ void makePalindrome(string input, string& answer) {
 		for (int i = 0; i < 26; i++) {
 			if (alphabet[i] > 0) {//뭐 들어있으면
 				half += i + 'A';
-				if (special_case&&!flag) {//스페셜케이스면 한번만 수행
+				if (special_case && !flag) {//스페셜케이스면 한번만 수행
 					half += i + 'A';//또 더함(연속적으로)
 					flag = true;
 				}
-				alpha_original[i]-=(2*alphabet[i]);
+				alpha_original[i] -= (2 * alphabet[i]);
 			}
 		}
 	}
