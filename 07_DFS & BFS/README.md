@@ -6,11 +6,11 @@
 
 ### 라이브 코딩
 
-|                                문제 번호                                |                                  문제 이름                                   |                                       난이도                                       |  풀이 링크   |   분류   |
-| :---------------------------------------------------------------------: | :--------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :----------: | :------: | -------- | ------- | ------ |
-| <a href="https://www.acmicpc.net/problem/1260" target="_blank">1260</a> | <a href="https://www.acmicpc.net/problem/1260" target="_blank">DFS와 BFS</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/9.svg"/>  | [바로가기]() | DFS, BFS |
-| <a href="https://www.acmicpc.net/problem/2606" target="_blank">2606</a> | <a href="https://www.acmicpc.net/problem/2606" target="_blank">바이러스</a>  | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/8.svg"/>  | [바로가기]() | DFS, BFS |
-| <a href="https://www.acmicpc.net/problem/7576" target="_blank">7576</a> |  <a href="https://www.acmicpc.net/problem/7576" target="_blank">토마토</a>   | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/11.svg"/> | [바로가기]() |   BFS    | **Lv.1** | [C++]() | 그리디 |
+|문제 번호|문제 이름|난이도|풀이 링크|분류|
+| :-----: | :-----: | :-----: | :-----: | :-----: |
+|<a href="https://www.acmicpc.net/problem/1260" target="_blank">1260</a>|<a href="https://www.acmicpc.net/problem/1260" target="_blank">DFS와 BFS</a>|<img height="25px" width="25px" src="https://static.solved.ac/tier_small/9.svg"/>|[C++]()|DFS, BFS|
+|<a href="https://www.acmicpc.net/problem/2606" target="_blank">2606</a>|<a href="https://www.acmicpc.net/problem/2606" target="_blank">바이러스</a>|<img height="25px" width="25px" src="https://static.solved.ac/tier_small/8.svg"/>|[C++]()|DFS, BFS|
+|<a href="https://www.acmicpc.net/problem/7576" target="_blank">7576</a>|<a href="https://www.acmicpc.net/problem/7576" target="_blank">토마토</a>|<img height="25px" width="25px" src="https://static.solved.ac/tier_small/11.svg"/>|[C++]()|BFS|
 
 ## ✏️ 과제
 
