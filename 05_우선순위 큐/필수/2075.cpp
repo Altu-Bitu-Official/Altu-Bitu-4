@@ -4,20 +4,13 @@
 
 using namespace std;
 
-struct cmp {
-    bool operator()(const int &x1, const int &x2) { // x1: 부모노드, x2: 자식노드. true일 때 swap
-        // 작은 수가 우선순위가 높음
-        return x1 > x2;
-    }
-};
-
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     
     int n, input; 
-    priority_queue<int, vector<int>, cmp> pq; // 작은 수를 먼저 내보내는 우선순위 큐
+    priority_queue<int, vector<int>, greater<>> pq; // 작은 수를 먼저 내보내는 우선순위 큐
 
     cin >> n;
     int size = n*n; // 표의 크기: n*n
