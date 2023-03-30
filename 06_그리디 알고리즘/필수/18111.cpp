@@ -84,5 +84,4 @@ int main()
 	cout << min_num[0]<<" "<<min_num[1];
 
 	return 0;
-
 }
