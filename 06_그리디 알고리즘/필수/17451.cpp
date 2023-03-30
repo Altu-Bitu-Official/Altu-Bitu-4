@@ -26,10 +26,9 @@ int main()
 		if (minimum <= v[i]) { //필요 속도가 이미 이동한 속도보다 더 클 경우 
 			minimum = v[i];
 		}
-		else { //필요 속도가 이미 이동한 속도보다 작을 경우 배수를 구해야 함 
-			if (minimum % v[i] != 0) { // 둘이 나눴을 때 나머지가 0이 아니라면 배수가 아니므로 
-				minimum = v[i] * (minimum / v[i] + 1);
-			}
+		else if (minimum % v[i] != 0) { //필요 속도가 이미 이동한 속도보다 작을 경우 배수를 구해야 함 
+				// 둘이 나눴을 때 나머지가 0이 아니라면 배수가 아니므로 
+			minimum = v[i] * (minimum / v[i] + 1);
 		}
 	}
 

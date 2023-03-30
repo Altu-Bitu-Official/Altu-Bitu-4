@@ -45,11 +45,14 @@ int main()
 	}
 
 	//출력
-	if (isPerline(alp, result, center)) { //만약 펠린드롬이 만들어진다면
+	if (!isPerline(alp, result, center)) { //만약 펠린드롬이 안만들어진다면
+		cout << "I'm Sorry Hansoo";
+	}
+	else {
 		for (int i = 0; i < result.size(); i++) { // 순서대로 먼저 출력
 			cout << result[i];
 		}
-		
+
 		if (center != ' ') { //center가 있다면  center 출력
 			cout << center;
 		}
@@ -58,9 +61,6 @@ int main()
 			cout << result[i];
 		}
 
-	}
-	else {
-		cout << "I'm Sorry Hansoo";
 	}
 
 	return 0;

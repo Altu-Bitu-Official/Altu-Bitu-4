@@ -8,15 +8,17 @@ int sameHigh(vector<int> v, int h, int n , int m, int b) {
 	int cnt = 0;
 
 	for (int i = 0; i < n * m; i++) {
+		int diff = abs(h - v[i]);
+
 		//땅을 깎아내기
 		if (v[i] > h) {
-			b += v[i] - h;
-			cnt += 2 * (v[i]- h);
+			b += diff;
+			cnt += 2 * diff;
 		}
 		else if (v[i] < h) { //인벤토리에서 블록 꺼내기
 			if (b >= 0) {
-				b -= h - v[i];
-				cnt += h - v[i];
+				b -= diff;
+				cnt += diff;
 			}
 		}
 
