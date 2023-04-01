@@ -2,68 +2,66 @@
 #include <vector>
 
 using namespace std;
-/*
-* 원본 단어와의 차이의 개수를 센다.
-*/
-/*
- * [비슷한 단어]
- *
- * 단어가 같은 구성일 조건
- * 1. 두 개의 단어가 같은 종류의 문자로 이루어짐
- * 2. 같은 문자는 같은 개수만큼 있음
- *
- * 비슷한 단어의 조건
- * 1. 한 단어에서 한 문자를 더하거나, 빼면 같은 구성이 됨
- *    -> 두 단어에서 다른 문자의 개수가 총 1개
- * 2. 한 단어에서 한 문자를 바꾸면 같은 구성이 됨
- *    -> 두 단어에서 다른 문자의 개수가 총 2개
- *    -> !주의! 이때, 두 단어의 길이가 같아야 함 cf) doll | do
- */
 
-const int NUM_CHARS = 26;
-
-//각 알파벳의 개수 세기
-void countFreq(string word, vector<int> &freq) {
-    for (int i = 0; i < word.length(); i++) {
-        freq[word[i] - 'A']++; 
-    }
+vector<int> cmpChar(vector<int> alp, string& s) { //문자 하나씩 비교
+	vector<int> alp_t = alp;
+	for (int i = 0; i < s.size(); i++) {
+		alp_t[s[i] - 'A'] -= 1;
+	}
+	return alp_t;
 }
 
-int countDiff(string word, vector<int> original_freq) {
-    vector<int> freq(NUM_CHARS, 0);
-    int diff = 0; // 원본 단어와의 차이
+//비슷한 문자인지 계산하는 함수
+bool sameWord(vector<int>& alp, string& s, string& word) {
+	int num = 0;
+	vector<int> test = cmpChar(alp, s);
+	for (int i = 0; i < 26; i++) {
+		num += abs(test[i]);
+	}
 
-    countFreq(word, freq); //각 알파벳의 개수 세기
-    
-    //원본 단어와 다른 알파벳 개수 구하기
-    for (int i = 0; i < NUM_CHARS; i++) {
-        diff += abs(original_freq[i] - freq[i]);
-    }
-    return diff;
+	//문자 길이가 같을 경우 -> 같은 구성 or 한 단어 바꾸었을 때
+	if (word.size() == s.size()) {
+		return (num == 2 || num == 0); //num이 2이면 바꾼 경우, 그 이상이면 같은 구성이므로
+	}
+	else if ((word.size() + 1 == s.size())|| (word.size() - 1 == s.size())) { // 문자 길이가 +1인경우 -> 한 단어 추가했을 때 , 문자 길이가 -1인경우 -> 한 단어 뺏을 때
+		return (num == 1);
+	}
+
+
+	return false; //위의 경우에 모두 해당이 되지 않으면 false
 }
 
-int main() {
-    int N, ans=0; 
-    string original;
-    //입력
-    cin >> N;
-    cin >> original;
-    vector<int> original_freq(NUM_CHARS, 0);
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-    //연산
-    countFreq(original, original_freq);
+	int n, ans = 0;
+	vector<int> alp(26, 0);
+	string word;
 
-    for (int i = 1; i < N; i++) {
-        string word;
-        cin >> word;
+	//입력
+	cin >> n;
+	cin >> word;
+	n--;
 
-        int diff = countDiff(word, original_freq);
-        //비슷한 단어 세기
-        if (diff == 0 || diff == 1 || diff == 2 && original.length() == word.length()) {
-            ans++;
-        }
-    }
-    //출력
-    cout << ans;
-    return 0;
+	//연산
+	for (int i = 0; i < word.size(); i++) { // 알파벳 수만큼 증가
+		alp[word[i] - 'A'] += 1;
+	}
+
+	while (n--) {
+		string s;
+		cin >> s;
+
+		if (sameWord(alp, s, word)) {
+			ans++;
+		}
+	}
+
+	//출력
+	cout << ans;
+
+	return 0;
 }
