@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/01_정렬, 맵, 셋/도전" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/01_정렬, 맵, 셋/필수" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/02_스택, 큐, 덱/도전" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/02_스택, 큐, 덱/필수" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/03_정수론/도전" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/03_정수론/필수" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/04_브루트 포스/도전" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/04_브루트 포스/필수" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/05_우선순위 큐/도전" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/05_우선순위 큐/필수" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.10 (Altu-Bitu-4)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
   </component>
 </module>
