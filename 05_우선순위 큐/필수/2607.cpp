@@ -2,68 +2,57 @@
 #include <vector>
 
 using namespace std;
-/*
-* 원본 단어와의 차이의 개수를 센다.
-*/
-/*
- * [비슷한 단어]
- *
- * 단어가 같은 구성일 조건
- * 1. 두 개의 단어가 같은 종류의 문자로 이루어짐
- * 2. 같은 문자는 같은 개수만큼 있음
- *
- * 비슷한 단어의 조건
- * 1. 한 단어에서 한 문자를 더하거나, 빼면 같은 구성이 됨
- *    -> 두 단어에서 다른 문자의 개수가 총 1개
- * 2. 한 단어에서 한 문자를 바꾸면 같은 구성이 됨
- *    -> 두 단어에서 다른 문자의 개수가 총 2개
- *    -> !주의! 이때, 두 단어의 길이가 같아야 함 cf) doll | do
- */
 
-const int NUM_CHARS = 26;
+#define ALPHA 26 // 알파벳 개수
 
-//각 알파벳의 개수 세기
-void countFreq(string word, vector<int> &freq) {
-    for (int i = 0; i < word.length(); i++) {
-        freq[word[i] - 'A']++; 
+void storeString(string &str, vector<int> &alpha) { // 문자열을 알파벳 개수별로 저장
+    for(int i = 0; i < str.size(); i++) { 
+        alpha[str[i] - 'A']++;  // 각 알파벳 자리의 수를 1만큼 증가
     }
 }
-
-int countDiff(string word, vector<int> original_freq) {
-    vector<int> freq(NUM_CHARS, 0);
-    int diff = 0; // 원본 단어와의 차이
-
-    countFreq(word, freq); //각 알파벳의 개수 세기
-    
-    //원본 단어와 다른 알파벳 개수 구하기
-    for (int i = 0; i < NUM_CHARS; i++) {
-        diff += abs(original_freq[i] - freq[i]);
-    }
-    return diff;
-}
-
-int main() {
-    int N, ans=0; 
-    string original;
-    //입력
-    cin >> N;
-    cin >> original;
-    vector<int> original_freq(NUM_CHARS, 0);
-
-    //연산
-    countFreq(original, original_freq);
-
-    for (int i = 1; i < N; i++) {
-        string word;
-        cin >> word;
-
-        int diff = countDiff(word, original_freq);
-        //비슷한 단어 세기
-        if (diff == 0 || diff == 1 || diff == 2 && original.length() == word.length()) {
-            ans++;
+// 비슷한 단어인지 확인해주는 함수
+bool isSimilar(int ori_size, vector<int> origin, string &compare) {
+    int check = 0; // 같은 문자의 개수를 저장
+    int comp_size = compare.size();
+    for(int i = 0; i < comp_size; i++) { // 비교할 문자열을 돌며 origin과 같으면 check에 저장
+        int idx = compare[i] - 'A';
+        if(origin[idx] > 0) {
+            check++;
+            origin[idx]--;
         }
     }
-    //출력
-    cout << ans;
+    // 문자열의 길이가 같으면 size-1개 이상 같아야 함
+    if((ori_size == comp_size) && (check >= ori_size - 1)) { 
+        return true;
+    }
+    // 문자열의 길이 차이가 1이면 작은 길이만큼 같아야 함
+    else if(abs(ori_size - comp_size) == 1 && check == min(ori_size, comp_size)) {
+        return true;
+    }
+    return false;
+}
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    //입력
+    int n, cnt;
+    string first, input;
+    cin >> n;     // 입력받을 문자열의 개수
+    cin >> first; // 첫 번째 문자열
+
+    vector<int> alpha(ALPHA, 0);  // 알파벳별 개수를 저장할 벡터 (계속 오류가 났던 이유: 초기화를 안 해서)
+    storeString(first, alpha); // 첫 번째 문자열에 어느 문자가 몇 개 있는지 저장
+
+    for(int i = 1; i < n; i++) { // 두 번째 문자부터
+        cin >> input;
+        if(isSimilar(first.size(), alpha, input)) { // 첫 번째 문자열과 비슷한 문자열인지 확인
+            cnt++;
+        }
+    }
+
+    // 결과 출력
+    cout << cnt; 
     return 0;
 }

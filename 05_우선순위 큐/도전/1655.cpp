@@ -1,73 +1,55 @@
-#include<iostream>
+/* 중간값을 말해야 한다. 
+만약, 개수가 짝수개라면 중간에 있는 두 수 중에서 작은 수를 말해야 한다.*/
+
+#include <iostream>
 #include <vector>
-#include<queue>
+#include <queue>
 
 using namespace std;
 
-/*
-* HINT : 가운데를 찾기 위해 현재까지 입력된 숫자중 비교적 작은 값과 큰 값을 따로 저장하면 좋을 것 같네요!
-*/
+struct cmp1 {
+    bool operator()(const int &x1, const int &x2) { // x1: 부모노드, x2: 자식노드. true일 때 swap
+        return x1 > x2;  // 더 작은 수가 높은 우선순위
+    }
+};
 
-void balance(priority_queue<int>& max_pq,
-	priority_queue<int, vector<int>, greater<>>& min_pq) {
-	int M, m;
-	
-	if (max_pq.top() > min_pq.top()) { // max_pq의 가장 큰 값이 min_pq의 가장 작은 값보다 크다면 저장 위치가 잘못 된 것!
-		// 각각의 top값을 바꿔서 저장
-		M = max_pq.top();
-		m = min_pq.top();
-
-		max_pq.pop();
-		min_pq.pop();
-
-		max_pq.push(m);
-		min_pq.push(M);
-	}
-
-	return;
-}
-
-/*
-* 입력된 수들 중 비교적 작은 값은 최대힙에 저장하고 큰 값은 최소힙에 저장하자
-* 가운데를 찾기 위해서는 최대힙과 최소힙 개수 차이가 0이나 1이어야 한다
-* 최대힙의 top값이 가운데이도록 하기 위해 최대힙의 사이즈가 최소힙의 사이즈와 같거나 1 더 크게 저장하자
-* 개수를 기준으로 저장했기에 저장 위치가 잘못됐을 수도 있다. -> 균형을 맞춰주자 (balance)
-*/
-
+struct cmp2 {
+    bool operator()(const int &x1, const int &x2) { // x1: 부모노드, x2: 자식노드. true일 때 swap
+        return x1 < x2;  // 더 큰 수가 높은 우선순위
+    }
+};
 
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int n, x; 
+    priority_queue<int, vector<int>, cmp2> small; // 작은 수들을 저장할 우선순위 큐
+    priority_queue<int, vector<int>, cmp1> big;   // 큰 수들을 저장할 우선순위 큐
+    // 몇 개의 숫자를 받을지 입력
+    cin >> n;   
+    while(n--) {
+        cin >> x;
 
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+        if(small.size() - big.size() < 1) { // 작은 수 개수는 항상 큰 수보다 같거나 1 커야 함
+            small.push(x);
+        }
+        else { // 차이가 1 이상 난다면 big에 push
+            big.push(x);
+        }
 
-	int n, input;
-	priority_queue<int> max_pq; // 비교적 작은 값을 저장해둔 최대힙
-	priority_queue<int, vector<int>, greater<>> min_pq; // 비교적 큰 값을 저장해둔 최소힙
+        if(!big.empty()) { // big이 비어있지 않고
+            if(small.top() > big.top()) { // small의 top이 big의 top보다 크면
+                small.push(big.top()); // 두 수를 바꿔 큐에 넣고
+                big.push(small.top());
 
-	// 입력
-	cin >> n;
-
-	// 연산 + 출력
-	for (int i = 0; i < n; i++) {
-		cin >> input;
-
-		// max_pq의 사이즈가 min_pq의 사이즈와 같거나 하나 더 많도록 저장 
-		if (max_pq.size() > min_pq.size()) {
-			min_pq.push(input);
-		}
-		else {
-			max_pq.push(input);
-		}
-
-		// 두 개의 pq모두 원소가 존재할 때 균형을 맞춰주자
-		if (!max_pq.empty() && !min_pq.empty()) {
-			balance(max_pq, min_pq);
-		}
-
-		// 출력
-		cout << max_pq.top() << "\n";
-
-	}
-	return 0;
+                small.pop();           // 기존 큐에서 삭제
+                big.pop();
+            }
+        }
+        // 결과 출력
+        cout << small.top() << '\n'; 
+    }
+    return 0;
 }
