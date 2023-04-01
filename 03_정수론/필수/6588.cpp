@@ -47,6 +47,7 @@ int main() {
         if(input == 0) {
             break;
         }
+
         int target = input; 
 
         vector<int> result = findNum(prime, target); // 합으로 표현될 두 소수 찾기

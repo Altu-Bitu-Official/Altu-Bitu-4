@@ -61,5 +61,6 @@ int main() {
     
     // 결과 출력
     cout << k.first << k.second <<'\n'<< s.first << s.second;
+
     return 0;
 }
