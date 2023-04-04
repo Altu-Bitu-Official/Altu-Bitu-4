@@ -1,62 +1,67 @@
-#include<iostream>
-#include<vector>
-#include<string>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-/*
-* A부터 순서대로 이용하면 알파벳순으로 가장 빠른 팰린드롬을 만들 수 있다 -> 그리디 알고리즘
-* 모든 알파벳이 짝수 개씩 존재하거나, 홀수 개 알파벳이 한 종류만 있는 경우에만 팰린드롬이 존재한다.
-*/
-const int NUM_CHAR = 26; // 알파벳 총 개수: 26개
-
-void pushString(string &str, int times, char ch) {
-	// str이라는 문자열의 뒤에 ch 문자를 times 횟수만큼 추가
-	while (times--) {
-		str += ch;
-	}
-}
-
-string isPalindrom(vector<int> freq){
-	string answer = "";
-	int odd_index = -1; // 홀수 개수인 알파벳의 인덱스 체크
-	// 팰린드롬 앞부분 만들기 & 가능한지 여부 체크
-	for (int i = 0; i < NUM_CHAR; i++) {
-		if (freq[i] % 2 == 1) {
-			if (odd_index!=-1) { // 이미 홀수 개수인 알파벳이 존재한다면 팰린드롬 불가능
-				return("I'm Sorry Hansoo");
+//펠린드롬 문자열인지 확인하는 함수
+bool isPerline(vector<int>& alp, vector<char>& result, char& center) {
+	for (int i = 0; i < alp.size(); i++) {
+		//기준 문자인지부터 확인
+		//만약 문자의 개수가 홀수일 경우 이 알파벳이 기준이 되어야 함
+		if (alp[i] % 2 == 1) {
+			if (center == ' ') {
+				center = char(i + 'A');
+				alp[i] --;
 			}
-			odd_index = i; // 홀수 개수인 알파벳이 처음이라면 인덱스 체크
+			else { //이미 기준이 존재한다면 펠린드롬이 될 수 없음
+				return false;
+			}
 		}
-		pushString(answer, freq[i] / 2, 'A' + i);
+		
+		// 문자의 개수가 짝수이면 result에 알파벳을 넣고 앞 뒤에 넣을 개수인 2를 빼주는 과정을 0이 될 때까지 반복
+		if(alp[i] % 2 == 0){
+			while (alp[i]) {
+				result.push_back(char(i + 'A'));
+				alp[i] -= 2;
+			}
+		}
 	}
-
-	// 홀수 개수 알파벳 존재한다면 가운데 문자 추가
-	if (odd_index != -1) {
-		answer += 'A' + odd_index;
-	}
-
-	// 팰린드롬 뒷부분 체크
-	for (int i = NUM_CHAR-1; i >= 0; i--) {
-		pushString(answer, freq[i] / 2, 'A' + i);
-	}
-	
-	return answer;
+	return true;
 }
-int main() {
-	
-	// 입력
-	string name;
-	cin >> name;
-	
-	vector<int> freq(NUM_CHAR, 0); // 알파벳 26개마다 빈도수를 센다. 인덱스 0:'A', 1:'B', ...
-	
-	// 연산
-	for (int i = 0; i < name.length(); i++) {
-		freq[name[i] - 'A']++; // 각 알파벳의 개수 세기
+
+int main()
+{
+	vector<int> alp(26,0); //알파벳의 개수를 저장할 벡터
+	vector<char>result;
+	char center = ' ';
+	string s;
+
+	//입력 
+	cin >> s;
+
+	//연산
+	for (int i = 0; i < s.size(); i++) {
+		alp[s[i] - 'A']++;
 	}
-	
-	// 연산 & 출력
-	cout << isPalindrom(freq);
-    return 0;
+
+	//출력
+	if (!isPerline(alp, result, center)) { //만약 펠린드롬이 안만들어진다면
+		cout << "I'm Sorry Hansoo";
+	}
+	else {
+		for (int i = 0; i < result.size(); i++) { // 순서대로 먼저 출력
+			cout << result[i];
+		}
+
+		if (center != ' ') { //center가 있다면  center 출력
+			cout << center;
+		}
+
+		for (int i = result.size() - 1; i >= 0; i--) { //이후 다시 거꾸로 출력
+			cout << result[i];
+		}
+
+	}
+
+	return 0;
 }
