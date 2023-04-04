@@ -2,6 +2,7 @@
 #include <vector>
 
 using namespace std;
+
 #define ALPHA 26 // 알파벳 개수
 
 void storeString(string &str, vector<int> &alpha) { // 문자열을 알파벳 개수별로 저장
