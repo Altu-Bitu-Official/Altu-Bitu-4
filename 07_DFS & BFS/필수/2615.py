@@ -17,13 +17,23 @@ for x in range(19):
                 temp_y = y + dy[i]
 
                 while 0 <= temp_x < 19 and 0 <= temp_y < 19 and L[temp_x][temp_y] == color:
+                    # 같은 색의 바둑돌이면 cnt += 1
                     cnt += 1
+
+                    if cnt == 5:
+                        # 첫번째 바둑돌보다 한 칸 이전의 바둑돌 체크
+                        if 0 <= x - dx[i] < 19 and 0 <= y - dy[i] < 19 and L[x - dx[i]][y - dy[i]] == color:
+                            break
+                         # 마지막 바둑돌보다 한 칸 이후의 바둑돌 체크
+                        if 0 <= temp_x + dx[i] < 19 and 0 <= temp_y + dy[i] < 19 and L[temp_x + dx[i]][temp_y + dy[i]] == color:
+                            break
+
+                        print(color)
+                        print(x + 1, y + 1)
+                        exit()
                     # 단방향 탐색
                     temp_x += dx[i]
                     temp_y += dy[i]
-                if cnt == 5:
-                    print(color)
-                    print(x + 1, y + 1)
-                    exit()
+
 
 print(0)

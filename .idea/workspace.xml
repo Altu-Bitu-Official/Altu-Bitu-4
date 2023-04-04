@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="958b6d31-aab7-4d39-8adc-7a6762539f9e" name="Changes" comment="파일 확장자 수정">
-      <change afterPath="$PROJECT_DIR$/07_DFS &amp; BFS/필수/1325.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/07_DFS &amp; BFS/필수/2615.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07_DFS &amp; BFS/필수/2615.py" beforeDir="false" afterPath="$PROJECT_DIR$/07_DFS &amp; BFS/필수/2615.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
