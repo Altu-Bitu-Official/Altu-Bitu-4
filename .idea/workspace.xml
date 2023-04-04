@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="958b6d31-aab7-4d39-8adc-7a6762539f9e" name="Changes" comment="">
+    <list default="true" id="958b6d31-aab7-4d39-8adc-7a6762539f9e" name="Changes" comment="파일 확장자 수정">
+      <change afterPath="$PROJECT_DIR$/기타/10773.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/기타/9012.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/06_그리디 알고리즘/필수/17451.py" beforeDir="false" afterPath="$PROJECT_DIR$/06_그리디 알고리즘/필수/17451.py" afterDir="false" />
     </list>
@@ -52,7 +54,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.1002">
+  <component name="RunManager" selected="Python.9012">
     <configuration name="1158.kts" type="KotlinStandaloneScriptRunConfigurationType" nameIsGenerated="true">
       <module name="Altu-Bitu-4" />
       <option name="filePath" value="$PROJECT_DIR$/02_스택, 큐, 덱/필수/1158.kts" />
@@ -81,7 +83,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="10814" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="10773" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Altu-Bitu-4" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -93,7 +95,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/기타/10814.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/기타/10773.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -123,7 +125,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="18870" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="18111" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Altu-Bitu-4" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -131,11 +133,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/기타" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/06_그리디 알고리즘/필수" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/기타/18870.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/06_그리디 알고리즘/필수/18111.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -144,7 +146,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="2221" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="9012" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Altu-Bitu-4" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -156,7 +158,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/기타/2221.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/기타/9012.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -167,18 +169,18 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.9012" />
+        <item itemvalue="Python.10773" />
+        <item itemvalue="Python.18111" />
         <item itemvalue="Python.1002" />
         <item itemvalue="Python.14501" />
-        <item itemvalue="Python.2221" />
-        <item itemvalue="Python.18870" />
-        <item itemvalue="Python.10814" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c6d0c5c2-15e2-4372-8456-341768a6d70c" name="Changes" comment="" />
+      <changelist id="958b6d31-aab7-4d39-8adc-7a6762539f9e" name="Changes" comment="" />
       <created>1677838268252</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
