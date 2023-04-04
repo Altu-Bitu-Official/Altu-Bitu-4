@@ -1,6 +1,15 @@
 {
     "files.associations": {
+ 06-assignment
         "xstring": "cpp",
         "iostream": "cpp"
+
+        "deque": "cpp",
+        "iostream": "cpp",
+        "stack": "cpp",
+        "xstring": "cpp",
+        "xiosbase": "cpp",
+        "vector": "cpp"
+ 2171034-윤주영
     }
 }
