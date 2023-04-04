@@ -1,37 +1,29 @@
 #include <iostream>
 #include "vector"
 #include "set"
-#include "stack"
+#include "queue"
 
 using namespace std;
 
-int DFS(int n, int v, vector<vector<int>> &adj_list){
-    vector<bool> visited(n+1, false);
-    stack<int> s;
-    int count = 1;
+int bfs(int n, int v, vector<vector<int>> &adj_list) {
+    int count = 0;
+    vector<bool> visited (n+1, false);
+    queue<int> q;
 
-    s.push(v);
+    q.push(v);
     visited[v] = true;
 
-    int tmp_count = 1;
-    while(!s.empty()){
-        int node = s.top();
-        bool child = false;
+    while(!q.empty()) {
+        int node = q.front();
+        q.pop();
 
-        for(int i=0; i<adj_list[node].size(); i++){
+        for(int i = 0; i < adj_list[node].size(); i++) {
             int next_node = adj_list[node][i];
-            if(!visited[next_node]){
-                child = true;
-                s.push(next_node);
+            if(!visited[next_node]) {
+                q.push(next_node);
                 visited[next_node] = true;
-                tmp_count++;
-                break;
+                count++;
             }
-        }
-        if(!child){
-            s.pop();
-            count = (tmp_count > count) ? tmp_count : count;
-            tmp_count--;
         }
     }
     return count;
@@ -57,16 +49,19 @@ int main() {
     int n1, n2;
     cin >> n >> m;
 
-    set<pair<int, int>, comp> result;
-    vector<vector<int>> adj_list (n+1, vector<int>(0));
+    set<pair<int, int>, comp> result;   // {노드, 감염시킬수 있는 컴퓨터 개수}를 담을 set
+    vector<vector<int>> adj_list (n+1, vector<int>(0)); // 인접리스트
 
+    // 인접리스트 구성
     while(m--){
         cin >> n1 >> n2;
         adj_list[n2].push_back(n1);
     }
+    // 노드마다 감염시킬 수 있는 컴퓨터의 개수를 DFS함수로 구하고 result에 Insert
     for(int i=1; i<adj_list.size(); i++){
-        result.insert({i,DFS(n, i, adj_list)});
+        result.insert({i,bfs(n, i, adj_list)});
     }
+    // result를 순회하면서 결과 출력
     for(auto iter: result){
         if(iter.second == result.begin()->second){
             cout << iter.first << " ";

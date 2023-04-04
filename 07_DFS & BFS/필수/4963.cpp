@@ -75,6 +75,6 @@ int main() {
             }
         }
         // 연산과 출력
-        cout << DFS(lands,map);
+        cout << DFS(lands,map) << '\n';
     }
 }
