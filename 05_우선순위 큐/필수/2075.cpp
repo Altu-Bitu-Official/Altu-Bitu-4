@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <queue>
 
@@ -15,6 +16,7 @@ int usePq(int n) {
 			pq.pop();
 		}
 	}
+
 
 	ans = pq.top();
 

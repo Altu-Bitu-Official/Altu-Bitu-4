@@ -1,22 +1,23 @@
 #include <iostream>
+
 #include <vector>
 #include <string>
 using namespace std;
 
 int findH(int a) {
 	int ans = 0;
-	// 1000 Àº ¾îÂ÷ÇÇ ÇØ´ç ¾ÈµÊ
+	// 1000 ì€ ì–´ì°¨í”¼ í•´ë‹¹ ì•ˆë¨
 	for (int i = 1; i <= a; i++) {
 		string num = to_string(i);
-		// ÇÑÀÚ¸®¼ö
+		// í•œìë¦¬ìˆ˜
 		if (num.length() == 1) {
 			ans++;
 		}
-		// µÎÀÚ¸®¼ö
+		// ë‘ìë¦¬ìˆ˜
 		else if (num.length() == 2) {
 			ans++;
 		}
-		// ¼¼ÀÚ¸®¼ö
+		// ì„¸ìë¦¬ìˆ˜
 		else if (num.length() == 3) {
 			if (num[0] - num[1] == num[1] - num[2]) {
 				ans++;
@@ -36,3 +37,4 @@ int main() {
 	cout << findH(a);
 	return 0;
 }
+

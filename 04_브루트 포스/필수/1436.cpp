@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 int getEndnumber(int n) {
-	// n¹øÂ° Á¾¸»ÀÇ ¼ö¸¦ Ã£´Â ÇÔ¼ö
+	// në²ˆì§¸ ì¢…ë§ì˜ ìˆ˜ë¥¼ ì°¾ëŠ” í•¨ìˆ˜
 
 	int num = 666 - 1;
 
@@ -23,4 +24,5 @@ int main() {
 	cout << getEndnumber(n);
 
 	return 0;
+
 }

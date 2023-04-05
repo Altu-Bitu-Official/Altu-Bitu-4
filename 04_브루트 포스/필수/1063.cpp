@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -42,17 +43,17 @@ void chess(int kx, int ky, int sx, int sy, vector<string> moves) {
 			idx = 7;
 		}
 
-		//Å· ¿Å±â±â
+		//í‚¹ ì˜®ê¸°ê¸°
 		tmpkx += dx[idx];
 		tmpky += dy[idx];
 
-		//µ¹ ¿Å±â±â
+		//ëŒ ì˜®ê¸°ê¸°
 		if (tmpkx == tmpsx && tmpky == tmpsy) {
 			tmpsx += dx[idx];
 			tmpsy += dy[idx];
 		}
 
-		//¾ÈÂÊÀÎÁö È®ÀÎÇÑ´Ù
+		//ì•ˆìª½ì¸ì§€ í™•ì¸í•œë‹¤
 		if ((tmpkx > 0 && tmpkx <= 8) && (tmpky > 0 && tmpky <= 8) && (tmpsx > 0 && tmpsx <= 8) && (tmpsy > 0 && tmpsy <= 8)) {
 			kx = tmpkx;
 			ky = tmpky;
@@ -65,7 +66,7 @@ void chess(int kx, int ky, int sx, int sy, vector<string> moves) {
 	}
 	kx += 'A' - 1;
 	sx += 'A' - 1;
-	// ¾î¶»°Ô ÇÏ¸é ÀÔÃâ·ÂÀ» ¸ŞÀÎ¿¡¼­ ÇÒ ¼ö ÀÖÀ»Áö Àß ¸ğ¸£°Ú½À´Ï´Ù.
+	// ì–´ë–»ê²Œ í•˜ë©´ ì…ì¶œë ¥ì„ ë©”ì¸ì—ì„œ í•  ìˆ˜ ìˆì„ì§€ ì˜ ëª¨ë¥´ê² ìŠµë‹ˆë‹¤.
 	printf("%c%d\n", kx, ky);
 	printf("%c%d\n", sx, sy);
 	return;
