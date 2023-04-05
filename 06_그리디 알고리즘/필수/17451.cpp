@@ -1,32 +1,36 @@
-#include<iostream>
-#include<cmath>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-/*
-* 힌트: 자료형마다 값의 범위가 정해져 있다는걸 명심하세요. 어디에서부터 속도를 확인하는 게 더 유리할까요?
-* 
-* 마지막 행성부터 시작하여, 출발속도가 현재 행성의 필요속도의 배수면서도 증가하도록 만든다.
-*/
+void findMinVelocity(long long &v, int &next) {
+    if (v >= next && v % next == 0) { // 속도가 이미 배수로 설정되어 있다면 리턴
+        return;
+    }
+    // 속도를 v보다 큰 next의 가장 작은 배수로 설정
+    v = next * (v / next + 1);
+}
 
 int main() {
-	int n;
-	vector<double> planet;
-	// 입력
-	cin >> n;
-	for (int i = 0; i < n; i++) {
-		double input;
-		cin >> input;
-		planet.push_back(input);
-	}
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    
+    int n;       // 행성 수
+    long long v = 0; // 속도
+    
+    cin >> n;
+    vector<int> planets(n, 0);
 
-	// 연산
-	double ans = 1;
-	for (int i = n - 1; i >= 0; i--) {
-		ans = ceil(ans / planet[i]) * planet[i];
-	}
+    for(int i = 0; i < n; i++) {
+        cin >> planets[i];
+    }
 
-	// 출력
-	cout << (long long)ans;
+    for(int i = n-1; i >= 0; i--) { // 뒤에서부터 시작
+        findMinVelocity(v, planets[i]);
+    }
+
+    cout << v;
+
+    return 0;
 }

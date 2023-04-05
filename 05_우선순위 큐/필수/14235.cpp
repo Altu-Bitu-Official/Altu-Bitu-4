@@ -1,36 +1,33 @@
 #include <iostream>
+#include <vector>
 #include <queue>
 
 using namespace std;
 
-int main()
-{
-	int n, num;
-	priority_queue<int> pq;
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int n, a, present; 
+    priority_queue<int, vector<int>, less<int>> pq; // 내림차순
 
-	//입력
-	cin >> n;
-
-	//연산 및 출력
-	while (n--) {
-		cin >> num;
-		if (!num) { //0이 입력으로 들어오면 선물의 가치 출력
-			if (pq.empty()) {
-				cout << "-1\n";
-			}
-			else {
-				cout << pq.top()<<"\n";
-				pq.pop();
-			}
-		}
-		else { //0이 아니면 선물 충전
-			int cnt;
-			for (int i = 0; i < num; i++) {
-				cin >> cnt;
-				pq.push(cnt);
-			}
-		}
-	}
-
-	return 0;
+    cin >> n; // 입력받을 수의 개수
+    while(n--) {
+        cin >> a;
+        if(!a) { // a가 0이면 선물을 꺼내서 나눠준다 (0이면 false, 0이 아니라면 true)
+            if(pq.empty()) {            // 선물이 없으면 -1 출력
+                cout << "-1\n"; 
+                continue;
+            }                          
+            cout << pq.top() << '\n';   // 선물이 있으면 가장 높은 값 출력
+            pq.pop();
+            continue;
+        }
+        while(a--) { // a가 0이 아니면 선물을 입력받아 우선순위 큐에 넣는다
+            cin >> present;          
+            pq.push(present);
+        }
+    }
+    return 0;
 }

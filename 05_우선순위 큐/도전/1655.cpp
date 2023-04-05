@@ -1,46 +1,40 @@
 #include <iostream>
+#include <vector>
 #include <queue>
 
 using namespace std;
 
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int n, x; 
+    priority_queue<int, vector<int>, less<int>> small; // 작은 수들을 저장할 우선순위 큐
+    priority_queue<int, vector<int>, greater<>> big;  // 큰 수들을 저장할 우선순위 큐
+    // 몇 개의 숫자를 받을지 입력
+    cin >> n;   
+    while(n--) {
+        cin >> x;
 
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+        if(small.size() - big.size() < 1) { // 작은 수 개수는 항상 큰 수보다 같거나 1 커야 함
+            small.push(x);
+        }
+        else { // 차이가 1 이상 난다면 big에 push
+            big.push(x);
+        }
 
-	int n, num;
-	int left = 0, right = 0;
-	priority_queue<int, vector<int>, less<int>>pq_left; //왼쪽을 담당하는 max heap
-	priority_queue<int, vector<int>, greater<int>>pq_right; //오른쪽을 담당하는 min heap
+        if(!big.empty()) { // big이 비어있지 않고
+            if(small.top() > big.top()) { // small의 top이 big의 top보다 크면
+                small.push(big.top()); // 두 수를 바꿔 큐에 넣고
+                big.push(small.top());
 
-	//입력
-	cin >> n;
-
-	while (n--) {
-		cin >> num;
-		if (left - right == 0) { // 차이가 0이면 왼쪽에
-			pq_left.push(num);
-			left++;
-		}
-		else { //차이가 1이면 오른쪽에 push해서 균형을 맞춤
-			pq_right.push(num);
-			right++;
-		}
-
-		if (!pq_left.empty() && !pq_right.empty()) { // 만약 왼쪽의 최대가 오른쪽의 최소보다 클 경우 swap
-			if (pq_left.top() > pq_right.top()) {
-				int tmp = pq_left.top();
-				pq_left.pop();
-				pq_left.push(pq_right.top());
-				pq_right.pop();
-				pq_right.push(tmp);
-			}
-		}
-
-		//균형이 왼쪽을 기준으로 맞추어져 있으므로 왼쪽 최대를 출력 
-		cout << pq_left.top() << "\n";
-	}
-  
-	return 0;
+                small.pop();           // 기존 큐에서 삭제
+                big.pop();
+            }
+        }
+        // 결과 출력
+        cout << small.top() << '\n'; 
+    }
+    return 0;
 }

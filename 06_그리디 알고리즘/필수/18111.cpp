@@ -1,83 +1,67 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <map>
 
 using namespace std;
 
-typedef pair<int, int> pii;
+int evenGround(vector<vector<int>> &v, int &n, int &m, int &h) {
+    int time = 0;
 
-const int MAX_HEIGHT = 257;
-const int INF = 987'654'321;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            int sub = v[i][j] - h; // 맞춰야 하는 높이와 현재 높이의 차이
 
-// 모든 땅의 높이를 height로 만드는 비용 계산
-int calcCost(int height, int n, int m, int b, vector<vector<int>>& blocks) {
-    int cost = 0;
-    int added = 0;      // 추가해야 하는 블록의 총 개수
-    int removed = 0;    // 제거해야 하는 블록의 총 개수
-    
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            int gap = abs(height - blocks[i][j]);
-            
-            if (blocks[i][j] > height) {
-                // 목표 높이보다 높은 칸인 경우, gap개의 블록 제거
-                removed += gap;
-            }
-            else if (blocks[i][j] < height) {
-                // 목표 높이보다 낮은 칸인 경우, gap개의 블록 추가
-                added += gap;
-            }
+            if(sub > 0) {     // 차이가 0보다 크면 깎아야 함
+                time += sub*2;
+                continue; 
+            }                 // 차이가 0보다 작으면 더해야 함
+            time -= sub;
         }
     }
-    
-    // 전체 비용 계산
-    cost = 2 * removed + added;
-    
-    // 블록 개수가 부족하다면 모든 땅의 높이를 height로 만드는 것이 불가능
-    return (added > (b + removed)) ? INF : cost;
+    return time;
 }
 
-// 모든 땅의 높이를 같게 만드는 최소 비용과 그 때의 땅의 높이
-pii makeGroundEven(int n, int m, int b, vector<vector<int>>& ground) {
-    int minCost = INF;
-    int height = 0;
-    
-    // 모든 높이를 다 만들어보고 최소 비용 찾기
-    for (int i = 0; i < MAX_HEIGHT; i++) {
-        int cost = calcCost(i, n, m, b, ground);
-        if (cost <= minCost) {
-            minCost = cost;
-            height = i;
-        }
-    }
-    
-    return {minCost, height};
-}
-
-/**
- * 블록 높이의 최댓값이 256밖에 되지 않으므로
- * 모든 칸을 높이 n(0~256)으로 만드는 모든 경우를 시도해보고
- * 그 중에서 비용이 최소가 될 때를 찾는다.
- *
- * 모든 칸을 높이 n으로 만드는
- */
 
 int main() {
-    int n, m, b;
-    
-    // 입력
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    int n, m, b; // 세로, 가로, 인벤토리
     cin >> n >> m >> b;
-    vector<vector<int>> ground(n, vector<int>(m));
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> ground[i][j];
+
+    vector<vector<int>> v(n , vector<int> (m, 0)); // 이중 벡터, 0으로 초기화
+    int h, sum = 0; // 땅의 높이, 높이의 합
+
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            cin >> h;
+            v[i][j] = h;
+            sum += h; // 땅 높이의 총합을 기록
         }
     }
 
-    // 연산
-    pii answer = makeGroundEven(n, m, b, ground);
+    int small = (sum) / (n*m);   // 가능한 블록의 최소 높이
+    int big = (sum+b) / (n*m); // 가능한 블록의 최대 높이
+    int time = 0;
 
-    // 출력
-    cout << answer.first << " " << answer.second << "\n";
+    map<int, int> t;
+    for(int i = small; i <= big; i++) { // 가능한 최소 높이부터 최대 높이까지 모두 반복
+        time = evenGround(v, n, m, i);
 
-    return 0;
+        auto ret = t.insert({ time, i });
+        if (!ret.second)
+        {
+            if(t[time] > i) { // 이미 저장된 time이 현재보다 작으면 continue
+                continue;
+            }
+            ret.first->second = i; // 현재보다 크면 update 
+        }
+    }
+
+    for (auto itr = t.begin(); itr != t.end(); itr++) {
+        cout << itr->first << " " << itr->second;
+        return 0;
+    } 
 }

@@ -1,62 +1,73 @@
-#include<iostream>
-#include<vector>
-#include<string>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
 
 using namespace std;
 
-/*
-* A부터 순서대로 이용하면 알파벳순으로 가장 빠른 팰린드롬을 만들 수 있다 -> 그리디 알고리즘
-* 모든 알파벳이 짝수 개씩 존재하거나, 홀수 개 알파벳이 한 종류만 있는 경우에만 팰린드롬이 존재한다.
-*/
-const int NUM_CHAR = 26; // 알파벳 총 개수: 26개
-
-void pushString(string &str, int times, char ch) {
-	// str이라는 문자열의 뒤에 ch 문자를 times 횟수만큼 추가
-	while (times--) {
-		str += ch;
-	}
+bool checkPalindrome(int &n, int &odd) { // 팰린드롬이 존재하는지 여부 반환
+    // 팰린드롬 존재 조건
+    // 문자열 길이가 홀수 -> 홀수 하나 존재 / 짝수 -> 모두 짝수
+    if((n % 2 && odd == 1) || (!(n % 2) && !odd)) {
+        return true;
+    }
+    return false;
 }
 
-string isPalindrom(vector<int> freq){
-	string answer = "";
-	int odd_index = -1; // 홀수 개수인 알파벳의 인덱스 체크
-	// 팰린드롬 앞부분 만들기 & 가능한지 여부 체크
-	for (int i = 0; i < NUM_CHAR; i++) {
-		if (freq[i] % 2 == 1) {
-			if (odd_index!=-1) { // 이미 홀수 개수인 알파벳이 존재한다면 팰린드롬 불가능
-				return("I'm Sorry Hansoo");
-			}
-			odd_index = i; // 홀수 개수인 알파벳이 처음이라면 인덱스 체크
-		}
-		pushString(answer, freq[i] / 2, 'A' + i);
-	}
+string makePalindrome(string &str) { // str로부터 만들어진 팰린드롬 반환, 없다면 "" 반환
+    map <char, int> chars; // string의 각 문자와 그 개수를 저장할 맵
+    int n = str.length();
+    for(int i = 0; i < n; i++) {
+        if(chars.find(str[i]) == chars.end()) { // 문자가 저장되지 않았으면
+            chars.insert({ str[i], 1 }); // 개수를 1로 설정
+            continue;
+        }
+        chars[str[i]]++; // 이미 저장되었으면 개수 + 1
+    }
+    
+    int odd = 0; // 홀수 개수
+    auto iter = chars.begin();
+    while (iter != chars.end()) { // 맵에 저장된 문자마다 반복
+        if(iter->second % 2) { // 해당 문자가 홀수 개면
+            odd++;
+        }
+        ++iter;
+    }
 
-	// 홀수 개수 알파벳 존재한다면 가운데 문자 추가
-	if (odd_index != -1) {
-		answer += 'A' + odd_index;
-	}
+    if(!checkPalindrome(n, odd)) { // 팰린드롬이 존재하지 않으면
+        return "";                 // "" 반환
+    }
 
-	// 팰린드롬 뒷부분 체크
-	for (int i = NUM_CHAR-1; i >= 0; i--) {
-		pushString(answer, freq[i] / 2, 'A' + i);
-	}
-	
-	return answer;
+    // 팰린드롬이 존재하면
+    string result("", n); // 결과를 저장할 문자열
+    int idx = 0;          // 문자열에 저장할 인덱스
+    iter = chars.begin();
+    while (iter != chars.end()) { // 맵에 저장된 문자마다 반복
+        char c = iter->first;     // 개수
+        int num = iter->second;   // 문자
+        if(num % 2) { // 홀수 개면 
+            result[n / 2] = c;  // 먼저 중간에 저장하고
+            num--;              // 개수 - 1
+        }
+        for(int i = 0; i < num / 2; i++) {
+            result[idx] = result[n - 1 - idx] = c; // 문자열을 대칭으로 채우고
+            idx++; // 인덱스 증가
+        }  
+        ++iter;
+    }
+    return result;
 }
-int main() {
-	
-	// 입력
-	string name;
-	cin >> name;
-	
-	vector<int> freq(NUM_CHAR, 0); // 알파벳 26개마다 빈도수를 센다. 인덱스 0:'A', 1:'B', ...
-	
-	// 연산
-	for (int i = 0; i < name.length(); i++) {
-		freq[name[i] - 'A']++; // 각 알파벳의 개수 세기
-	}
-	
-	// 연산 & 출력
-	cout << isPalindrom(freq);
+
+int main() {    
+    string input;
+    cin >> input;
+
+    string result = makePalindrome(input); // 입력으로부터 만들어진 팰린드롬, 없다면 ""
+    if(result == "") {
+        cout << "I'm Sorry Hansoo";
+        return 0;
+    }
+    
+    cout << result;
     return 0;
 }
