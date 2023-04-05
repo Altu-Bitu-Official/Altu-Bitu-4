@@ -1,69 +1,68 @@
 #include <iostream>
 #include <vector>
 
+#include <string>
+#include <math.h>
 using namespace std;
-/*
-* 원본 단어와의 차이의 개수를 센다.
-*/
-/*
- * [비슷한 단어]
- *
- * 단어가 같은 구성일 조건
- * 1. 두 개의 단어가 같은 종류의 문자로 이루어짐
- * 2. 같은 문자는 같은 개수만큼 있음
- *
- * 비슷한 단어의 조건
- * 1. 한 단어에서 한 문자를 더하거나, 빼면 같은 구성이 됨
- *    -> 두 단어에서 다른 문자의 개수가 총 1개
- * 2. 한 단어에서 한 문자를 바꾸면 같은 구성이 됨
- *    -> 두 단어에서 다른 문자의 개수가 총 2개
- *    -> !주의! 이때, 두 단어의 길이가 같아야 함 cf) doll | do
- */
 
-const int NUM_CHARS = 26;
-
-//각 알파벳의 개수 세기
-void countFreq(string word, vector<int> &freq) {
-    for (int i = 0; i < word.length(); i++) {
-        freq[word[i] - 'A']++; 
-    }
+vector<string> s;
+int similarWord(vector<string>& s) {
+	string strdef = s[0]; // 첫단어를 기준으로 
+	int words = 0;
+	for (int i = 1; i < s.size(); i++) {
+		int cnt = 0;
+		string strvar = s[i];
+		int l = strvar.length() - strdef.length();
+		// 길이 차이 2 이상이면 버리기
+		if (abs(l) > 1) {
+			continue;
+		}
+		// 길이차이 0이면
+		else if (l == 0) {
+			// find로 검사
+			for (int i = 0; i < strdef.length(); i++) {
+				if (strvar.find(strdef[i]) == string::npos) { // find 해서 찾는 것이 없으면 string::npos 를 반환한다.
+					cnt++;
+				}
+			}
+			if (cnt <= 1) { // 하나가 다른 건 괜찮다
+				words++;
+			}
+		}
+		// 길이차이 1이면
+		else if (l == 1) {
+			// find로 검사
+			for (int i = 0; i < strdef.length(); i++) {
+				if (strvar.find(strdef[i]) == string::npos) {
+					cnt++;
+				}
+			}
+			if (cnt == 0) { // 길이 차이가 1이면 하나를 빼야 같은 구성이 된다. 모든 문자가 있어야함. 
+				words++;
+			}
+		}
+		else if (l == -1) {
+			// find로 검사
+			for (int i = 0; i < strdef.length(); i++) {
+				if (strvar.find(strdef[i]) == string::npos) {
+					cnt++;
+				}
+			}
+			if (cnt <= 1) { // 길이 차이가 -1이면 하나를 더해야 같은 구성이 됨. 따라서 더할 문자 하나 빼고는 모두 있어야한다.
+				words++;
+			}
+		}
+	}
+	return words;
 }
-
-int countDiff(string word, vector<int> original_freq) {
-    vector<int> freq(NUM_CHARS, 0);
-    int diff = 0; // 원본 단어와의 차이
-
-    countFreq(word, freq); //각 알파벳의 개수 세기
-    
-    //원본 단어와 다른 알파벳 개수 구하기
-    for (int i = 0; i < NUM_CHARS; i++) {
-        diff += abs(original_freq[i] - freq[i]);
-    }
-    return diff;
-}
-
 int main() {
-    int N, ans=0; 
-    string original;
-    //입력
-    cin >> N;
-    cin >> original;
-    vector<int> original_freq(NUM_CHARS, 0);
-
-    //연산
-    countFreq(original, original_freq);
-
-    for (int i = 1; i < N; i++) {
-        string word;
-        cin >> word;
-
-        int diff = countDiff(word, original_freq);
-        //비슷한 단어 세기
-        if (diff == 0 || diff == 1 || diff == 2 && original.length() == word.length()) {
-            ans++;
-        }
-    }
-    //출력
-    cout << ans;
-    return 0;
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		string str;
+		cin >> str;
+		s.push_back(str);
+	}
+	cout << similarWord(s);
+	return 0;
 }
