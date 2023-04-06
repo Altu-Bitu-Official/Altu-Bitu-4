@@ -31,7 +31,6 @@ int main() {
     //입력
     cin >> n >> m;
     input.assign(n+1, vector<int> (0));
-    visited_dfs.assign(n+1, false);
 
     for (int i = 0; i < m; i++) {
         int a, b;
@@ -41,6 +40,7 @@ int main() {
 
     for (int i = 1; i <= n; i++) {
         cnt = 0;
+        visited_dfs.assign(n+1, false);
         dfs(input, i);  //카운트 구함
         if (cnt >= max_cnt) {   
             if (cnt != max_cnt) {   //최대 카운트와 카운트가 다를 때
