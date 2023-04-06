@@ -5,8 +5,7 @@
 
 using namespace std;
 
-vector<int> graph[10001];
-
+vector<vector<int>> graph(10001);
 int bfs(int i, int n)
 {
     int cnt = 0;

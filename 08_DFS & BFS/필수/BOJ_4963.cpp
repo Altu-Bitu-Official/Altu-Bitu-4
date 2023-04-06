@@ -1,3 +1,4 @@
+/*수정 후에 다시 올릴겠습니다!!!*/
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -52,7 +53,6 @@ int main()
 
         graph.assign(h + 1, vector<int>(w + 1, 0));
         visited.assign(h + 1, vector<bool>(w + 1, false));
-
         if (w == 0 && h == 0)
         {
             break; // while문 빠져나가기, 종료
