@@ -4,9 +4,10 @@
 using namespace std;
 
 typedef pair<int, int> pi;
+// 상 하 좌 우 + 대각선. 재귀함수에서 계속 사용하므로 전역변수가 더 효율적
+int dr[8] = {-1, 1, 0, 0, -1, -1, 1, 1}, dc[8] = {0, 0, -1, 1, 1, -1, 1, -1};
 
 void dfs(int x, int y, int h, int w, vector<vector<int>> &map) { // dfs 탐색
-    int dr[8] = {-1, 1, 0, 0, -1, -1, 1, 1}, dc[8] = {0, 0, -1, 1, 1, -1, 1, -1}; // 상 하 좌 우 + 대각선
     map[x][y] = 2; // 방문한 땅은 2로 표시
 
     for(int i = 0; i < 8; i++) { // 8방향 탐색

@@ -50,7 +50,7 @@ int main() {
     }
 
     int max = 0;           // 해킹 최대값
-    vector<int> maxIdx(0); // 가장 많이 해킹할 수 있는 컴퓨터를 저장하는 벡터
+    vector<int> max_idx(0); // 가장 많이 해킹할 수 있는 컴퓨터를 저장하는 벡터
 
     for (int i = 1; i <= n; i++) {
         if(edge[i].size() == 0) { // 연결된 컴퓨터가 없다면 넘어감
@@ -60,18 +60,18 @@ int main() {
         int cnt = bfs(n, i, edge); // 해킹할 수 있는 개수 구하기
 
         if(cnt > max) {          // 새로운 최대값 등장
-            maxIdx.clear();
+            max_idx.clear();
             max = cnt;
-            maxIdx.push_back(i);
+            max_idx.push_back(i);
         }
         else if(cnt == max) {    // 이전 최대값과 같다면
-            maxIdx.push_back(i); // 벡터에 저장
+            max_idx.push_back(i); // 벡터에 저장
         }
     }
 
-    sort(maxIdx.begin(), maxIdx.end()); // 오름차순으로 정렬
-    for(int i = 0; i < maxIdx.size(); i++) {
-        cout << maxIdx[i] << " "; 
+    // 1번부터 n번까지 차례대로 bfs를 실행하므로 정렬 필요 X
+    for(int i = 0; i < max_idx.size(); i++) {
+        cout << max_idx[i] << " "; 
     }
 
     return 0;
