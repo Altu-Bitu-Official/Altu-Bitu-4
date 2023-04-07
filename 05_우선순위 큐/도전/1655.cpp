@@ -12,7 +12,7 @@ void balance(priority_queue<int>& max_pq,
 	priority_queue<int, vector<int>, greater<>>& min_pq) {
 	int M, m;
 	
-	if (max_pq.top() > min_pq.top()) { // max_pq의 가장 큰 값이 min_pq의 가장 작은 값보다 크다면 저장 위치가 잘못 된 것!
+	if (max_pq.top() > min_pq.top()) { // max_pq의 가장 큰 값이 min_pq의 가장 작은 값보다 크다면 저장 위치가 잘못된 것!
 		// 각각의 top값을 바꿔서 저장
 		M = max_pq.top();
 		m = min_pq.top();
@@ -33,7 +33,6 @@ void balance(priority_queue<int>& max_pq,
 * 최대힙의 top값이 가운데이도록 하기 위해 최대힙의 사이즈가 최소힙의 사이즈와 같거나 1 더 크게 저장하자
 * 개수를 기준으로 저장했기에 저장 위치가 잘못됐을 수도 있다. -> 균형을 맞춰주자 (balance)
 */
-
 
 int main() {
 

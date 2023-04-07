@@ -13,7 +13,7 @@ struct sortMinTime {
     }
 };
 
-int solution(vector<vector<int>> jobs) {// 요청시간, 소요시간
+int solution(vector<vector<int>> jobs) { // 요청시간, 소요시간
     int answer = 0;
     int curt_time = 0; // 현재 시간
     int total_time = 0; // 대기 시간 
@@ -33,10 +33,10 @@ int solution(vector<vector<int>> jobs) {// 요청시간, 소요시간
             pq.push(jobs[next_request_job++]);
         }
 
-        // 현재 요청된 taks 중 소요시간이 가장 적은 task 수행 :
+        // 현재 요청된 task 중 소요시간이 가장 적은 task 수행
         vector<int> curt_job = pq.top();
         pq.pop();
-        total_time += ((curt_time - curt_job[0]) + curt_job[1]);//(요청부터 실행까지 delay된 시간) + 요청부터 종료까지 total 시간 
+        total_time += ((curt_time - curt_job[0]) + curt_job[1]); // (요청부터 실행까지 delay된 시간) + (요청부터 종료까지 total 시간)
         curt_time += curt_job[1];
 
         // 현재 시간까지 요청된 task를 큐에 push
@@ -55,6 +55,7 @@ int solution(vector<vector<int>> jobs) {// 요청시간, 소요시간
 * 2. pq의 top 에 있는 task를 수행함에 따라 total_time과 curt_time을 변경하자!
 * 3. curt_time에 따라 요청된 task는 pq에 삽입하고
 */
+
 int main() {
     vector<vector<int>> jobs;
     int n;
