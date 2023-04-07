@@ -8,8 +8,8 @@
 
 |                                 문제 번호                                 |                                   문제 이름                                   |                                       난이도                                       |  풀이 링크   |   분류   |
 | :-----------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :----------: | :------: |
-| <a href="https://www.acmicpc.net/problem/15649" target="_blank">15649</a> | <a href="https://www.acmicpc.net/problem/15649" target="_blank">N과 M (1)</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/8.svg"/>  | [바로가기]() | 백트래킹 |
-|  <a href="https://www.acmicpc.net/problem/9663" target="_blank">9663</a>  |  <a href="https://www.acmicpc.net/problem/9663" target="_blank">N-Queen</a>   | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/12.svg"/> | [바로가기]() | 백트래킹 |
+| <a href="https://www.acmicpc.net/problem/15649" target="_blank">15649</a> | <a href="https://www.acmicpc.net/problem/15649" target="_blank">N과 M (1)</a> | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/8.svg"/>  | [바로가기](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/08_%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EC%BD%94%EB%94%A9/15649.cpp) | 백트래킹 |
+|  <a href="https://www.acmicpc.net/problem/9663" target="_blank">9663</a>  |  <a href="https://www.acmicpc.net/problem/9663" target="_blank">N-Queen</a>   | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/12.svg"/> | [바로가기](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/08_%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9/%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EC%BD%94%EB%94%A9/9663.cpp) | 백트래킹 |
 
 ## ✏️ 과제
 
