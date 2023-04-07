@@ -12,11 +12,12 @@ int evenGround(vector<vector<int>> &v, int &n, int &m, int &h) {
         for(int j = 0; j < m; j++) {
             int sub = v[i][j] - h; // 맞춰야 하는 높이와 현재 높이의 차이
 
-            if(sub > 0) {     // 차이가 0보다 크면 깎아야 함
+            if(sub > 0) { // 차이가 0보다 크면 깎아야 함
                 time += sub*2;
-                continue; 
-            }                 // 차이가 0보다 작으면 더해야 함
-            time -= sub;
+            } 
+            else {        // 차이가 0보다 작으면 더해야 함
+                time -= sub;
+            }
         }
     }
     return time;
@@ -46,22 +47,17 @@ int main() {
     int big = (sum+b) / (n*m); // 가능한 블록의 최대 높이
     int time = 0;
 
-    map<int, int> t;
+    int minTime = 987'654'321;
+    int height = 0;
+
     for(int i = small; i <= big; i++) { // 가능한 최소 높이부터 최대 높이까지 모두 반복
         time = evenGround(v, n, m, i);
 
-        auto ret = t.insert({ time, i });
-        if (!ret.second)
-        {
-            if(t[time] > i) { // 이미 저장된 time이 현재보다 작으면 continue
-                continue;
-            }
-            ret.first->second = i; // 현재보다 크면 update 
+        if (time <= minTime) {
+            minTime = time;
+            height = i;
         }
     }
-
-    for (auto itr = t.begin(); itr != t.end(); itr++) {
-        cout << itr->first << " " << itr->second;
-        return 0;
-    } 
+    cout << minTime << " " << height;
+    return 0;
 }

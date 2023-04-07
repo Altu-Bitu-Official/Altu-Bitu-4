@@ -4,19 +4,13 @@
 
 using namespace std;
 
-struct cmp {
-    bool operator()(const int &x1, const int &x2) { // x1: 부모노드, x2: 자식노드. true일 때 swap
-        return x1 < x2;  // 더 큰 선물이 높은 우선순위
-    }
-};
-
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     
     int n, a, present; 
-    priority_queue<int, vector<int>, cmp> pq; // 우선순위 큐
+    priority_queue<int, vector<int>, less<int>> pq; // 내림차순
 
     cin >> n; // 입력받을 수의 개수
     while(n--) {
