@@ -4,7 +4,7 @@
 using namespace std;
 vector<int> num(11);
 vector<int> oper(4);
-int minn = 1000000001;
+int minn = 1000000001;//https://cryptosalamander.tistory.com/60에서 min과 max를 각각 최대값과 최소값으로 설정해 두고, 점차 비교해 나가는 방법을 참고하였습니다.
 int maxx = -1000000001;
 
 void sol(int val, int count, int n){
