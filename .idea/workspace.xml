@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6d0c5c2-15e2-4372-8456-341768a6d70c" name="Changes" comment="파일 확장자 수정">
-      <change afterPath="$PROJECT_DIR$/기타/1002.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/10814.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/10989.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/11650.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/11651.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/1181.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/1427.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/18870.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/2108.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/2480.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/25305.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/2587.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/기타/2751.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/삼성기출/14501.py" afterDir="false" />
+    <list default="true" id="958b6d31-aab7-4d39-8adc-7a6762539f9e" name="Changes" comment="파일 확장자 수정">
+      <change afterPath="$PROJECT_DIR$/08_백트래킹/라이브 코딩/15649.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/삼성기출/12100.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/삼성기출/13458.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +54,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.1002">
+  <component name="RunManager" selected="Python.13458">
     <configuration name="1158.kts" type="KotlinStandaloneScriptRunConfigurationType" nameIsGenerated="true">
       <module name="Altu-Bitu-4" />
       <option name="filePath" value="$PROJECT_DIR$/02_스택, 큐, 덱/필수/1158.kts" />
@@ -73,49 +62,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="1002" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Altu-Bitu-4" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/기타" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/기타/1002.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="10814" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Altu-Bitu-4" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/기타" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/기타/10814.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="14501" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="12100" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Altu-Bitu-4" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -127,7 +74,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/삼성기출/14501.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/삼성기출/12100.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -136,7 +83,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="18870" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="1325" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Altu-Bitu-4" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -144,11 +91,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/기타" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/07_DFS &amp; BFS/필수" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/기타/18870.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/07_DFS &amp; BFS/필수/1325.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -157,7 +104,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="2221" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="13458" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Altu-Bitu-4" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -165,11 +112,53 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/기타" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/삼성기출" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/기타/2221.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/삼성기출/13458.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="15649" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Altu-Bitu-4" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/08_백트래킹/라이브 코딩" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/08_백트래킹/라이브 코딩/15649.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="2615" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Altu-Bitu-4" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/07_DFS &amp; BFS/필수" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/07_DFS &amp; BFS/필수/2615.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -180,18 +169,18 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.1002" />
-        <item itemvalue="Python.14501" />
-        <item itemvalue="Python.2221" />
-        <item itemvalue="Python.18870" />
-        <item itemvalue="Python.10814" />
+        <item itemvalue="Python.13458" />
+        <item itemvalue="Python.12100" />
+        <item itemvalue="Python.15649" />
+        <item itemvalue="Python.1325" />
+        <item itemvalue="Python.2615" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c6d0c5c2-15e2-4372-8456-341768a6d70c" name="Changes" comment="" />
+      <changelist id="958b6d31-aab7-4d39-8adc-7a6762539f9e" name="Changes" comment="" />
       <created>1677838268252</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
