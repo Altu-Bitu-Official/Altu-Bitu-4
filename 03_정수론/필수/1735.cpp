@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+//과제미제출 재재출
 int gcdIter(int a, int b);
 
 int main() {
