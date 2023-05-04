@@ -4,48 +4,42 @@
 
 using namespace std;
 
-// 시리얼 번호를 구성하는 숫자의 합을 구하는 함수
-int sumNum(string serial_num) {
-	int sum = 0;
-	for (int i = 0; i < serial_num.size(); i++) {
-		if (isdigit(serial_num[i])) { // 문자(char)가 숫자인 경우에만 더함
-			sum += serial_num[i] - '0'; // char to int (아스키 코드 사용)
-		}
+struct guitar{
+    string serial;
+    int num_add;
+};
+
+bool cmp(const guitar& g1, const guitar& g2){
+    if (g1.serial.length() != g2.serial.length()) {
+		return g1.serial.length() < g2.serial.length();
 	}
-	return sum;
+	if (g1.num_add != g2.num_add) {
+		return g1.num_add < g2.num_add;
+	}
+	return g1.serial < g2.serial;
 }
 
-// 비교 함수
-bool cmp(const string& s1, const string& s2)
-{
-	if (s1.size() != s2.size()) { // 길이가 다르면 짧은 것 먼저
-		return s1.size() < s2.size();
-	}
-	if (sumNum(s1) != sumNum(s2)) { // 길이가 같고 자리수의 합이 다르면 작은 합을 가지는 것 먼저
-		return sumNum(s1) < sumNum(s2);
-	}
-	return s1 < s2; // 길이와 자리수의 합이 같으면 사전순 (숫자 < 알파벳)
-}
+int main(){
+    int n; //기타의 개수
+    vector<guitar> g_list;
+    cin >> n;
 
-/*
-* 시리얼 번호의 정렬 조건을 비교 함수로 구현
-* 문자열에서 숫자만의 합 구하기
-*/
+    g_list.assign(n, {});
 
-int main()
-{
-	int n;
-	// 입력
-	cin >> n;
-	vector<string> guitar(n, "");
-	for (int i = 0; i < n; i++) {
-		cin >> guitar[i];
-	}
-	// 연산
-	sort(guitar.begin(), guitar.end(), cmp);
-	// 출력
-	for (int i = 0; i < n; i++) {
-		cout << guitar[i] << '\n';
+    for(int i=0; i<n; i++){
+        cin >> g_list[i].serial;
+        g_list[i].num_add = 0;
+        for (int j=0; j< g_list[i].serial.length(); j++){
+            if ((g_list[i].serial[j] - '0' <= 9) && (g_list[i].serial[j] - '0' >= 0)){
+                g_list[i].num_add += g_list[i].serial[j] - '0';
+            }
+        }
+    }
+    sort(g_list.begin(), g_list.end(), cmp);
+
+    for (int i = 0; i < g_list.size(); i++) {
+		cout << g_list[i].serial << '\n';
 	}
 	return 0;
 }
+
