@@ -1,33 +1,36 @@
 #include <iostream>
-#include <queue>
 
 using namespace std;
 
-int solution(int num) {
-	int cnt = 99; // 100미만의 숫자는 그 자체로 등차수열이다
-	for (int i = 100; i <= num; i++) {
-		int hun = i / 100;       // 백의 자릿수
-		int ten = (i / 10) % 10; // 십의 자릿수
-		int one = i % 10;
+int check (int num){ //각 자리수가 등차수열을 이루는지 확인
+    int d;
+    d = ((num%100)/10) - (num%10);
+    while(num>=10){
+        num /= 10;
+        if(d != ((num%100)/10) - (num%10)){
+            break;
+        }
+    }
 
-		if ((hun - ten) == (ten - one)) { // 각 자릿수가 수열을 이루면
-			cnt++;
-		}
-	}
-	return cnt;
+    if(num<10){
+        return 1;
+    }
+
+    return 0;
 }
+int main(){
+    int n;
+    int num = 0;
+    int count = 0;
 
-int main() 
-{
-	int n;
-	//입력
-	cin >> n;
-	//연산 & 출력
-	if (n <= 99) {
-		cout << n;
-	}
-	else {
-		cout << solution(n);
-	}
-	return 0;
+    cin >> n;
+
+    for(int i=0; i<n; i++){
+        num++;
+        count += check(num); //등차수열을 이룰 경우 count+1
+
+    }
+    cout << count;
+
+    return 0;
 }
