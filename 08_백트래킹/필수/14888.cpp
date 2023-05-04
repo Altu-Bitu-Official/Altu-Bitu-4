@@ -4,7 +4,7 @@
 
 using namespace std;
 const int MAX_N = 11;
-const int MAX_INT = 1000000000;
+const int MAX_INT = 1e9;
 
 int n;
 vector<int> nums;        // 숫자를 저장할 벡터
@@ -14,15 +14,20 @@ int sequence[MAX_N - 1]; // 연산자 수 = 숫자의 개수 - 1
 int small = MAX_INT; // 최솟값
 int big = -MAX_INT;  // 최댓값
 
+const int ADD = 0;
+const int SUB = 1;
+const int MUL = 2;
+const int DIV = 3;
+
 int calculate(int n1, int op, int n2) { // n1과 n2를 op로 연산해준다
     switch(op) {
-        case 0:
+        case ADD:
             return n1 + n2;
-        case 1: 
+        case SUB: 
             return n1 - n2;
-        case 2:
+        case MUL:
             return n1 * n2;
-        case 3:
+        case DIV:
             return n1 / n2;
     }
 }
@@ -35,13 +40,8 @@ void completeFormula() { // 식이 하나 완성될 때마다 호출되는 함�
         sum = calculate(sum, sequence[i], nums[i+1]);
     }
 
-    if(sum > big) {    // 최댓값 업데이트
-        big = sum;
-    }
-    
-    if (sum < small) { // 최솟값 업데이트
-        small = sum;
-    }
+    big = max(big, sum);     // 최댓값 업데이트
+    small = min(small, sum); // 최솟값 업데이트
 }
 
 void backtrack(int cnt) {
