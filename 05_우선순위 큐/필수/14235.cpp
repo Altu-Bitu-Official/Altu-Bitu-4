@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <queue>
 
@@ -27,6 +28,13 @@ int main(){
         }
     }
 
-    
+        else { //선물을 충전하는 경우
+            while (input--) {
+                cin >> gift;
+                pq.push(gift);
+            }
+        }
+	}
+
     return 0;
 }
