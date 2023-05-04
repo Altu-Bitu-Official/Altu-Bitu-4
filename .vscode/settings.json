@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "DSFA.C": "cpp"
+        "DSFA.C": "cpp",
+        "vector": "cpp"
     }
 }
