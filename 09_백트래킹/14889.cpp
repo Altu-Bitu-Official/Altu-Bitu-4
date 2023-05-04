@@ -23,10 +23,8 @@ void solve(vector<vector<int>> &a, vector<bool> &visited, int &ans, int &N, int 
     start = 0, link = 0;// 멈추고 스타트,링크팀 능력치 각각 계산 
     calC(a, visited, N, start, link); // 수정 사항: 계산해주는 부분은 따로 함수로 빼는 것이 좋음!!
     int tmp = abs(start-link);
-    if(tmp < ans){
-        ans = tmp;
-        return;
-    }
+    tmp = min(ans, tmp);
+    return;
   }
   for(int i = next; i < N; i++) {
     visited[i] = true;
