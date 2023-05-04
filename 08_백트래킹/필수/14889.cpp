@@ -26,11 +26,9 @@ void calculate(){       //스타트 팀의 능력치와 링크 팀의 능력치�
         }
     }
     //절댓값
-    int t = abs(start - link);
+    int gap = abs(start - link);
     //현재 차이가 이전 차이보다 더 작다면 답 교체
-    if(ans > t){
-        ans = t;
-    }
+    ans = min(ans, gap);
 }
 
 void combination(int m, int count, int start){      //조합 계산
