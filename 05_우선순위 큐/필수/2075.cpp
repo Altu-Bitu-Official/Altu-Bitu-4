@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <queue>
 #include <math.h>
@@ -29,5 +28,4 @@ int main(){
 
     cout << matrix.top();
     return 0;
-
 }
