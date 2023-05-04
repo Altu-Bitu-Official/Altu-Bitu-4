@@ -2,68 +2,60 @@
 #include <vector>
 
 using namespace std;
-/*
-* 원본 단어와의 차이의 개수를 센다.
-*/
-/*
- * [비슷한 단어]
- *
- * 단어가 같은 구성일 조건
- * 1. 두 개의 단어가 같은 종류의 문자로 이루어짐
- * 2. 같은 문자는 같은 개수만큼 있음
- *
- * 비슷한 단어의 조건
- * 1. 한 단어에서 한 문자를 더하거나, 빼면 같은 구성이 됨
- *    -> 두 단어에서 다른 문자의 개수가 총 1개
- * 2. 한 단어에서 한 문자를 바꾸면 같은 구성이 됨
- *    -> 두 단어에서 다른 문자의 개수가 총 2개
- *    -> !주의! 이때, 두 단어의 길이가 같아야 함 cf) doll | do
- */
 
-const int NUM_CHARS = 26;
-
-//각 알파벳의 개수 세기
-void countFreq(string word, vector<int> &freq) {
-    for (int i = 0; i < word.length(); i++) {
-        freq[word[i] - 'A']++; 
+bool check(string word, string new_word){
+    int n = new_word.length();
+    vector<int> word_compare(n); //new_word의 글자 중 이미 word와 일치하는것으로 세어진 글자를 구분하기위함.
+    for(int i=0; i<n; i++){
+        word_compare[i] = 0;
     }
-}
-
-int countDiff(string word, vector<int> original_freq) {
-    vector<int> freq(NUM_CHARS, 0);
-    int diff = 0; // 원본 단어와의 차이
-
-    countFreq(word, freq); //각 알파벳의 개수 세기
-    
-    //원본 단어와 다른 알파벳 개수 구하기
-    for (int i = 0; i < NUM_CHARS; i++) {
-        diff += abs(original_freq[i] - freq[i]);
+    if ((new_word.length() > (word.length()+1))||(new_word.length() < (word.length()-1))){ //두 단어의 글자 수 차이가 2이상이면 조건에 부합할 수 없음
+        return false;
     }
-    return diff;
-}
-
-int main() {
-    int N, ans=0; 
-    string original;
-    //입력
-    cin >> N;
-    cin >> original;
-    vector<int> original_freq(NUM_CHARS, 0);
-
-    //연산
-    countFreq(original, original_freq);
-
-    for (int i = 1; i < N; i++) {
-        string word;
-        cin >> word;
-
-        int diff = countDiff(word, original_freq);
-        //비슷한 단어 세기
-        if (diff == 0 || diff == 1 || diff == 2 && original.length() == word.length()) {
-            ans++;
+    int same_Alp = 0;
+    for(int i=0; i<word.length(); i++){
+        for(int j=0; j<new_word.length(); j++){
+            if((word[i] == new_word[j])&&(word_compare[j]==0)){
+                same_Alp += 1; 
+                word_compare[j] = 1; //이미 same_alp에 반영된 해당 글자 체크
+                break;
+            }
         }
     }
-    //출력
-    cout << ans;
+
+    //구성이같거나 한글자를 더하면 같아지는 경우
+    if(word.length() == same_Alp){  
+        return true;
+    }
+    //한글자 빼면 구성이 같아지는 경우
+    if((word.length()-1==new_word.length())&&(same_Alp == new_word.length())){
+        return true;
+    }
+    //한글자를 교체하면 구성이 같아지는 경우
+    if((word.length()==new_word.length())&&(word.length()-1==same_Alp)){
+        return true;
+    }
+    return false;
+}
+
+int main(){
+    int n;
+    int count = 0;
+    cin >> n;
+
+    string word;
+
+    cin >> word;
+
+    for(int i=0; i<n-1;i++){
+        string new_word;
+        cin >> new_word;
+
+        if(check(word, new_word)){
+            count += 1;
+        }
+    }
+
+    cout << count << '\n';
     return 0;
 }
