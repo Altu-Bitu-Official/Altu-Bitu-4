@@ -12,19 +12,22 @@ vector<int> oper;   // 연산자들: 인덱스 1~(n-1)에 (n-1)개의 연산자 
 bool is_used[MAX];  // 연산자 사용 여부: 인덱스 1~(n-1)에 (n-1)개의 연산자의 사용여부 저장
 int sequence[MAX];  // 연산자 조합 결과 저장: 인덱스 1~(n-1)에 (n-1)개의 연산자 저장
 
+const int ADD = 0;  const int SUB = 1;
+const int MUL = 2;  const int DIV = 3; 
+
 // 최댓값과 최솟값
 // 계산결과는 -10억 이상, 10억 이하
-int max_num = -100000000;    int min_num = 100000000;
+int max_num = 1e9;    int min_num = 1e9;
 
 // op가 0이면 덧셈, 1이면 뺄셈, 2이면 곱셈, 3이면 나눗셈 수행
 void calcul(int nu, int op){
-    if (op == 0)
+    if (op == ADD)
         {answ += nu;}
-    if (op == 1)
+    if (op == SUB)
         {answ -= nu;}
-    if (op == 2)
+    if (op == MUL)
         {answ *= nu;}
-    if (op == 3)
+    if (op == DIV)
         {answ /= nu;}
 }
 
@@ -39,12 +42,8 @@ void backtrack(int cnt){
             calcul(nums[j], sequence[j]);
         }
         // 최댓값과 최솟값 확인
-        if (answ > max_num){
-            max_num = answ;
-        }
-        if (answ < min_num){
-            min_num = answ;
-        }
+        max_num = max(max_num, answ);
+        min_num = min(min_num, answ);
 
         return;
     }
