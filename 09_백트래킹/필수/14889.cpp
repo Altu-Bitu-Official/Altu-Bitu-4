@@ -1,60 +1,67 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
+#include <algorithm>
 
 using namespace std;
 
-bool visited[20];
-int relation[20][20];
-int n=0;
-int mymin=10000000; //대강 큰수로 지정해주기
+const int MAX_N = 20;
+const int INF = 1e9;
 
-void maketeam(int a, int b){
-    vector<int> start; //스타트팀 계산용
-    vector<int> link;  // 링크 팀 계산용;
+int n;
+int min_power_gap = INF;
+int s[MAX_N][MAX_N];
+bool is_start[MAX_N];
 
-    int s_score = 0;
-    int l_score = 0;
-    if(b == (n/2)){
-        for(int i = 0; i < n; i++){
-            if(visited[i] == true) 
-                start.push_back(i);
-            else 
-                link.push_back(i);
-        }
-        for(int i = 0; i < (n/2); i++){
-            for(int j = 0; j < (n/2); j++){
-                s_score += relation[start[i]][start[j]];
-                l_score += relation[link[i]][link[j]];
-            } 
-        }
+int calcTeamPowerGap() {
+    int start_power = 0;
+    int link_power = 0;
+    
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) { //중복 방지를 위해 무조건 j는 i보다 크게 해주기
+            int ssum = s[i][j] + s[j][i]; // i와 j를 뽑아 계산해주기
+            
+            if (is_start[i] && is_start[j]) { //i와 j가 start team인 경우
+                start_power += ssum;
+            }
 
-        if(abs(s_score - l_score) < mymin){
-            mymin = abs(s_score - l_score);
+            else if (!is_start[i] && !is_start[j]) { //i와 j가 link team인 경우
+                link_power += ssum;
+            }
         }
+    }
+
+    return abs(start_power - link_power); //두 팀의 차를 구해주기
+}
+
+void backtrack(int idx, int cnt) {
+    if (cnt == (n / 2)) { //n/2명을 다 뽑았을 경우 실행 -> return에 의해 재귀가 종료됨
+        int power_gap = calcTeamPowerGap(); //두 팀간의 차이를 저장
+        min_power_gap = min(min_power_gap, power_gap); //두 개를 비교해 제일 적은 걸 저장
         return;
     }
-    for(int i = a; i < n; i++){
-        if(visited[i]){
-            continue;
-        }
-        else{
-            visited[i] = true;
-            maketeam(i,b+1);// 재귀 해준뒤에
-            visited[i] = false; //i를 다시 false로 바꿔주기
-        }
+    
+    for (int i = idx; i < n; i++) { //팀원을 뽑기 위한 계산
+        is_start[i] = true;
+        backtrack(i + 1, cnt + 1);
+        is_start[i] = false;
     }
 }
+
 int main() {
-    cin>>n;
-    
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            cin>>relation[i][j];
+    // 입력
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> s[i][j]; //입력받음
         }
     }
 
-    maketeam(0,0);
+    // 연산
+    is_start[0] = true;
+    backtrack(1, 1);
 
-    cout<< mymin;
+    // 출력
+    cout << min_power_gap << '\n';
+    
+    return 0;
 }
