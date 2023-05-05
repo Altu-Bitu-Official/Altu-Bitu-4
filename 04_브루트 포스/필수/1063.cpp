@@ -1,90 +1,61 @@
-#include<iostream>
-#include<string>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 using namespace std;
-typedef pair<char, char>cc;
 
-cc move(string input, char x, char y) {//이동 함수 x : 열, y : 행
-	for (int i = 0; i < input.size(); i++) {
-		char how = input[i];
-		if (how == 'R') {
-			x++;
-		}
-		else if (how == 'L') {
-			x--;
-		}
-		else if (how == 'B') {
-			y--;
-		}
-		else {//T
-			y++;
+bool check(string word, string new_word){
+    int n = new_word.length();
+    vector<int> word_compare(n); //new_word의 글자 중 이미 word와 일치하는것으로 세어진 글자를 구분하기위함.
+    for(int i=0; i<n; i++){
+        word_compare[i] = 0;
+    }
+    if ((new_word.length() > (word.length()+1))||(new_word.length() < (word.length()-1))){ //두 단어의 글자 수 차이가 2이상이면 조건에 부합할 수 없음
+        return false;
+    }
+    int same_Alp = 0;
+    for(int i=0; i<word.length(); i++){
+        for(int j=0; j<new_word.length(); j++){
+            if((word[i] == new_word[j])&&(word_compare[j]==0)){
+                same_Alp += 1; 
+                word_compare[j] = 1; //이미 same_alp에 반영된 해당 글자 체크
+                break;
+            }
+        }
+    }
 
-		}
-	}
-
-	return { x, y };
-
+    //구성이같거나 한글자를 더하면 같아지는 경우
+    if(word.length() == same_Alp){  
+        return true;
+    }
+    //한글자 빼면 구성이 같아지는 경우
+    if((word.length()-1==new_word.length())&&(same_Alp == new_word.length())){
+        return true;
+    }
+    //한글자를 교체하면 구성이 같아지는 경우
+    if((word.length()==new_word.length())&&(word.length()-1==same_Alp)){
+        return true;
+    }
+    return false;
 }
 
-bool checkRange(cc position) {//범위 체크 하는 함수
+int main(){
+    int n;
+    int count = 0;
+    cin >> n;
 
-	if (position.first < 'A' || position.first > 'H'
-		|| position.second < '1' || position.second > '8') {
-		return false;
-	}
-	
-	return true;
-}
+    string word;
 
-bool isSame(cc k, cc s) {
+    cin >> word;
 
-	return (k.first == s.first && k.second == s.second);
+    for(int i=0; i<n-1;i++){
+        string new_word;
+        cin >> new_word;
 
-}
+        if(check(word, new_word)){
+            count += 1;
+        }
+    }
 
-/*
-* HINT : 문자형 변수의 연산은 비교적 자유로워요! 또 킹과 돌의 움직임이 모두 판 안에서 이뤄질 때만 다음으로 움직일 수 있는 점을 신경써주세요!
-* 1. king 이동 (move)
-* 2. king과 stone의 위치 동일 -> stone 이동 (move)
-* 3. king과 stone의 위치 점검 (checkRange
-*/
-
-int main() {
-
-	cc k, s;//king, stone
-	int n;
-	string input;
-
-	//입력
-	cin >> k.first >> k.second >> s.first >> s.second >> n;
-
-	//연산
-	while (n--) {
-		cin >> input;
-
-		cc next_k, next_s;//이동 후 위치 저장할 변수
-
-		//king 이동
-		next_k = move(input, k.first, k.second);
-
-		//stone 이동
-		if (isSame(next_k,s)) {
-			next_s = move(input, s.first, s.second);
-		}
-		else {
-			next_s = s;
-		}
-
-		//범위 체크
-		if (checkRange(next_k) && checkRange(next_s)){//이동한 king과 stone가 유효 범위면 최종적으로 이동
-			k = next_k;
-			s = next_s;
-		}
-
-	}
-
-	//출력
-	cout << k.first << k.second <<'\n'<< s.first << s.second ;
-	return 0;
+    cout << count << '\n';
+    return 0;
 }
