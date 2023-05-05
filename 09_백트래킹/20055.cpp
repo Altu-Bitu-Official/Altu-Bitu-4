@@ -5,6 +5,14 @@
 #include <vector>
 #include <deque>
 using namespace std;
+void rotateBelt(deque<int> &conveyer_belt, deque<bool> &is_exist){
+        int tmp = conveyer_belt.back();
+        conveyer_belt.push_front(tmp);
+        conveyer_belt.pop_back();
+        int rob = is_exist.back();
+        is_exist.push_front(rob);
+        is_exist.pop_back();
+}
 
 int solve(deque<int> &conveyer_belt, deque<bool> &is_exist, int &N, int &K){
     int answer = 0;
@@ -19,18 +27,10 @@ int solve(deque<int> &conveyer_belt, deque<bool> &is_exist, int &N, int &K){
         if(duraBility >= K) {
             break;
         }
-        else {
             answer++;
             // -- 벨트를 회전 시킵니다. --
-            int tmp = conveyer_belt.back();
-            conveyer_belt.push_front(tmp);
-            conveyer_belt.pop_back();
-            int rob = is_exist.back();
-            is_exist.push_front(rob);
-            is_exist.pop_back();
-            if(is_exist[N-1]){
-                is_exist[N-1] = false;
-            }
+            rotateBelt(conveyer_belt, is_exist);
+            is_exist[N-1] = false;
             for(int i = N-2; i >= 0; i--){
                 if(is_exist[i] == true && is_exist[i+1] == false){
                     if(conveyer_belt[i+1] >= 1){
@@ -49,7 +49,6 @@ int solve(deque<int> &conveyer_belt, deque<bool> &is_exist, int &N, int &K){
                     conveyer_belt[0]--;
                 }
             }
-        }
     }
     return answer;
 }
