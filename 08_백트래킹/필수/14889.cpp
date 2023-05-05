@@ -11,7 +11,6 @@ bool is_used[MAX_N+1];
 int n,diff=INT_MAX;
 
 
-
 int calcStat() {
     int start = 0, link = 0,j,k=0;
     /*start 능력치 계산 코드*/
