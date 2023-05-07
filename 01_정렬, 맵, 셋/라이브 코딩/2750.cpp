@@ -1,11 +1,11 @@
-// N°³ÀÇ ¼ö°¡ ÁÖ¾îÁ³À» ¶§, ÀÌ¸¦ ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
+// Nê°œì˜ ìˆ˜ê°€ ì£¼ì–´ì¡Œì„ ë•Œ, ì´ë¥¼ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í•˜ëŠ” í”„ë¡œê·¸ë¨ì„ ì‘ì„±í•˜ì‹œì˜¤.
 
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-// ¼±ÅÃ Á¤·Ä: O(n^2)
+// ì„ íƒ ì •ë ¬: O(n^2)
 void selectionSort(vector<int>& arr) {
 	int least;
 	for (int i = 0; i < arr.size(); i++) {
@@ -18,12 +18,12 @@ void selectionSort(vector<int>& arr) {
 		swap(arr[i], arr[least]);
 	}
 }
-// »ğÀÔ Á¤·Ä: O(n^2)
+// ì‚½ì… ì •ë ¬: O(n^2)
 void insertionSort(vector<int>& arr) {
 	int curr, j;
 	for (int i = 1; i < arr.size(); i++) {
-		curr = arr[i]; // À§Ä¡¸¦ Ã£À¸·Á´Â ¿ø¼Ò
-		// »ğÀÔÇÏ·Á´Â ¿ø¼Òº¸´Ù Å« ¿ø¼Ò´Â ÇÑ Ä­¾¿ µÚ·Î ÀÌµ¿
+		curr = arr[i]; // ìœ„ì¹˜ë¥¼ ì°¾ìœ¼ë ¤ëŠ” ì›ì†Œ
+		// ì‚½ì…í•˜ë ¤ëŠ” ì›ì†Œë³´ë‹¤ í° ì›ì†ŒëŠ” í•œ ì¹¸ì”© ë’¤ë¡œ ì´ë™
 		for (j = i - 1; j >= 0 && arr[j] > curr; j--) {
 			arr[j + 1] = arr[j];
 		}
@@ -31,7 +31,7 @@ void insertionSort(vector<int>& arr) {
 	}
 }
 
-// ¹öºí Á¤·Ä: O(n^2)
+// ë²„ë¸” ì •ë ¬: O(n^2)
 void bubbleSort(vector<int>& arr) {
 	for (int i = 0; i < arr.size()-1; i++) {
 		for (int j = 0; j < arr.size() - i; j++) {
@@ -42,7 +42,7 @@ void bubbleSort(vector<int>& arr) {
 	}
 }
 
-// Çâ»óµÈ ¹öºí Á¤·Ä: O(n^2)
+// í–¥ìƒëœ ë²„ë¸” ì •ë ¬: O(n^2)
 void advBubbleSort(vector<int>& arr) {
 	for (int i = 0; i < arr.size() - 1; i++) {
 		bool is_swap = false;
@@ -52,8 +52,8 @@ void advBubbleSort(vector<int>& arr) {
 				is_swap = true;
 			}
 		}
-		if (!is_swap) { // swapÀÌ ÇÑ ¹øµµ ÀÏ¾î³ªÁö ¾Ê´Â´Ù¸é
-			return; // ÀÌ¹Ì ¸ğµç ¿ø¼Ò°¡ Á¤·ÄµÇ¾î ÀÖÀ¸¹Ç·Î ¹Ù·Î ¸®ÅÏ
+		if (!is_swap) { // swapì´ í•œ ë²ˆë„ ì¼ì–´ë‚˜ì§€ ì•ŠëŠ”ë‹¤ë©´
+			return; // ì´ë¯¸ ëª¨ë“  ì›ì†Œê°€ ì •ë ¬ë˜ì–´ ìˆìœ¼ë¯€ë¡œ ë°”ë¡œ ë¦¬í„´
 		}
 	}
 }

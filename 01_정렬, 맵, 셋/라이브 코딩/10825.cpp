@@ -1,8 +1,8 @@
-// µµÇöÀÌ³× ¹Ý ÇÐ»ý N¸íÀÇ ÀÌ¸§°ú ±¹¾î, ¿µ¾î, ¼öÇÐ Á¡¼ö°¡ ÁÖ¾îÁø´Ù. ÀÌ¶§, ´ÙÀ½°ú °°Àº Á¶°ÇÀ¸·Î ÇÐ»ýÀÇ ¼ºÀûÀ» Á¤·ÄÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
-// ±¹¾î Á¡¼ö°¡ °¨¼ÒÇÏ´Â ¼ø¼­·Î
-// ±¹¾î Á¡¼ö°¡ °°À¸¸é ¿µ¾î Á¡¼ö°¡ Áõ°¡ÇÏ´Â ¼ø¼­·Î
-// ±¹¾î Á¡¼ö¿Í ¿µ¾î Á¡¼ö°¡ °°À¸¸é ¼öÇÐ Á¡¼ö°¡ °¨¼ÒÇÏ´Â ¼ø¼­·Î
-// ¸ðµç Á¡¼ö°¡ °°À¸¸é ÀÌ¸§ÀÌ »çÀü ¼øÀ¸·Î Áõ°¡ÇÏ´Â ¼ø¼­·Î(´Ü, ¾Æ½ºÅ° ÄÚµå¿¡¼­ ´ë¹®ÀÚ´Â ¼Ò¹®ÀÚº¸´Ù ÀÛÀ¸¹Ç·Î »çÀü¼øÀ¸·Î ¾Õ¿¡ ¿Â´Ù.)
+// ë„í˜„ì´ë„¤ ë°˜ í•™ìƒ Nëª…ì˜ ì´ë¦„ê³¼ êµ­ì–´, ì˜ì–´, ìˆ˜í•™ ì ìˆ˜ê°€ ì£¼ì–´ì§„ë‹¤. ì´ë•Œ, ë‹¤ìŒê³¼ ê°™ì€ ì¡°ê±´ìœ¼ë¡œ í•™ìƒì˜ ì„±ì ì„ ì •ë ¬í•˜ëŠ” í”„ë¡œê·¸ëž¨ì„ ìž‘ì„±í•˜ì‹œì˜¤.
+// êµ­ì–´ ì ìˆ˜ê°€ ê°ì†Œí•˜ëŠ” ìˆœì„œë¡œ
+// êµ­ì–´ ì ìˆ˜ê°€ ê°™ìœ¼ë©´ ì˜ì–´ ì ìˆ˜ê°€ ì¦ê°€í•˜ëŠ” ìˆœì„œë¡œ
+// êµ­ì–´ ì ìˆ˜ì™€ ì˜ì–´ ì ìˆ˜ê°€ ê°™ìœ¼ë©´ ìˆ˜í•™ ì ìˆ˜ê°€ ê°ì†Œí•˜ëŠ” ìˆœì„œë¡œ
+// ëª¨ë“  ì ìˆ˜ê°€ ê°™ìœ¼ë©´ ì´ë¦„ì´ ì‚¬ì „ ìˆœìœ¼ë¡œ ì¦ê°€í•˜ëŠ” ìˆœì„œë¡œ(ë‹¨, ì•„ìŠ¤í‚¤ ì½”ë“œì—ì„œ ëŒ€ë¬¸ìžëŠ” ì†Œë¬¸ìžë³´ë‹¤ ìž‘ìœ¼ë¯€ë¡œ ì‚¬ì „ìˆœìœ¼ë¡œ ì•žì— ì˜¨ë‹¤.)
 
 #include <iostream>
 #include <vector>
@@ -10,12 +10,12 @@
 
 using namespace std;
 
-struct student { // ÇÐ»ý Á¤º¸ ±¸Á¶Ã¼: ÀÌ¸§, ±¹¾î Á¡¼ö, ¿µ¾î Á¡¼ö, ¼öÇÐ Á¡¼ö
+struct student { // í•™ìƒ ì •ë³´ êµ¬ì¡°ì²´: ì´ë¦„, êµ­ì–´ ì ìˆ˜, ì˜ì–´ ì ìˆ˜, ìˆ˜í•™ ì ìˆ˜
 	string name;
 	int kor, eng, math;
 };
 
-// ºñ±³ ÇÔ¼ö(bad)
+// ë¹„êµ í•¨ìˆ˜(bad)
 bool cmp(const student& s1, const student& s2) {
 	if (s1.kor == s2.kor) {
 		if (s1.eng == s2.eng) {
@@ -29,7 +29,7 @@ bool cmp(const student& s1, const student& s2) {
 	return s1.kor > s2.kor;
 }
 
-// ºñ±³ ÇÔ¼ö(good)
+// ë¹„êµ í•¨ìˆ˜(good)
 bool cmpAdv(const student& s1, const student& s2) {
 	if (s1.kor != s2.kor) {
 		return s1.kor > s2.kor;
