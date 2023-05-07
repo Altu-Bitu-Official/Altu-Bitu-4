@@ -1,6 +1,6 @@
-// »ó±ÙÀÌ´Â ¸ðµç »ç¶÷ÀÇ ÃâÀÔÄ«µå ½Ã½ºÅÛÀÇ ·Î±×¸¦ °¡Áö°í ÀÖ´Ù. 
-// ÀÌ ·Î±×´Â ¾î¶² »ç¶÷ÀÌ È¸»ç¿¡ µé¾î¿Ô´ÂÁö, ³ª°¬´ÂÁö°¡ ±â·ÏµÇ¾îÁ® ÀÖ´Ù. 
-// ·Î±×°¡ ÁÖ¾îÁ³À» ¶§, ÇöÀç È¸»ç¿¡ ÀÖ´Â ¸ðµç »ç¶÷À» ±¸ÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
+// ìƒê·¼ì´ëŠ” ëª¨ë“  ì‚¬ëžŒì˜ ì¶œìž…ì¹´ë“œ ì‹œìŠ¤í…œì˜ ë¡œê·¸ë¥¼ ê°€ì§€ê³  ìžˆë‹¤. 
+// ì´ ë¡œê·¸ëŠ” ì–´ë–¤ ì‚¬ëžŒì´ íšŒì‚¬ì— ë“¤ì–´ì™”ëŠ”ì§€, ë‚˜ê°”ëŠ”ì§€ê°€ ê¸°ë¡ë˜ì–´ì ¸ ìžˆë‹¤. 
+// ë¡œê·¸ê°€ ì£¼ì–´ì¡Œì„ ë•Œ, í˜„ìž¬ íšŒì‚¬ì— ìžˆëŠ” ëª¨ë“  ì‚¬ëžŒì„ êµ¬í•˜ëŠ” í”„ë¡œê·¸ëž¨ì„ ìž‘ì„±í•˜ì‹œì˜¤.
 
 #include <iostream>
 #include <set>
@@ -21,7 +21,7 @@ int main() {
 			s.erase(input);
 		}
 	}
-	for (auto iter = s.rbegin(); iter != s.rend(); iter++) { // ÀÌ¸§À» »çÀü ¼øÀÇ ¿ª¼øÀ¸·Î
+	for (auto iter = s.rbegin(); iter != s.rend(); iter++) { // ì´ë¦„ì„ ì‚¬ì „ ìˆœì˜ ì—­ìˆœìœ¼ë¡œ
 		cout << *iter << '\n';
 	}
 	return 0;
