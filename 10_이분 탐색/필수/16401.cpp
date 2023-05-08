@@ -1,9 +1,15 @@
 // 16401 과자 나눠주기
+/*
+
+*/
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
 using namespace std;
+
 typedef long long ll;
+
 bool chk(ll &mid, vector<ll> &cookie, ll &M){
     ll sum = 0;
     for(int i = 0; i < cookie.size(); i++){
@@ -14,6 +20,7 @@ bool chk(ll &mid, vector<ll> &cookie, ll &M){
     }
     return false;
 }
+
 int main(){
     ios_base::sync_with_stdio(false); cin.tie(0);
     ll M, N; // 조카의 수: M, 과자의 수 : N
