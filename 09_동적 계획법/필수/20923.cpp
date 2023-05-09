@@ -26,6 +26,7 @@ void groundToDeck(deque<int>& deck, deque<int>& ground) {//그라운드에있는
 		deck.push_back(ground.back());//계속 넣는다. 새로 얻는 카드는 뒤에 넣으니까 back
 		ground.pop_back();//그라운드는 삭제함
 	}
+	
 }
 
 // 종을 쳤을 때
