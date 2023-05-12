@@ -24,6 +24,7 @@ const int NUM_CHARS = 26;
  */
 
 // 각 알파벳의 개수 세기
+
 void countFreq(string word, vector<int> &freq)
 {
     for (int i = 0; i < word.length(); i++)
@@ -50,6 +51,7 @@ int countDiff(string word, vector<int> original_freq)
 int main()
 {
     int N, ans = 0;
+
     string original;
     // 입력
     cin >> N;
@@ -66,6 +68,7 @@ int main()
 
         int diff = countDiff(word, original_freq);
         // 비슷한 단어 세기
+
         if (diff == 0 || diff == 1 || diff == 2 && original.length() == word.length())
         {
             ans++;
