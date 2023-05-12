@@ -1,30 +1,58 @@
+
 #include <iostream>
 #include <queue>
+
 using namespace std;
 
+/*
+ * HINT : 아이들에게 주는 선물의 특징을 고려해 자료구조를 선택해봐요!
+ */
+
+/*
+ * 아이들에게 주는 선물 : 가치가 가장 큰 선물 -> 선물을 우선순위 큐에 저장
+ * 1. 아이들을 만난 경우
+ *      1) 큐가 비어있으면 -1 출력
+ *      2) 큐의 top값 출력
+ * 2. 선물 충전 -> 큐에 삽입
+ */
 int main()
 {
-    ios::sync_with_stdio(false); // 시간단축
-    cin.tie(0);
-    cout.tie(0);
 
-    int n;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int n, input, gift;
+    priority_queue<int> pq;
+
+    // 입력
     cin >> n;
-    // 오름차순으로 n개의 정수를 vector로 저장
-    priority_queue<int, vector<int>, greater<int>> q;
 
-    for (int i = 0; i < n; i++) // n행번 반복
+    // 연산 + 출력
+    while (n--)
     {
-        for (int k = 0; k < n; k++)
-        { // n개 사용자 정의
-            int num;
-            cin >> num;       // 정수 num을 사용자 정의 받고
-            q.push(num);      // num을 q에 넣어서 오름차순 정리
-            if (q.size() > n) // q가 n개의 크기보다 커지면 top은  n+1번째로 큰 수가 됨
+
+        cin >> input;
+        if (!input)
+        { // 아이들을 만난 경우
+            if (pq.empty())
             {
-                q.pop(); // n번째 큰 수만 필요하기에 top을 제거
+                cout << "-1\n";
+            }
+            else
+            {
+                cout << pq.top() << '\n';
+                pq.pop();
+            }
+        }
+        else
+        { // 선물을 충전하는 경우
+            while (input--)
+            {
+                cin >> gift;
+                pq.push(gift);
             }
         }
     }
-    cout << q.top(); // n번쨰 정수 출력
+    return 0;
 }
