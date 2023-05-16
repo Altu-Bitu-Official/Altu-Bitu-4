@@ -2,40 +2,48 @@
 
 using namespace std;
 const int MAX_N = 8;
-int n, m; // 재귀함수를 사용하는 경우 전역변수를 사용
+
+int n, m;
 int sequence[MAX_N];
 bool is_used[MAX_N + 1];
 
 void printSequence()
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < m; i++)
     {
         cout << sequence[i] << " ";
     }
     cout << "\n";
 }
-void backtrack(int cnt) // cnt는 현재까지 뽑은 숫자의 개수 (종료조건이용)
+
+/**
+ * 숫자를 하나씩, 총 M개가 될 때까지 뽑는다.
+ *
+ * cnt: 현재까지 고른 숫자의 개수
+ */
+void backtrack(int cnt)
 {
-    // 종료 조건
+    // 재귀 호출 종료 조건: M개의 숫자를 다 뽑은 경우
     if (cnt == m)
     {
         printSequence();
         return;
     }
 
-    // 고르려는 수 i
+    // i: 고르려는 수
     for (int i = 1; i <= n; i++)
     {
-        // 이미 골랐던 숫자라면, 사용x
+        // 이미 골랐던 숫자라면, 사용 불가
         if (is_used[i])
         {
             continue;
         }
+
         // 사용
         sequence[cnt] = i;
         is_used[i] = true;
 
-        // 다음 숫자 뽑기
+        // 다음 숫자 고르기
         backtrack(cnt + 1);
 
         // 반납
@@ -50,4 +58,6 @@ int main()
 
     // 연산
     backtrack(0);
+
+    return 0;
 }

@@ -1,62 +1,78 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
-using namespace std;
 
-void countFreq(string word, vector<int> &freq) // 입력받은 문자열에서 각 알파벳의 개수를 세주는 함수
+using namespace std;
+const int NUM_CHARS = 26;
+
+/*
+ * 원본 단어와의 차이의 개수를 센다.
+ */
+
+/*
+ * [비슷한 단어]
+ *
+ * 단어가 같은 구성일 조건
+ * 1. 두 개의 단어가 같은 종류의 문자로 이루어짐
+ * 2. 같은 문자는 같은 개수만큼 있음
+ *
+ * 비슷한 단어의 조건
+ * 1. 한 단어에서 한 문자를 더하거나, 빼면 같은 구성이 됨
+ *    -> 두 단어에서 다른 문자의 개수가 총 1개
+ * 2. 한 단어에서 한 문자를 바꾸면 같은 구성이 됨
+ *    -> 두 단어에서 다른 문자의 개수가 총 2개
+ *    -> !주의! 이때, 두 단어의 길이가 같아야 함 cf) doll | do
+ */
+
+// 각 알파벳의 개수 세기
+void countFreq(string word, vector<int> &freq)
 {
     for (int i = 0; i < word.length(); i++)
-    {                          // 문자열의 개수만큼 반복
-        freq[word[i] - 'A']++; // 인덱스를 A(0)로부터 저장
+    {
+        freq[word[i] - 'A']++;
     }
 }
 
-int countDiff(string word, vector<int> ori_freq) // ori기준으로 매개변수 word와 ori의 차이를 반환하는 함수
+int countDiff(string word, vector<int> original_freq)
 {
-    // 새로 입력받은 단어 word의 알파벳 개수 저장
-    vector<int> freq(26, 0); // 알파벳개수 26개를 0으로 초기화
+    vector<int> freq(NUM_CHARS, 0);
+    int diff = 0; // 원본 단어와의 차이
 
-    // 원본 단어와의 차이를 저장할 변수
-    int diff = 0; // 1씩 증가시키기위해 0으로 초기화
+    countFreq(word, freq); // 각 알파벳의 개수 세기
 
-    // 새로 입력받은 단어의 알파벳 수
-    countFreq(word, freq);
-
-    for (int i = 0; i < 26; i++) // 새로받은 단어와 비교
+    // 원본 단어와 다른 알파벳 개수 구하기
+    for (int i = 0; i < NUM_CHARS; i++)
     {
-        diff += abs(ori_freq[i] - freq[i]); // 원본과 새로운 단어의 빈도수 차이를 저장
+        diff += abs(original_freq[i] - freq[i]);
     }
-
-    return diff; // 차이값 반환
+    return diff;
 }
 
 int main()
 {
-    int N;
-    int ans = 0; // +1씩 초기화하기 위해 0으로 초기화
-    string ori;  // 원본 단어(첫번째로 입력받는 단어)
-
+    int N, ans = 0;
+    string original;
+    // 입력
     cin >> N;
-    cin >> ori; // 원본단어 사용자 정의
+    cin >> original;
+    vector<int> original_freq(NUM_CHARS, 0);
 
-    // 각 알파벳의 개수를 저장할 정수형 벡터
-    vector<int> ori_freq(26, 0); // 알파벳이 26개, 개수를 세야하니 0으로 초기화
+    // 연산
+    countFreq(original, original_freq);
 
-    countFreq(ori, ori_freq); // ori의 각 알파벳에 대한 개수를 count
-
-    for (int i = 1; i < N; i++) // i =0 은 ori이니 1부터 count
+    for (int i = 1; i < N; i++)
     {
         string word;
-        cin >> word; // 단어 사용자 입력
+        cin >> word;
 
-        // 현재 입력 단어와 원본 단어 사이의 차이
-        int diff = countDiff(word, ori_freq);
-
-        if (diff == 0 || diff == 1 || (diff == 2 && ori.length() == word.length()))
-        { // 1,2,3번의 조건중에 하나라도 만족할 경우
+        int diff = countDiff(word, original_freq);
+        // 비슷한 단어 세기
+        if (diff == 0 || diff == 1 || diff == 2 && original.length() == word.length())
+        {
             ans++;
         }
     }
+    // 출력
+
     cout << ans;
     return 0;
 }
