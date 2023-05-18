@@ -50,6 +50,7 @@ int main (){
 
     for(int i=length+1; i<l+1; i++){
         cout << result[i];
+        
     }
     return 0;
 
