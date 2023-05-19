@@ -2,7 +2,7 @@
 #include <vector>
 #define INT_MAX 10000
 using namespace std;
-vector<int> alpha[26];
+
 int main(){
     int t, k;
     string w;
@@ -11,7 +11,7 @@ int main(){
     for(int i=0;i<t;i++){
         cin>>w;
         cin>>k;
-        
+        vector<int> alpha[26];
         int ans1=INT_MAX;
         int ans2=-1;
 
