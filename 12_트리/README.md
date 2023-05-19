@@ -8,8 +8,8 @@
 
 |                                 문제 번호                                 |                                      문제 이름                                       |                                       난이도                                       |  풀이 링크   |    분류    |
 | :-----------------------------------------------------------------------: | :----------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :----------: | :--------: |
-|  <a href="https://www.acmicpc.net/problem/1991" target="_blank">1991</a>  |    <a href="https://www.acmicpc.net/problem/1991" target="_blank">트리 순회</a>    | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/10.svg"/>  | [바로가기]() |     트리 순회     |
-| <a href="https://www.acmicpc.net/problem/4803" target="_blank">4803</a> |   <a href="https://www.acmicpc.net/problem/4803" target="_blank">트리</a>    | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/12.svg"/> | [바로가기]() |     트리, DFS     |
+|  <a href="https://www.acmicpc.net/problem/1991" target="_blank">1991</a>  |    <a href="https://www.acmicpc.net/problem/1991" target="_blank">트리 순회</a>    | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/10.svg"/>  | [바로가기](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/12_%ED%8A%B8%EB%A6%AC/%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EC%BD%94%EB%94%A9/1991.cpp) |     트리 순회     |
+| <a href="https://www.acmicpc.net/problem/4803" target="_blank">4803</a> |   <a href="https://www.acmicpc.net/problem/4803" target="_blank">트리</a>    | <img height="25px" width="25px" src="https://static.solved.ac/tier_small/12.svg"/> | [바로가기](https://github.com/Altu-Bitu-Official/Altu-Bitu-4/blob/main/12_%ED%8A%B8%EB%A6%AC/%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EC%BD%94%EB%94%A9/4803.cpp) |     트리, DFS     |
 
 ## ✏️ 과제
 
