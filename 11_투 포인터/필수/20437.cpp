@@ -12,22 +12,19 @@ ci containK(int k, string w, vector<int> &al){
     for (int i =0;i<w.length();i++){
         if(al[w[i]-'a']<k){
             continue;
-        }else{
-            int cnt =0;
-            for(int j =i;j<w.length();j++){
-
-                if(w[i]==w[j]){
-                    cnt ++;
-                    if(cnt == k){
-                        len = j-i+1;
-                        max_len =max(len,max_len);
-                        min_len = min(len,min_len);
-                    }
-                }
-
-            }
-
         }
+        int cnt =0;
+        for(int j =i;j<w.length();j++){
+            if(w[i]!=w[j])
+                continue;
+                cnt ++;
+                if(cnt == k){
+                    len = j-i+1;
+                    max_len =max(len,max_len);
+                    min_len = min(len,min_len);
+                    break;
+                }
+            }
     }
     return {min_len,max_len};
 }
@@ -36,10 +33,10 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    int T,k;
+    int t,k;
     string w;
-    cin >> T;
-    while(T--){
+    cin >> t;
+    while(t--){
         vector<int> al (26,0);
         cin >>w >> k;
         for (int i =0;i<w.length();i++){
@@ -51,5 +48,6 @@ int main(){
         }else{
             cout <<ans.first<<" "<<ans.second;
         }
+        cout<<"\n";
     }
 }
