@@ -3,9 +3,11 @@
 
 using namespace std;
 
+const int INF = 1e5 + 1;
+
 //같은 정수를 K개 이하로 포함한 최장 연속 부분 수열의 길이 반환
 int maxLength(int n, int k, vector<int>& a) {
-	vector<int> cnt(1e5 + 1); //cnt[i]: i의 개수
+	vector<int> cnt(INF); //cnt[i]: i의 개수
 	cnt[a[0]] = 1;
 
 	int left = 0, right = 0;
