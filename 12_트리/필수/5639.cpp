@@ -13,7 +13,7 @@ void postOrder(int first, int last) {
         return;
     }
     else if (first > last) {
-        return;  // 범위를
+        return;  // 범위를 벗어났으므로 리턴
     }
 
     int right = -1; // 오른쪽 서브 트리의 루트
@@ -26,14 +26,13 @@ void postOrder(int first, int last) {
     }
 
     if(right == -1) { // 저장된 오른쪽 서브 트리가 없다면
-        for(int i = last-1; i >= first; i--) {
-            cout << tree[i] << '\n'; // 왼쪽 서브 트리와 루트를 출력
-        }
+        postOrder(first + 1, last); // left 출력
+        cout << tree[first] << '\n'; // 루트 출력
         return;
     }
 
     // 후위 순회 순서: left -> right -> root
-    postOrder(first + 1, right - 1); // left 출력
+    postOrder(first + 1, right); // left 출력
     postOrder(right, last);      // right 출력
     cout << tree[first] << '\n'; // 루트 출력
 }
@@ -43,7 +42,7 @@ int main() {
 	cin.tie(NULL); 
     cout.tie(NULL);
 
-    int v; // 노드
+    int v;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     while(cin >> v) {
         tree.push_back(v); // 전위 순회 순서로 저장
     }
