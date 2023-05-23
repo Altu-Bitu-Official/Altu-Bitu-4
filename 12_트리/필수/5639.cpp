@@ -1,45 +1,38 @@
 #include <iostream>
-#include <map>
-#include <vector>
 using namespace std;
 
-map<int, pair<int, int>> tree;//맵으로 한다. 본인,자식노드들
+struct Node {
+    int data;
+    Node* left;//연결되어야 하니까 포인터
+    Node* right;
+};
 
-// 후위 순회 왼-오-중간
-void postorder(int v) {
-    if (v == 0) {
-        return;
+Node* insert(Node* node, int data) {
+    if (node == NULL) {//타고타고 비어있을 때만 새로생성
+        node = new Node();
+        node->data = data;
+        node->left = node->right = NULL;
     }
+    else if (data <= node->data)
+        node->left = insert(node->left, data);
+    else
+        node->right = insert(node->right, data);
+    return node;
+}
 
-    postorder(tree[v].first);//왼쪽
-    postorder(tree[v].second);//오른쪽
-    if (v != 0)
-    {
-        cout << v;//가운데
-    }
+void postorder(Node* node) {
+    if (node == NULL) return;
+    postorder(node->left);
+    postorder(node->right);
+    cout << node->data << '\n';
 }
 
 int main() {
-
-    char root, left, right;
-    int n = 0;
-    vector<int> number;
-    // 입력
-    while (cin >> n) {
-        number.push_back(n);
+    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+    Node* root = NULL;//포인터: 연결위해
+    int x;
+    while (cin >> x) {//입력받고
+        root = insert(root, x);//insert
     }
-    for (int j = 0; j < (number.size() - 1); j++) {
-        left = 0, right = 0;//0이면 비었다는 뜻
-        if (number[j] < number[j + 1]) {//루트보다 크면 오른쪽으로
-            right = number[j + 1];
-        }
-        if (number[j] > number[j + 1]) {
-            left = number[j + 1];
-        }
-        tree[number[j]] = { left,right };
-    }
-
-    // 연산 + 출력
-    postorder(number[0]);//루트 넣기
-    return 0;
+    postorder(root);//루트노드만 알면 된다. 
 }
