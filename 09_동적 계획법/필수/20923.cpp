@@ -12,19 +12,34 @@ string judge(cards& deck)
 {
 	int do_deck = deck[DO].size(), su_deck = deck[SU].size();
 	if (do_deck > su_deck) {
+
+		return "do";
+	}
+	else if (do_deck < su_deck) {
+		return "su";
+	}
+	return "dosu";
+
 		return "do"; //도도의 덱이 더 많으므로 도도 승리
 	}
 	else if (do_deck < su_deck) {
 		return "su"; //수연의 덱이 더 많으므로 수연 승리
 	}
 	return "dosu"; //그외의 경우: 무승부
+
 }
 
 // 그라운드에서 덱으로 카드 옮기기
 void groundToDeck(deque<int>& deck, deque<int>& ground) {
+
+	while (!ground.empty()) {
+		deck.push_back(ground.back());
+		ground.pop_back();
+
 	while (!ground.empty()) { //카드를 다 쓸 때까지
 		deck.push_back(ground.back());//그라운드에 있는 카드를 덱으로 옮김
 		ground.pop_back(); //그라운드를 비움
+
 	}
 }
 
@@ -55,8 +70,13 @@ string game(int m, cards& deck, cards& ground) {
 	while (m--)
 	{
 		ground[turn].push_front(deck[turn].front()); // 카드 내려놓기(덱 -> 그라운드)
+
+		deck[turn].pop_front();
+		if (deck[turn].empty()) {
+
 		deck[turn].pop_front(); //카드를 내려놓으면서 덱에서는 카드가 빠짐
 		if (deck[turn].empty()) { //어느쪽 그라인드도 비어 있으면 안되므로
+
 			break;
 		}
 		int bell = whoCanRingTheBell(deck, ground); // 종을 울릴 수 있는 사람
