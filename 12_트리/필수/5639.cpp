@@ -8,11 +8,11 @@ vector<int> tree;
 // left -> right -> root
 void postOrder(int first, int last) {
 
-    if(first == last) { // 출력할 노드가 하나밖에 없으면
+    if(first == last - 1) { // 출력할 노드가 하나밖에 없으면
         cout << tree[first] << '\n'; // 루트 출력
         return;
     }
-    else if (first > last) {
+    else if (first >= last) {
         return;  // 범위를 벗어났으므로 리턴
     }
 
@@ -41,8 +41,8 @@ int main() {
     ios::sync_with_stdio(false);
 	cin.tie(NULL); 
     cout.tie(NULL);
-
-    int v;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+    
+    int v;                                             
     while(cin >> v) {
         tree.push_back(v); // 전위 순회 순서로 저장
     }
