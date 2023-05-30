@@ -7,31 +7,32 @@ using namespace std;
 const int MAX_N = 20;
 const int INF = 1e9;
 
-int n;
-int min_power_gap = INF;
-int s[MAX_N][MAX_N];
-bool is_start[MAX_N];
+int n; // 사람 수
+int min_power_gap = INF; // 최소 차이
+int s[MAX_N][MAX_N];     // 능력치
+bool is_start[MAX_N];    // 스타트팀인지 여부
 
-int calcTeamPowerGap() {
-    int start_power = 0;
+int calcTeamPowerGap() { // 스타트와 링크의 능력치 차이 계산
+    int start_power = 0; // 각각 0으로 초기화
     int link_power = 0;
     
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
-            int ssum = s[i][j] + s[j][i];
+
+            int ssum = s[i][j] + s[j][i]; // 양쪽 능력치를 더해준다
             
             // i와 j 모두 스타트 팀인 경우
             if (is_start[i] && is_start[j]) {
-                start_power += ssum;
+                start_power += ssum; // 스타트의 능력치 증가
             }
             // i와 j 모두 링크 팀인 경우
             else if (!is_start[i] && !is_start[j]) {
-                link_power += ssum;
+                link_power += ssum;  // 링크의 능력치 증가
             }
         }
     }
 
-    return abs(start_power - link_power);
+    return abs(start_power - link_power); // 차이이므로 절댓값으로 반환
 }
 
 /**
@@ -44,17 +45,19 @@ int calcTeamPowerGap() {
  */
 void backtrack(int idx, int cnt) {
     // 재귀 호출 종료 조건: n/2명을 다 뽑은 경우
-    if (cnt == (n / 2)) {
-        int power_gap = calcTeamPowerGap();
-        min_power_gap = min(min_power_gap, power_gap);
+
+    if (cnt == (n / 2)) {                              // n/2명을 다 뽑으면
+        int power_gap = calcTeamPowerGap();            // 능력치 차이 계산
+        min_power_gap = min(min_power_gap, power_gap); // 최소 능력치 차이 계산
         return;
     }
     
     // [idx+1, idx+2, ..., n-1] 중에서 다음 팀원을 뽑음
-    for (int i = idx; i < n; i++) {
-        is_start[i] = true;
-        backtrack(i + 1, cnt + 1);
-        is_start[i] = false;
+
+    for (int i = idx; i < n; i++) { // idx번부터 탐색
+        is_start[i] = true;         // 사용
+        backtrack(i + 1, cnt + 1);  // 인덱스, 카운트 증가시켜 다음 사람 뽑기
+        is_start[i] = false;        // 반납
     }
 }
 
@@ -67,16 +70,16 @@ void backtrack(int idx, int cnt) {
  */
 int main() {
     // 입력
-    cin >> n;
+    cin >> n; // 사람 수
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            cin >> s[i][j];
+            cin >> s[i][j]; // 능력치
         }
     }
 
     // 연산
-    is_start[0] = true;
-    backtrack(1, 1);
+    is_start[0] = true; // 스타트팀인지 여부, 0번 사람은 스타트 팀
+    backtrack(1, 1);    // 순서대로 뽑기 위해 인덱스 전달
 
     // 출력
     cout << min_power_gap << '\n';
