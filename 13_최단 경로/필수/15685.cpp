@@ -14,8 +14,9 @@ void draw(int x, int y, int d, int g, vector<vector<bool>> &paper){
     vector<int> direction; // g세대 이동할 방향 저장 
     direction.push_back(d);
     while (g--){
-        for (int j = 0; j<direction.size(); j++){
-            direction.push_back((direction[direction.size()-1-j] + 1) % 4);
+        int n = direction.size();
+        for (int j = n-1 ; j>=0 ; j--){
+            direction.push_back((direction[j] + 1) % 4);
         }
     }
     for (auto dir: direction){
