@@ -1,85 +1,97 @@
+// 재귀함수 안에서 정의된 변수들은 계속 선언되어야 하므로 전역변수로 선언해도 괜찮다.
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
-
-const int INF = 1e9;
 const int MAX_N = 11;
-const int ADD = 0, SUB = 1, MUL = 2, DIV = 3;
-const int EXP_NUM = 4;
+const int MAX_INT = 1e9;
 
 int n;
-int nums[MAX_N];
-int expression[EXP_NUM];
-int max_val = -INF, min_val = INF;
+vector<int> nums;        // 숫자를 저장할 벡터
+vector<int> op(4, 0);    // 각 연산자의 개수를 저장할 벡터
+int sequence[MAX_N - 1]; // 연산자 수 = 숫자의 개수 - 1
 
-/**
- * 연산자를 하나씩, 총 (N-1)개가 될 때까지 뽑는다.
- *
- * cnt: 뽑은 연산자의 개수
- * curr_val: 현재 연산값
- */
-void backtrack(int cnt, int curr_val) {
-    // 재귀 호출 종료 조건: (N-1)개의 연산자를 다 뽑은 경우
-    if (cnt == n - 1) {
-        max_val = max(max_val, curr_val);
-        min_val = min(min_val, curr_val);
-        return;
-    }
-    
-    // i: 연산자 번호
-    for (int i = 0; i < EXP_NUM; i++) {
-        // 사용할 연산자가 남아있지 않으면, 사용 불가
-        if (expression[i] == 0) {
-            continue;
-        }
-        
-        // 연산자 사용
-        expression[i]--;
-        int new_sum = 0;
-        switch (i) {
-            case ADD:
-                new_sum = curr_val + nums[cnt + 1];
-                break;
-            case SUB:
-                new_sum = curr_val - nums[cnt + 1];
-                break;
-            case MUL:
-                new_sum = curr_val * nums[cnt + 1];
-                break;
-            case DIV:
-                new_sum = curr_val / nums[cnt + 1];
-                break;
-        }
-        
-        // 다음 연산자 선택
-        backtrack(cnt + 1, new_sum);
-        
-        // 연산자 반납
-        expression[i]++;
+int small = MAX_INT; // 최솟값
+int big = -MAX_INT;  // 최댓값
+
+const int ADD = 0;
+const int SUB = 1;
+const int MUL = 2;
+const int DIV = 3;
+
+int calculate(int n1, int op, int n2) { // n1과 n2를 op로 연산해준다
+    switch(op) {
+        case ADD:
+            return n1 + n2;
+        case SUB: 
+            return n1 - n2;
+        case MUL:
+            return n1 * n2;
+        case DIV:
+            return n1 / n2;
     }
 }
 
-/**
- * 모든 연산자 조합을 시도해보면서 최대값과 최솟값을 찾는다.
- * 모든 연산자 조합을 만들기 위해 가장 왼쪽에 들어갈 연산자부터 하나씩 선택한다.
- */
+void completeFormula() { // 식이 하나 완성될 때마다 호출되는 함수
+    int sum = nums[0];
+
+    // 뽑힌 연산자마다 계산
+    for (int i = 0; i < n - 1; i++) {
+        sum = calculate(sum, sequence[i], nums[i+1]);
+    }
+
+    big = max(big, sum);     // 최댓값 업데이트
+    small = min(small, sum); // 최솟값 업데이트
+}
+
+void backtrack(int cnt) {
+    // 종료 조건: 연산자를 n-1개 뽑았을 때
+    if(cnt == n-1) {
+        // 식 하나 완성
+        completeFormula();
+        return;
+    }
+
+    // 고르려는 연산자 i
+    for (int i = 0; i < 4; i++) {
+        // 해당 연산자를 다 썼다면, 사용 불가
+        if(!op[i]) {
+            continue;
+        }
+
+        // 사용
+        sequence[cnt] = i;
+        op[i]--;
+
+        // 다음 자리 연산자 뽑기
+        backtrack(cnt + 1);
+
+        // 반납
+        op[i]++;
+    }
+}
+
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
     // 입력
     cin >> n;
-    for (int i = 0; i < n; i++) {
+    nums.assign(n, 0);
+
+    for(int i = 0; i < n; i++) {
         cin >> nums[i];
     }
-    for (int i = 0; i < EXP_NUM; i++) {
-        cin >> expression[i];
+    for(int i = 0; i < 4; i++) {
+        cin >> op[i];
     }
 
     // 연산
-    backtrack(0, nums[0]);
+    backtrack(0); // cnt는 0부터 시작
 
     // 출력
-    cout << max_val << '\n' << min_val;
-    
+    cout << big << '\n' << small;
+
     return 0;
 }

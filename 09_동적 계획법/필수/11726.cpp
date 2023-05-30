@@ -4,14 +4,13 @@
 using namespace std;
 
 int countNumberOfCases(int n) {
-    const int MOD = 10'007;
-    // dp[i]: 2xi 크기의 직사각형을 채우는 방법의 수
-    vector<int> dp(n+1);
+    const int MOD = 10'007; // 오버플로우 방지
+    vector<int> dp(n+1); // 2xi 크기의 직사각형을 채우는 방법의 수
     
-    dp[1] = 1; // 세로로 한 개만
-    dp[2] = 2; // 세로로 두 개 or 가로로 두 개
+    dp[1] = 1; // 세로로 한 개만 놓는 경우
+    dp[2] = 2; // 세로로 두 개 or 가로로 두 개 놓는 경우
     
-    for (int i = 3; i <= n; i++) {
+    for (int i = 3; i <= n; i++) { // 3부터 n까지 반복
         int vertical = dp[i - 1]; // 세로로 한 개 놓는 경우
         int horizontal = dp[i - 2]; // 가로로 두 개 놓는 경우
         dp[i] = (vertical + horizontal) % MOD;  // 오버플로우 방지를 위해 MOD 연산
@@ -32,7 +31,7 @@ int countNumberOfCases(int n) {
  * d[i] = dp[i - 1] + dp[i - 2]
  */
 int main() {
-    int n;
+    int n; // 2×n 크기의 직사각형
 
     // 입력
     cin >> n;
