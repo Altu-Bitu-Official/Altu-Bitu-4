@@ -21,12 +21,12 @@ int findStudent(int n, vector<vector<int>> &graph) { // 자기 외 n-1명의 학
     for(int i = 1; i <= n; i++) {
         int cnt = 0;
         for(int j = 1; j <= n; j++) {
-            if(graph[i][j] || graph[j][i]) { // 작거나 크다는 걸 알면
-                cnt++;                       // 카운트 증가
-
-                if(cnt >= n - 1) {           // n-1명의 학생들에 연결되어있으면
-                    ans++;                   // 키를 아는 것
-                }
+            if(!graph[i][j] && !graph[j][i]) { // 연결되어있지 않으면
+                continue;
+            }
+            cnt++;                       // 카운트 증가
+            if(cnt == n - 1) {           // n-1명의 학생들에 연결되어있으면
+                ans++;                   // 키를 아는 것
             }
         }
     }

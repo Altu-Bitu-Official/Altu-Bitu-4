@@ -7,7 +7,7 @@ using namespace std;
 typedef pair<int, int> ci;
 const int INF = 1e5; // n * 가중치의 최대값
 
-int dijkstra(int start, int end, int n, vector<vector<ci>> &graph) {
+vector<int> dijkstra(int start, int n, vector<vector<ci>> &graph) {
     vector<int> dist(n+1, INF);
     dist[start] = 0; // 시작점에서의 시간
     priority_queue<ci, vector<ci>, greater<>> pq;
@@ -32,14 +32,14 @@ int dijkstra(int start, int end, int n, vector<vector<ci>> &graph) {
             }
         }
     }
-    return dist[end];
+    return dist;
 }
 
-int findLongest(int x, int n,  vector<vector<ci>> graph) {
+int findLongest(int x, int n,  vector<vector<ci>> &graph) {
     int ans = 0;
-
+    vector<int> back = dijkstra(x, n, graph); // 오는 시간
     for(int i = 1; i <= n; i++) {
-        int time = dijkstra(i, x, n, graph) + dijkstra(x, i, n, graph); // 가는 시간 + 오는 시간
+        int time = dijkstra(i, n, graph)[x] + back[i]; // 가는 시간 + 오는 시간
         ans = max(ans, time); // 최대값 구하기
     }
     return ans;
