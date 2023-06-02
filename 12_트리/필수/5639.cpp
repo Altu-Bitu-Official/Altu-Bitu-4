@@ -1,53 +1,54 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-void postOrder(int left, int right, vector<int>& tree) {
-	if (left > right) {
-		return;
-	}
+vector<int> tree;
 
-	int root = tree[left];//이해하기 쉽게 루트 따로 저장해주자!
+// left -> right -> root
+void postOrder(int first, int last) {
 
-	//루트보다 처음으로 큰 노드 인덱스 찾기 -> left, right새로 설정하기 위해서!
-	int tmp = left + 1;
-	for (int i = left+1 ; i <= right ; i++) {
-		if (tree[i] > root) {
-			tmp = i;
-			break;
-		}
-	}
+    if(first == last - 1) { // 출력할 노드가 하나밖에 없으면
+        cout << tree[first] << '\n'; // 루트 출력
+        return;
+    }
+    else if (first >= last) {
+        return;  // 범위를 벗어났으므로 리턴
+    }
 
-	//후위 순회 순으로 다시 탐색
-	postOrder(left + 1, tmp - 1,tree);//루트보다 작은 노드들
-	postOrder(tmp, right, tree);//루트보다 큰 노드들
+    int right = -1; // 오른쪽 서브 트리의 루트
 
-	//left, right 탐색 끝났으므로 root 출력
-	cout << root << '\n';
+    for(int i = first + 1; i <= last; i++) {
+        if(tree[i] > tree[first]) { // 현재 루트보다 큰 수가 올 때 저장
+            right = i; 
+            break;
+        }
+    }
+
+    if(right == -1) { // 저장된 오른쪽 서브 트리가 없다면
+        postOrder(first + 1, last); // left 출력
+        cout << tree[first] << '\n'; // 루트 출력
+        return;
+    }
+
+    // 후위 순회 순서: left -> right -> root
+    postOrder(first + 1, right); // left 출력
+    postOrder(right, last);      // right 출력
+    cout << tree[first] << '\n'; // 루트 출력
 }
 
-/*
-* 이진 검색 트리 : 루트의 왼쪽 
-* 이진 검색 트리를 전위 순회환 결과 -> 후위 순회한 결과
-* 전위 순회 : 루트 왼쪽 오른쪽 -> 후위 순회 : 왼쪽 오른쪽 루트
-*  -> 탐색 결과 : 루트 -> 루트보다 작은 노드(왼쪽) -> 루트보다 큰 노드(오른쪽)
-*  -> 루트를 기준으로 left, right 나눠서 후위 순회 순으로 다시 탐색
-*/
-
 int main() {
+    ios::sync_with_stdio(false);
+	  cin.tie(NULL); 
+    cout.tie(NULL);
+    
+    int v;                                             
+    while(cin >> v) {
+        tree.push_back(v); // 전위 순회 순서로 저장
+    }
 
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout.tie(0);
+    // 후위 순회 순서로 출력
+    postOrder(0, tree.size()); 
 
-	//입력
-	int num;
-	vector<int> tree;
-	while (cin >> num) {
-		tree.push_back(num);
-	}
-
-	//연산 + 출력
-	postOrder(0, tree.size() - 1, tree);
+    return 0;
 }
