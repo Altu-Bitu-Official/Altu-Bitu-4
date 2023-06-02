@@ -56,6 +56,7 @@ int game(int n, vector<vector<int>> &state, map<int, int> &direction) {
  * 6. 새로 이동한 좌표를 2로 표시
 */
 int main() {
+
     int n, k, l, x; // 보드 크기, 사과 개수, 방향이 바뀌는 횟수, 방향 변환 정보
     char c;         // 방향 변환 정보
     vector<vector<int>> state; // 사과와 뱀의 존재 여부 저장
