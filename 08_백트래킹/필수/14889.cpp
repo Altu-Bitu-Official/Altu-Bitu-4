@@ -18,6 +18,7 @@ int calcTeamPowerGap() { // 스타트와 링크의 능력치 차이 계산
     
     for (int i = 0; i < n - 1; i++) {
         for (int j = i + 1; j < n; j++) {
+
             int ssum = s[i][j] + s[j][i]; // 양쪽 능력치를 더해준다
             
             // i와 j 모두 스타트 팀인 경우
@@ -44,6 +45,7 @@ int calcTeamPowerGap() { // 스타트와 링크의 능력치 차이 계산
  */
 void backtrack(int idx, int cnt) {
     // 재귀 호출 종료 조건: n/2명을 다 뽑은 경우
+
     if (cnt == (n / 2)) {                              // n/2명을 다 뽑으면
         int power_gap = calcTeamPowerGap();            // 능력치 차이 계산
         min_power_gap = min(min_power_gap, power_gap); // 최소 능력치 차이 계산
@@ -51,6 +53,7 @@ void backtrack(int idx, int cnt) {
     }
     
     // [idx+1, idx+2, ..., n-1] 중에서 다음 팀원을 뽑음
+
     for (int i = idx; i < n; i++) { // idx번부터 탐색
         is_start[i] = true;         // 사용
         backtrack(i + 1, cnt + 1);  // 인덱스, 카운트 증가시켜 다음 사람 뽑기

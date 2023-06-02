@@ -23,6 +23,7 @@ string judge(cards& deck)
 
 // 그라운드에서 덱으로 카드 옮기기
 void groundToDeck(deque<int>& deck, deque<int>& ground) {
+
 	while (!ground.empty()) { // 그라운드가 비어 있지 않으면
 		deck.push_back(ground.back()); // 그라운드의 가장 뒤에 있는 카드를 덱으로 옮김
 		ground.pop_back();             // 카드를 그라운드에서 삭제
@@ -68,6 +69,7 @@ string game(int m, cards& deck, cards& ground) {
 		turn = !turn; // 차례 바꾸기
 	}
 	return judge(deck); // 승리한 사람 리턴
+
 }
 
 /*
@@ -82,6 +84,7 @@ string game(int m, cards& deck, cards& ground) {
 int main()
 {
 	int n, m, card1, card2; // 카드의 개수, 게임 진행 횟수
+
 	cards deck(2), ground(2); // 0: 도도, 1: 수연
 	// 입력
 	cin >> n >> m;
